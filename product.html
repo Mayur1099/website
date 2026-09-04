@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vyantra AI Labs — Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg0:#0A0E0C; --bg1:#0E1411; --bg2:#131A16; --bg3:#0C110F;
+  --line:rgba(237,231,218,.10); --line2:rgba(237,231,218,.22);
+  --bone:#EDE7DA; --body:#B4BBAE; --faint:#828D82;
+  --amber:#E3A24A; --amber2:#F0B968; --amber-soft:rgba(227,162,74,.12);
+  --err:#E2604F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:dark;scroll-padding-top:96px}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html,body{overflow-x:clip}
+body{background:var(--bg0);color:var(--body);font:400 16px/1.7 "Space Grotesk",sans-serif;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+::selection{background:var(--amber);color:#131008}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg0)}
+::-webkit-scrollbar-thumb{background:rgba(237,231,218,.16);border-radius:8px}
+:focus-visible{outline:1.5px solid var(--amber);outline-offset:3px}
+.mono{font-family:"JetBrains Mono",monospace}
+.container{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+.sq{display:inline-block;width:7px;height:7px;background:var(--amber);margin-right:12px;flex:none}
+.skip{position:fixed;left:-999px;top:10px;z-index:500;background:var(--amber);color:#131008;padding:10px 16px;font:600 12px "Space Grotesk"}
+.skip:focus{left:10px}
+.grain{position:fixed;inset:0;z-index:250;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,border .4s}
+.nav.scrolled{background:rgba(10,14,12,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);height:76px;display:flex;align-items:center;gap:34px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-txt{font:600 15px "Space Grotesk";letter-spacing:.15em;color:var(--bone)}
+.brand-txt em{display:block;font:500 8.5px "JetBrains Mono";letter-spacing:.36em;color:var(--amber);font-style:normal;margin-top:3px}
+.nav-crumb{font:500 10px "JetBrains Mono";letter-spacing:.24em;color:var(--faint);margin-top:2px}
+.nav-cta{margin-left:auto;padding:11px 18px;font-size:11px}
+#navProg{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--amber);transform:scaleX(0);transform-origin:left}
+@media(max-width:600px){.nav-crumb{display:none}}
+
+/* ---------- buttons / chips / links ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(237,231,218,.28);color:var(--bone);font:500 12px/1 "Space Grotesk";letter-spacing:.16em;text-transform:uppercase;cursor:pointer;background:transparent;transition:.35s cubic-bezier(.22,1,.3,1);text-decoration:none}
+.btn:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
+.btn svg{width:14px;height:14px}
+.btn-solid{background:var(--amber);border-color:var(--amber);color:#131008}
+.btn-solid:hover{background:var(--amber2);color:#131008}
+.link-arrow{display:inline-flex;align-items:center;gap:8px;color:var(--amber);text-decoration:none;font:500 13px "Space Grotesk";letter-spacing:.08em;border-bottom:1px solid rgba(227,162,74,.35);padding-bottom:4px;transition:.3s}
+.link-arrow:hover{border-color:var(--amber)}
+.link-arrow svg{width:13px;height:13px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 11px/1 "JetBrains Mono";letter-spacing:.05em;color:var(--body);padding:8px 13px;border:1px solid var(--line);border-radius:999px;transition:.3s;background:none}
+.chip:hover{border-color:rgba(227,162,74,.6);color:var(--amber)}
+
+/* ---------- sections ---------- */
+.sec{padding-block:clamp(84px,11vh,150px)}
+.sec.alt{background:var(--bg1);border-block:1px solid var(--line)}
+.sec-head{margin-bottom:clamp(38px,6vh,64px)}
+.sec-label{font:500 11px "JetBrains Mono";letter-spacing:.24em;color:var(--amber);display:flex;align-items:center;margin-bottom:20px}
+.sec-title{font:600 clamp(2rem,4.4vw,3.3rem)/1.12 "Fraunces",serif;color:var(--bone);letter-spacing:-.01em;max-width:18ch}
+.sec-title em{font-style:italic;font-weight:400;color:var(--amber)}
+.sec-sub{margin-top:18px;max-width:640px;font-size:16.5px}
+section[id]{scroll-margin-top:80px}
+
+/* ---------- hero — text left / 3D blueprint right ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(120px,15vh,170px) 0 clamp(60px,8vh,100px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(40px,5.5vw,84px);align-items:center;width:100%}
+.hero-copy{position:relative;z-index:2}
+.hero-kicker{font:500 11px "JetBrains Mono";letter-spacing:.24em;color:var(--amber);display:flex;align-items:center;margin-bottom:26px}
+.hero-title{font:600 clamp(2.7rem,6vw,4.7rem)/.98 "Fraunces",serif;color:var(--bone);letter-spacing:-.02em;margin-bottom:24px}
+.hero-title em{font-style:italic;font-weight:400;color:var(--amber)}
+.hero-sub{max-width:520px;font-size:16.5px;line-height:1.75}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
+.idx{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:44px}
+.idx a{display:grid;grid-template-columns:52px 1fr 26px;gap:16px;align-items:center;padding:17px 6px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .3s}
+.idx a:hover{background:var(--amber-soft)}
+.idx .n{font:500 10px "JetBrains Mono";color:var(--amber);letter-spacing:.14em}
+.idx h3{font:600 1.3rem "Fraunces",serif;color:var(--bone);margin-bottom:4px;transition:color .3s}
+.idx a:hover h3{color:var(--amber)}
+.idx p{font-size:13px;color:var(--faint);line-height:1.5}
+.idx .go{color:var(--amber);opacity:0;transform:translateX(-6px);transition:.3s;display:grid;place-items:center}
+.idx .go svg{width:15px;height:15px}
+.idx a:hover .go{opacity:1;transform:translateX(0)}
+.hero-meta{display:flex;gap:14px 30px;flex-wrap:wrap;margin-top:38px;font:500 10px "JetBrains Mono";letter-spacing:.2em;color:var(--faint)}
+.hero-vis{position:relative}
+#hero-plan{position:relative;aspect-ratio:1/1.04;background:var(--bg3)}
+#hero-plan canvas{display:block;width:100%;height:100%;touch-action:pan-y}
+.hero-vis-cap{margin-top:13px;font:500 9.5px "JetBrains Mono";letter-spacing:.16em;color:var(--faint);line-height:1.9}
+@media(max-width:980px){
+  .hero{min-height:0;padding-top:clamp(110px,15vh,150px)}
+  .hero-grid{grid-template-columns:1fr;gap:52px}
+  #hero-plan{aspect-ratio:1/1}
+}
+@media(max-width:560px){.idx a{grid-template-columns:44px 1fr 22px}.idx h3{font-size:1.15rem}}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:15px 0;background:var(--bg0)}
+.mq-track{display:flex;width:max-content;animation:mq 34s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-g{display:flex;align-items:center;gap:46px;padding-right:46px}
+.mq-g span{font:500 12px "JetBrains Mono";letter-spacing:.18em;color:var(--body);white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mq-track{animation:none}}
+
+/* ---------- instrument panel (shared) ---------- */
+.pv{border:1px solid var(--line);background:var(--bg2)}
+.pv-head,.pv-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 16px;font:500 9.5px "JetBrains Mono";letter-spacing:.14em;color:var(--faint)}
+.pv-head{border-bottom:1px solid var(--line)}
+.pv-foot{border-top:1px solid var(--line)}
+.live{display:flex;gap:8px;align-items:center;color:var(--amber)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.2}}
+.pv-canvas{display:block;width:100%;aspect-ratio:1/1;background:var(--bg3)}
+.pv-ctrl{display:flex;gap:10px;padding:12px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.pv-btn{font:500 10px "JetBrains Mono";letter-spacing:.14em;color:var(--body);border:1px solid var(--line2);background:none;padding:9px 14px;cursor:pointer;transition:.25s;display:inline-flex;gap:8px;align-items:center}
+.pv-btn svg{width:12px;height:12px}
+.pv-btn:hover{border-color:var(--amber);color:var(--amber)}
+.pv-btn.on{background:var(--amber);color:#131008;border-color:var(--amber)}
+@media(max-width:640px){.pv-canvas{aspect-ratio:4/3}}
+
+/* ---------- stack diagram ---------- */
+.stack-scroll{overflow-x:auto;border:1px solid var(--line);background:var(--bg2);padding:clamp(18px,3vw,40px) clamp(18px,3vw,40px)}
+#stackSvg{display:block;width:100%;min-width:820px;height:auto}
+#stackSvg text{font-family:"JetBrains Mono",monospace;fill:var(--body)}
+#stackSvg .t{font-size:12.5px;font-weight:500;fill:var(--bone);letter-spacing:.06em}
+#stackSvg .s{font-size:9px;fill:var(--faint);letter-spacing:.1em}
+#stackSvg .node rect{fill:rgba(19,26,22,.94);stroke:rgba(237,231,218,.25);transition:.3s}
+#stackSvg .node{cursor:pointer;transition:opacity .3s}
+#stackSvg .n-core{cursor:default}
+#stackSvg .n-core .t{fill:var(--amber)}
+#stackSvg .node:hover rect,#stackSvg .node.hot rect{stroke:var(--amber)}
+#stackSvg .node.hot .t{fill:var(--amber)}
+#stackSvg.dim .node:not(.hot):not(.n-core){opacity:.26}
+#stackSvg.dim .n-core{opacity:.6}
+#stackSvg .flow{transition:opacity .3s}
+#stackSvg.dim .flow:not(.hot){opacity:.14}
+#stackSvg .wire{fill:none;stroke:rgba(237,231,218,.2);stroke-width:1.2}
+#stackSvg .pulse{fill:none;stroke:#E3A24A;stroke-width:1.3;stroke-dasharray:3 9;animation:flow 1.15s linear infinite;opacity:.9}
+#stackSvg .joint{fill:var(--bg2);stroke:#E3A24A;stroke-width:1}
+@keyframes flow{to{stroke-dashoffset:-24}}
+@media(prefers-reduced-motion:reduce){#stackSvg .pulse{animation:none;stroke-dasharray:1 0;opacity:.5}}
+#stackCap{margin-top:16px;font:500 10.5px "JetBrains Mono";letter-spacing:.14em;color:var(--body);min-height:16px}
+.stack-note{margin-top:22px;border:1px solid var(--line);border-left:2px solid var(--amber);padding:20px 22px;font:400 10.5px/1.9 "JetBrains Mono";letter-spacing:.06em;color:var(--body);max-width:560px}
+.stack-note b{color:var(--amber);font-weight:500}
+
+/* ---------- products ---------- */
+.product{position:relative;padding-block:clamp(80px,11vh,140px);border-top:1px solid var(--line)}
+.product.alt{background:var(--bg1)}
+.p-big{position:absolute;top:46px;right:2%;z-index:0;font:600 clamp(6rem,15vw,12.5rem)/.8 "Fraunces",serif;color:transparent;-webkit-text-stroke:1px rgba(237,231,218,.09);pointer-events:none;user-select:none}
+.product.alt .p-big{right:auto;left:2%}
+.p-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"vis copy";gap:clamp(44px,5.5vw,90px);align-items:start}
+.product.alt .p-grid{grid-template-areas:"copy vis"}
+.p-vis{grid-area:vis}.p-copy{grid-area:copy}
+.pv-sticky{position:static}
+.p-vis-below{margin-top:clamp(28px,4vh,44px)}
+@media(max-width:960px){.p-grid,.product.alt .p-grid{grid-template-areas:"vis" "copy";grid-template-columns:1fr}.pv-sticky{position:static}}
+.p-kicker{font:500 10.5px "JetBrains Mono";letter-spacing:.2em;color:var(--amber);display:flex;align-items:center;margin-bottom:18px}
+.p-title{font:600 clamp(1.9rem,3.4vw,2.6rem) "Fraunces",serif;color:var(--bone);margin-bottom:16px}
+.p-tag{font:italic 400 clamp(1.05rem,1.7vw,1.25rem) "Fraunces",serif;color:var(--body);max-width:44ch;margin-bottom:38px}
+.p-block{margin-bottom:clamp(40px,5.5vh,56px)}
+.p-block h4{font:500 10px "JetBrains Mono";letter-spacing:.2em;color:var(--faint);margin-bottom:16px}
+.p-block h4 .sync{color:var(--amber);font-weight:500}
+.p-block>p{max-width:60ch}
+.p-steps{list-style:none}
+.p-steps li{display:grid;grid-template-columns:44px 1fr;gap:18px;padding:16px 8px;border-top:1px solid var(--line);font-size:14.5px;transition:background .45s,box-shadow .45s;border-radius:2px}
+.p-steps li b{font:500 11px "JetBrains Mono";color:var(--amber)}
+.p-steps li span{transition:color .45s}
+.p-steps li.on{background:var(--amber-soft);box-shadow:inset 2px 0 0 var(--amber)}
+.p-steps li.on span{color:var(--bone)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.ba h5{font:500 9.5px "JetBrains Mono";letter-spacing:.18em;color:var(--faint);margin-bottom:10px}
+.ba ul{list-style:none}
+.ba li{font-size:13.5px;padding:7px 0 7px 22px;position:relative;line-height:1.5}
+.ba .b4 li{color:var(--faint)}
+.ba .b4 li::before{content:'×';position:absolute;left:0;color:rgba(226,96,79,.75)}
+.ba .af li{color:var(--bone)}
+.ba .af li::before{content:'→';position:absolute;left:0;color:var(--amber)}
+@media(max-width:640px){.ba{grid-template-columns:1fr}}
+.spec div{display:grid;grid-template-columns:190px 1fr;gap:18px;padding:11px 0;border-top:1px solid var(--line)}
+.spec dt{font:500 10px "JetBrains Mono";letter-spacing:.14em;color:var(--faint);padding-top:3px}
+.spec dd{font-size:13.5px;color:var(--bone)}
+@media(max-width:560px){.spec div{grid-template-columns:1fr;gap:4px}}
+.p-stats{display:grid;grid-template-columns:repeat(3,auto);gap:10px 46px;border-block:1px solid var(--line);padding:26px 0;justify-content:start}
+.pstat b{display:block;font:600 2.1rem "Fraunces",serif;color:var(--bone)}
+.pstat span{font:500 9px "JetBrains Mono";letter-spacing:.12em;color:var(--faint);display:block;margin-top:8px;max-width:16ch}
+@media(max-width:640px){.p-stats{grid-template-columns:1fr 1fr;gap:22px}.p-big{font-size:5.4rem;top:20px}}
+.pq{border-left:2px solid var(--amber);padding:6px 0 6px 22px;font:italic 500 clamp(1.1rem,1.8vw,1.3rem) "Fraunces",serif;color:var(--bone);line-height:1.55;max-width:52ch}
+.pq cite{display:block;font:500 9px "JetBrains Mono";font-style:normal;letter-spacing:.16em;color:var(--faint);margin-top:14px}
+.p-cta{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+
+/* ---------- symptom router ---------- */
+.sym{border-top:1px solid var(--line)}
+.sym-row{display:grid;grid-template-columns:1fr auto 30px;gap:24px;align-items:center;width:100%;padding:24px 4px;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;color:inherit;transition:background .25s}
+.sym-row:hover{background:var(--amber-soft)}
+.sym-q{font:italic 400 clamp(1.05rem,2vw,1.35rem) "Fraunces",serif;color:var(--body);transition:color .3s}
+.sym-row:hover .sym-q{color:var(--bone)}
+.sym-p{font:500 10px "JetBrains Mono";letter-spacing:.16em;color:var(--amber);border:1px solid rgba(227,162,74,.45);padding:8px 13px;white-space:nowrap}
+.sym-row svg{width:15px;height:15px;color:var(--faint);transition:.3s}
+.sym-row:hover svg{color:var(--amber);transform:translateX(4px)}
+@media(max-width:640px){.sym-row{grid-template-columns:1fr auto}.sym-row svg{display:none}}
+
+/* ---------- integrations ---------- */
+.int-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(30px,4vw,56px)}
+.int-cat h3{font:500 11px "JetBrains Mono";letter-spacing:.2em;color:var(--amber);margin-bottom:18px}
+@media(max-width:760px){.int-grid{grid-template-columns:1fr}}
+
+/* ---------- rollout ---------- */
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,2.6vw,42px);position:relative;padding-top:32px}
+.proc-line{position:absolute;top:0;left:0;right:0;height:1px;background:var(--amber);transform:scaleX(0);transform-origin:left}
+.proc-i{font:500 11px "JetBrains Mono";color:var(--amber);letter-spacing:.1em;display:block;margin-bottom:14px}
+.proc h4{font:600 1.15rem "Fraunces",serif;color:var(--bone);margin-bottom:10px}
+.proc p{font-size:13.5px}
+@media(max-width:900px){.proc{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.proc{grid-template-columns:1fr}}
+
+/* ---------- faq ---------- */
+.acc-list{border-top:1px solid var(--line)}
+.acc{border-bottom:1px solid var(--line)}
+.acc-head{display:grid;grid-template-columns:54px 1fr 44px;align-items:center;gap:18px;width:100%;padding:26px 0;background:none;border:0;cursor:pointer;text-align:left;color:inherit}
+.acc-idx{font:500 11px "JetBrains Mono";color:var(--faint);letter-spacing:.1em}
+.acc-title{font:600 clamp(1.15rem,2vw,1.45rem) "Fraunces",serif;color:var(--bone);transition:color .3s}
+.acc-head:hover .acc-title{color:var(--amber)}
+.acc-x{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--body);transition:.4s}
+.acc-x svg{width:14px;height:14px;transition:transform .45s cubic-bezier(.22,1,.3,1)}
+.acc.open .acc-x{border-color:var(--amber);color:var(--amber)}
+.acc.open .acc-x svg{transform:rotate(45deg)}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.22,1,.3,1)}
+.acc.open .acc-body{grid-template-rows:1fr}
+.acc-body-in{overflow:hidden;min-height:0}
+.acc-body p{max-width:64ch;padding:0 0 32px 72px;font-size:15px}
+@media(max-width:640px){.acc-body p{padding-left:0}}
+
+/* ---------- cta / footer ---------- */
+.cta-band{border-top:1px solid var(--line);padding:clamp(72px,10vh,120px) 0;background:var(--bg1)}
+.cta-title{font:600 clamp(2rem,4.6vw,3.5rem) "Fraunces",serif;color:var(--bone);margin-bottom:16px;max-width:18ch}
+.cta-title em{font-style:italic;font-weight:400;color:var(--amber)}
+.cta-band p{max-width:520px;margin-bottom:36px}
+.footer{border-top:1px solid var(--line);padding:56px 0 30px;background:var(--bg0)}
+.f-word{font:700 clamp(3.6rem,13.5vw,10.5rem)/.85 "Space Grotesk";letter-spacing:-.02em;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(237,231,218,.13);margin:30px 0 50px;user-select:none;transition:-webkit-text-stroke-color .6s}
+.f-word:hover{-webkit-text-stroke-color:rgba(227,162,74,.4)}
+.f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:44px}
+.f-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.f-grid p{font-size:14px;max-width:36ch}
+.f-h{font:500 10px "JetBrains Mono";letter-spacing:.22em;color:var(--amber);margin-bottom:18px}
+.f-link{display:block;color:var(--body);text-decoration:none;font-size:14px;padding:5px 0;transition:color .3s;background:none;border:0;cursor:pointer;text-align:left}
+.f-link:hover{color:var(--amber)}
+.f-link.cur{color:var(--amber)}
+.f-link.cur::before{content:'';display:inline-block;width:6px;height:6px;background:var(--amber);margin-right:10px}
+.f-c{font-size:14px;padding:5px 0;color:var(--body)}
+.f-c a{color:var(--bone);text-decoration:none}
+.f-c a:hover{color:var(--amber)}
+.f-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:52px;padding-top:24px;font:500 9.5px "JetBrains Mono";letter-spacing:.14em;color:var(--faint)}
+@media(max-width:1000px){.f-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.f-grid{grid-template-columns:1fr}}
+
+/* ---------- modal / toast ---------- */
+.modal{position:fixed;inset:0;z-index:260;display:none}
+.modal.on{display:block}
+.modal-bg{position:absolute;inset:0;background:rgba(6,9,8,.74);backdrop-filter:blur(6px)}
+.modal-panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100vw - 40px));max-height:88vh;overflow:auto;background:var(--bg1);border:1px solid var(--line);padding:clamp(28px,4vw,44px)}
+.modal-x{position:absolute;top:18px;right:18px;width:38px;height:38px;background:none;border:1px solid var(--line);border-radius:50%;color:var(--body);display:grid;place-items:center;cursor:pointer;transition:.3s}
+.modal-x:hover{border-color:var(--amber);color:var(--amber)}
+.modal-x svg{width:15px;height:15px}
+.modal-panel h3{font:600 1.6rem "Fraunces",serif;color:var(--bone);margin:14px 0 30px}
+.field{margin-bottom:26px}
+.f-label{display:block;font:500 10px "JetBrains Mono";letter-spacing:.18em;color:var(--body);margin-bottom:10px}
+.f-in{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line2);color:var(--bone);font:400 15.5px "Space Grotesk";padding:10px 2px 13px;transition:border .3s;border-radius:0}
+.f-in:focus{outline:none;border-color:var(--amber)}
+textarea.f-in{resize:vertical;min-height:90px;line-height:1.6}
+select.f-in{appearance:none;cursor:pointer}
+select option{background:var(--bg1);color:var(--bone)}
+.f-sel{position:relative}
+.f-sel svg{position:absolute;right:4px;top:14px;width:15px;height:15px;color:var(--faint);pointer-events:none}
+.field.err .f-in{border-color:var(--err)}
+.f-err{display:block;font:400 10px "JetBrains Mono";color:var(--err);margin-top:7px;min-height:13px}
+.toasts{position:fixed;right:22px;bottom:22px;z-index:400;display:flex;flex-direction:column;gap:10px}
+.toast{display:flex;gap:13px;align-items:center;background:var(--bg1);border:1px solid var(--line);border-left:2px solid var(--amber);padding:15px 19px;font:400 13px "Space Grotesk";color:var(--bone);max-width:340px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.toast svg{width:16px;height:16px;color:var(--amber);flex:none}
+@media(prefers-reduced-motion:reduce){.live-dot{animation:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ NAV — live demo only ============ -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Vyantra AI Labs — products">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M4 6 L16 28 L28 6" stroke="#EDE7DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 6 L16 18 L22 6" stroke="#E3A24A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="6" r="2.5" fill="#E3A24A"/>
+      </svg>
+      <span class="brand-txt">VYANTRA<em>AI LABS</em></span>
+    </a>
+    <span class="nav-crumb">/ PRODUCTS</span>
+    <button class="btn btn-solid nav-cta" data-demo="suite">Book a live demo</button>
+  </div>
+  <span id="navProg"></span>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO — TEXT LEFT / 3D BLUEPRINT RIGHT ============ -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+
+    <!-- LEFT · all text content -->
+    <div class="hero-copy">
+      <p class="hero-kicker" data-rv><span class="sq"></span>VYANTRA AI LABS · PRODUCT LINE — 2025</p>
+      <h1 class="hero-title" data-rv data-rv-delay=".08">Three instruments.<br>One <em>nervous system.</em></h1>
+      <p class="hero-sub" data-rv data-rv-delay=".16">Gate IQ, Yard Mind and WeighSync — applied AI for gates, yards and weighbridges. Each runs alone. Together, they run the site. The 3D blueprint on the right is live — drag it to orbit — and every simulation below is live too. Push the buttons.</p>
+      <div class="hero-cta" data-rv data-rv-delay=".24">
+        <button class="btn btn-solid" data-demo="suite">Book a live demo <i data-lucide="arrow-right"></i></button>
+      </div>
+      <nav class="idx" data-rv data-rv-delay=".32" aria-label="Product index">
+        <a href="#gate-iq">
+          <span class="n">P·01</span>
+          <span><h3>Gate IQ</h3><p>Contactless entry — approach, read, decide, release in 3.1 seconds, any weather.</p></span>
+          <span class="go"><i data-lucide="arrow-right"></i></span>
+        </a>
+        <a href="#yard-mind">
+          <span class="n">P·02</span>
+          <span><h3>Yard Mind</h3><p>Every trailer, every minute, on a live map — no RFID tags to lose.</p></span>
+          <span class="go"><i data-lucide="arrow-right"></i></span>
+        </a>
+        <a href="#weighsync">
+          <span class="n">P·03</span>
+          <span><h3>WeighSync</h3><p>Weight you can defend — gross to ERP in under 2 seconds, fraud scored.</p></span>
+          <span class="go"><i data-lucide="arrow-right"></i></span>
+        </a>
+      </nav>
+      <div class="hero-meta">
+        <span>3 INSTRUMENTS</span><span>300+ SITES LIVE</span><span>CLIENTS — 11 COUNTRIES</span><span>MEDIAN ROLLOUT — 6 WEEKS</span>
+      </div>
+    </div>
+
+    <!-- RIGHT · live 3D site blueprint -->
+    <div class="hero-vis">
+      <div class="pv">
+        <div class="pv-head"><span>VYANTRA / SITE BLUEPRINT — 3D</span><span class="live"><i class="live-dot"></i>LIVE</span></div>
+        <div id="hero-plan" aria-label="Live 3D site blueprint — drag to orbit. Cameras feed the edge core; vehicles circulate through the gate, yard and weighbridge"></div>
+        <div class="pv-foot"><span id="ro-plan">—</span><span>PUNE · SIM</span></div>
+      </div>
+      <p class="hero-vis-cap">FIG. 00 — LIVE 3D SITE BLUEPRINT · DRAG TO ORBIT · CAMERAS (POLES) FEED THE EDGE CORE · TWO VEHICLES CIRCULATE THROUGH GATE A, THE YARD AND WB-02. THE BARRIER ARMS LIFT FOR THEM.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track">
+    <div class="mq-g"><span>ANPR 99.3%</span><span class="sq"></span><span>OFFLINE-FIRST EDGE</span><span class="sq"></span><span>TRAILER RE-ID 97.1%</span><span class="sq"></span><span>DWELL ANALYTICS</span><span class="sq"></span><span>SLOT OPTIMISATION</span><span class="sq"></span><span>TAMPER-EVIDENT AUDIT</span><span class="sq"></span><span>ERP SYNC &lt; 2S</span><span class="sq"></span><span>ETA ±15 MIN</span><span class="sq"></span><span>FRAUD SCORING</span><span class="sq"></span><span>12,000 VEHICLES / LANE / DAY</span><span class="sq"></span><span>SHADOW-MODE ROLLOUT</span><span class="sq"></span></div>
+    <div class="mq-g"><span>ANPR 99.3%</span><span class="sq"></span><span>OFFLINE-FIRST EDGE</span><span class="sq"></span><span>TRAILER RE-ID 97.1%</span><span class="sq"></span><span>DWELL ANALYTICS</span><span class="sq"></span><span>SLOT OPTIMISATION</span><span class="sq"></span><span>TAMPER-EVIDENT AUDIT</span><span class="sq"></span><span>ERP SYNC &lt; 2S</span><span class="sq"></span><span>ETA ±15 MIN</span><span class="sq"></span><span>FRAUD SCORING</span><span class="sq"></span><span>12,000 VEHICLES / LANE / DAY</span><span class="sq"></span><span>SHADOW-MODE ROLLOUT</span><span class="sq"></span></div>
+  </div>
+</div>
+
+<!-- ============ THE STACK ============ -->
+<section class="sec" id="stack">
+  <div class="container">
+    <div class="sec-head" data-rv>
+      <p class="sec-label"><span class="sq"></span>01 — THE STACK</p>
+      <h2 class="sec-title">Watch the site <em>think.</em></h2>
+      <p class="sec-sub">Sensors in, decisions out — all of it on-site, none of it waiting on a cloud. Hover a product to isolate its flow; click to jump to it.</p>
+    </div>
+    <div class="stack-scroll" data-rv data-rv-delay=".1">
+      <svg id="stackSvg" viewBox="0 0 1040 470" role="img" aria-label="Vyantra system diagram — sensors feed an edge core which drives Gate IQ, Yard Mind and WeighSync">
+        <g class="flow" data-owner="in">
+          <path class="wire" d="M170,58 C214,58 214,235 250,235"/><path class="pulse" d="M170,58 C214,58 214,235 250,235"/>
+          <path class="wire" d="M170,158 C214,158 214,235 250,235"/><path class="pulse" d="M170,158 C214,158 214,235 250,235"/>
+          <path class="wire" d="M170,258 C214,258 214,235 250,235"/><path class="pulse" d="M170,258 C214,258 214,235 250,235"/>
+          <path class="wire" d="M170,358 C214,358 214,235 250,235"/><path class="pulse" d="M170,358 C214,358 214,235 250,235"/>
+        </g>
+        <g class="flow" data-owner="gate">
+          <path class="wire" d="M430,235 C470,235 470,78 510,78"/><path class="pulse" d="M430,235 C470,235 470,78 510,78"/>
+          <path class="wire" d="M710,78 L790,78"/><path class="pulse" d="M710,78 L790,78"/>
+        </g>
+        <g class="flow" data-owner="yard">
+          <path class="wire" d="M430,235 L510,235"/><path class="pulse" d="M430,235 L510,235"/>
+          <path class="wire" d="M710,235 L790,235"/><path class="pulse" d="M710,235 L790,235"/>
+        </g>
+        <g class="flow" data-owner="weigh">
+          <path class="wire" d="M430,235 C470,235 470,392 510,392"/><path class="pulse" d="M430,235 C470,235 470,392 510,392"/>
+          <path class="wire" d="M710,392 L790,392"/><path class="pulse" d="M710,392 L790,392"/>
+        </g>
+        <g class="node n-sensor"><rect x="20" y="31" width="150" height="54"/><text class="t" x="95" y="56" text-anchor="middle">ANPR CAMERAS</text><text class="s" x="95" y="72" text-anchor="middle">IR · 1080P</text></g>
+        <g class="node n-sensor"><rect x="20" y="131" width="150" height="54"/><text class="t" x="95" y="156" text-anchor="middle">RFID + LOOPS</text><text class="s" x="95" y="172" text-anchor="middle">ID HARMONISED</text></g>
+        <g class="node n-sensor"><rect x="20" y="229" width="150" height="54"/><text class="t" x="95" y="254" text-anchor="middle">LOAD CELLS</text><text class="s" x="95" y="270" text-anchor="middle">KG AT 80 HZ</text></g>
+        <g class="node n-sensor"><rect x="20" y="331" width="150" height="54"/><text class="t" x="95" y="356" text-anchor="middle">ERP · MASTER</text><text class="s" x="95" y="372" text-anchor="middle">PO · GP · VEHICLE</text></g>
+        <g class="node n-core" data-id="core">
+          <rect x="250" y="180" width="180" height="110"/>
+          <text class="t" x="340" y="216" text-anchor="middle">VYANTRA EDGE CORE</text>
+          <text class="s" x="340" y="244" text-anchor="middle">JETSON · &lt;200 MS</text>
+          <text class="s" x="340" y="262" text-anchor="middle">OFFLINE-FIRST · AUDITED</text>
+        </g>
+        <circle class="joint" cx="510" cy="78" r="3.5"/><circle class="joint" cx="510" cy="235" r="3.5"/><circle class="joint" cx="510" cy="392" r="3.5"/>
+        <g class="node n-prod" data-id="gate"><rect x="510" y="40" width="200" height="76"/><text class="t" x="610" y="72" text-anchor="middle">GATE IQ</text><text class="s" x="610" y="94" text-anchor="middle">READ · DECIDE · ADMIT</text></g>
+        <g class="node n-prod" data-id="yard"><rect x="510" y="197" width="200" height="76"/><text class="t" x="610" y="229" text-anchor="middle">YARD MIND</text><text class="s" x="610" y="251" text-anchor="middle">TRACK · SLOTS · DWELL</text></g>
+        <g class="node n-prod" data-id="weigh"><rect x="510" y="354" width="200" height="76"/><text class="t" x="610" y="386" text-anchor="middle">WEIGHSYNC</text><text class="s" x="610" y="408" text-anchor="middle">CAPTURE · PAIR · AUDIT</text></g>
+        <g class="node n-out"><rect x="790" y="48" width="210" height="60"/><text class="t" x="895" y="74" text-anchor="middle">BARRIER + SLIP</text><text class="s" x="895" y="92" text-anchor="middle">HARDWARE</text></g>
+        <g class="node n-out"><rect x="790" y="205" width="210" height="60"/><text class="t" x="895" y="231" text-anchor="middle">LIVE YARD MAP</text><text class="s" x="895" y="249" text-anchor="middle">OPS SCREEN</text></g>
+        <g class="node n-out"><rect x="790" y="362" width="210" height="60"/><text class="t" x="895" y="388" text-anchor="middle">SAP / E-INVOICE</text><text class="s" x="895" y="406" text-anchor="middle">FINANCE</text></g>
+      </svg>
+    </div>
+    <p id="stackCap" data-rv data-rv-delay=".15">THREE PRODUCTS, ONE EDGE CORE — EVERY DECISION ON-SITE, UNDER 200 MS. HOVER TO ISOLATE.</p>
+    <div class="stack-note" data-rv><b>ARCHITECTURE RULE</b> — NO DECISION LEAVES THE SITE. THE CORE RUNS THE GATE, THE YARD AND THE BRIDGE EVEN WHEN THE UPLINK IS DOWN; EVENTS QUEUE AND SYNC WHEN THE LINK RETURNS.</div>
+  </div>
+</section>
+
+<!-- ============ GATE IQ ============ -->
+<section class="product" id="gate-iq" data-anim="gate">
+  <span class="p-big" aria-hidden="true">01</span>
+  <div class="container p-grid">
+    <div class="p-vis">
+      <div class="pv-sticky">
+        <div class="pv">
+          <div class="pv-head"><span>VYANTRA / GATE IQ</span><span class="live"><i class="live-dot"></i>LIVE SIM</span></div>
+          <canvas class="pv-canvas" id="cv-gate"></canvas>
+          <div class="pv-ctrl">
+            <button class="pv-btn" id="g-send" type="button"><i data-lucide="truck"></i><span>SEND VEHICLE</span></button>
+            <button class="pv-btn" id="g-night" type="button"><i data-lucide="moon"></i><span>NIGHT MODE</span></button>
+          </div>
+          <div class="pv-foot"><span id="ro-gate">—</span><span>LANE 01 · SIM</span></div>
+        </div>
+      </div>
+      <div class="p-vis-below">
+        <div class="p-block" data-rv><h4>WHAT IT REPLACES</h4>
+          <div class="ba">
+            <div class="b4"><h5>BEFORE — MANUAL</h5><ul><li>Register book, three copies</li><li>14-minute average entry</li><li>Retyped into ERP next morning</li><li>Exceptions live in one guard's memory</li></ul></div>
+            <div class="af"><h5>AFTER — GATE IQ</h5><ul><li>One pass, 3.1 seconds</li><li>ERP written before the barrier closes</li><li>Photo evidence on every exception</li><li>Full muster roll, live</li></ul></div>
+          </div>
+        </div>
+        <div class="p-block" data-rv><h4>CAPABILITIES</h4><div class="chips"><span class="chip">ANPR 99.3%</span><span class="chip">RFID harmonisation</span><span class="chip">Seal &amp; damage vision</span><span class="chip">Safety-gear checks</span><span class="chip">Visitor muster roll</span><span class="chip">Gate-pass OCR</span><span class="chip">Exceptions desk</span></div></div>
+        <div class="p-block" data-rv><h4>SPECIFICATIONS</h4>
+          <dl class="spec">
+            <div><dt>DECISION LATENCY</dt><dd>&lt; 200 ms, on-device</dd></div>
+            <div><dt>PLATE CAPTURE</dt><dd>99.3%, all weather</dd></div>
+            <div><dt>THROUGHPUT</dt><dd>12,000+ vehicles / lane / day</dd></div>
+            <div><dt>HARDWARE</dt><dd>1× ANPR camera · 1× Jetson · existing barrier</dd></div>
+            <div><dt>COMMS</dt><dd>LTE failback · offline-first · store-and-forward</dd></div>
+            <div><dt>INTEGRATIONS</dt><dd>SAP · Oracle · e-way bill · FASTag</dd></div>
+            <div><dt>UPTIME</dt><dd>99.95% contracted SLA</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="p-copy">
+      <p class="p-kicker" data-rv><span class="sq"></span>P·01 — GATE IQ · GATE AUTOMATION</p>
+      <h3 class="p-title" data-rv>The gate that runs itself.</h3>
+      <p class="p-tag" data-rv>Contactless entry for plants, ports and warehouses — one camera pass, one decision, and the register book retires.</p>
+      <div class="p-block" data-rv><h4>WHAT IT IS</h4><p>Gate IQ reads the vehicle, checks the paper and releases the truck in one motion. Watch the live sim: the truck rolls onto the inductive loop, the ANPR scan sweeps the plate, telemetry fills in row by row, the policy engine clears the gate pass — and the barrier swings open. Median entry: 3.1 seconds, unattended, in any weather — flip on night mode above and watch it keep reading under IR.</p></div>
+      <div class="p-block" data-rv><h4>HOW IT WORKS <span class="sync">— STEPS TRACK THE LIVE SIM</span></h4>
+        <ol class="p-steps">
+          <li><b>01</b><span>Camera reads plate, vehicle class and condition in a single pass — day, night or monsoon.</span></li>
+          <li><b>02</b><span>Policy check against gate pass, purchase order and e-way bill, on the ERP, on-site.</span></li>
+          <li><b>03</b><span>Barrier, slip printer and yard direction fire together — one decision, no queue.</span></li>
+          <li><b>04</b><span>Exceptions route to a one-screen desk with photo evidence attached. Nothing is ever re-typed.</span></li>
+        </ol>
+      </div>
+      <div class="p-stats" data-rv>
+        <div class="pstat"><b data-count="3.1" data-dec="1" data-suffix="s">0</b><span>MEDIAN ENTRY-TO-RELEASE</span></div>
+        <div class="pstat"><b data-count="99.3" data-dec="1" data-suffix="%">0</b><span>PLATE CAPTURE — ALL WEATHER</span></div>
+        <div class="pstat"><b data-count="12000" data-fmt="in" data-suffix="+">0</b><span>PEAK VEHICLES PER DAY</span></div>
+      </div>
+      <div class="p-block" data-rv>
+        <blockquote class="pq">“The register book retired the day lane two went live. Sixteen gates later, nobody misses it.”<cite>HEAD OF PLANT SECURITY · CEMENT MAJOR · ANDHRA PRADESH</cite></blockquote>
+      </div>
+      <div class="p-cta" data-rv>
+        <button class="btn btn-solid" data-demo="gateiq">Book a Gate IQ demo <i data-lucide="arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ YARD MIND ============ -->
+<section class="product alt" id="yard-mind" data-anim="yard">
+  <span class="p-big" aria-hidden="true">02</span>
+  <div class="container p-grid">
+    <div class="p-vis">
+      <div class="pv-sticky">
+        <div class="pv">
+          <div class="pv-head"><span>VYANTRA / YARD MIND</span><span class="live"><i class="live-dot"></i>LIVE SIM</span></div>
+          <canvas class="pv-canvas" id="cv-yard"></canvas>
+          <div class="pv-ctrl">
+            <button class="pv-btn" id="y-rush" type="button"><i data-lucide="zap"></i><span>RUSH HOUR — 06:00</span></button>
+          </div>
+          <div class="pv-foot"><span id="ro-yard">—</span><span>YARD P-1 · SIM</span></div>
+        </div>
+      </div>
+      <div class="p-vis-below">
+        <div class="p-block" data-rv><h4>WHAT IT REPLACES</h4>
+          <div class="ba">
+            <div class="b4"><h5>BEFORE — MANUAL</h5><ul><li>Whiteboard, wiped daily</li><li>6 a.m. sweep — 2 people, 90 minutes</li><li>T-231 found by phone tree</li><li>Dwell is a feeling</li></ul></div>
+            <div class="af"><h5>AFTER — YARD MIND</h5><ul><li>Live map, 2-second refresh</li><li>Sweeps retired</li><li>T-231 is a search bar</li><li>Dwell is a number — per slot, per shift</li></ul></div>
+          </div>
+        </div>
+        <div class="p-block" data-rv><h4>CAPABILITIES</h4><div class="chips"><span class="chip">Trailer re-ID 97.1%</span><span class="chip">Dwell analytics</span><span class="chip">Slot optimisation</span><span class="chip">ETA ±15 min</span><span class="chip">Gate-to-dock chaining</span><span class="chip">Congestion heatmaps</span><span class="chip">Multi-yard rollup</span></div></div>
+        <div class="p-block" data-rv><h4>SPECIFICATIONS</h4>
+          <dl class="spec">
+            <div><dt>POSITION REFRESH</dt><dd>2 s, every trailer</dd></div>
+            <div><dt>RE-IDENTIFICATION</dt><dd>97.1% across camera angles</dd></div>
+            <div><dt>YARD CAPACITY</dt><dd>500+ trailers per yard</dd></div>
+            <div><dt>CAMERAS</dt><dd>8–24 fixed, existing poles acceptable</dd></div>
+            <div><dt>ETA ACCURACY</dt><dd>± 15 minutes</dd></div>
+            <div><dt>MULTI-YARD</dt><dd>Rollup across sites, one screen</dd></div>
+            <div><dt>REPORTS</dt><dd>Dwell · congestion · shift · carrier SLA</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="p-copy">
+      <p class="p-kicker" data-rv><span class="sq"></span>P·02 — YARD MIND · YARD MANAGEMENT</p>
+      <h3 class="p-title" data-rv>Every trailer, accounted for.</h3>
+      <p class="p-tag" data-rv>Camera-based yard management — a live map with a dwell clock on every slot, and no RFID tags to lose.</p>
+      <div class="p-block" data-rv><h4>WHAT IT IS</h4><p>Fixed cameras re-identify trailers as they move; the yard becomes a live map where every slot carries a dwell timer, and the slotting engine plans moves against dock appointments and ETAs. The 6 a.m. sweep retires, and “where is T-231?” becomes a search bar. Hover the slots above for live dwell — then inject a shift-change rush and watch the surge, and the recovery.</p></div>
+      <div class="p-block" data-rv><h4>HOW IT WORKS</h4>
+        <ol class="p-steps">
+          <li><b>01</b><span>Cameras re-identify trailers across the yard as they move — 97.1% across angles.</span></li>
+          <li><b>02</b><span>A live map with a dwell clock on every slot replaces the whiteboard, wiped daily.</span></li>
+          <li><b>03</b><span>The slot optimiser plans tractor moves against dock appointments and inbound ETAs.</span></li>
+          <li><b>04</b><span>Exceptions — a lost trailer, an overdue dwell — alert before they cost money.</span></li>
+        </ol>
+      </div>
+      <div class="p-stats" data-rv>
+        <div class="pstat"><b data-count="31" data-suffix="%">0</b><span>MEDIAN DWELL REDUCTION</span></div>
+        <div class="pstat"><b data-count="500" data-suffix="+">0</b><span>TRAILERS TRACKED PER YARD</span></div>
+        <div class="pstat"><b data-count="15" data-suffix=" min">0</b><span>ETA ACCURACY, ±</span></div>
+      </div>
+      <div class="p-block" data-rv>
+        <blockquote class="pq">“We argued about trailer counts for ten years. Now we argue about what to do with the hours.”<cite>TERMINAL OPS LEAD · CONTAINER PORT · ROTTERDAM</cite></blockquote>
+      </div>
+      <div class="p-cta" data-rv>
+        <button class="btn btn-solid" data-demo="yardmind">Book a Yard Mind demo <i data-lucide="arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WEIGHSYNC ============ -->
+<section class="product" id="weighsync" data-anim="weigh">
+  <span class="p-big" aria-hidden="true">03</span>
+  <div class="container p-grid">
+    <div class="p-vis">
+      <div class="pv-sticky">
+        <div class="pv">
+          <div class="pv-head"><span>VYANTRA / WEIGHSYNC</span><span class="live"><i class="live-dot"></i>LIVE SIM</span></div>
+          <canvas class="pv-canvas" id="cv-weigh"></canvas>
+          <div class="pv-ctrl">
+            <button class="pv-btn" id="w-next" type="button"><i data-lucide="timer"></i><span>WEIGH NEXT</span></button>
+            <button class="pv-btn" id="w-fraud" type="button"><i data-lucide="shield-alert"></i><span>FRAUD TEST</span></button>
+          </div>
+          <div class="pv-foot"><span id="ro-weigh">—</span><span>BRIDGE 02 · SIM</span></div>
+        </div>
+      </div>
+      <div class="p-vis-below">
+        <div class="p-block" data-rv><h4>WHAT IT REPLACES</h4>
+          <div class="ba">
+            <div class="b4"><h5>BEFORE — MANUAL</h5><ul><li>Slip in a spike file</li><li>Tare reused from memory</li><li>Short-loads surface at audit</li><li>Reconciliation at month-end</li></ul></div>
+            <div class="af"><h5>AFTER — WEIGHSYNC</h5><ul><li>Digital ticket in 2 seconds</li><li>Tare paired per vehicle, per bridge</li><li>Fraud scored at the platform</li><li>Reconciliation continuous</li></ul></div>
+          </div>
+        </div>
+        <div class="p-block" data-rv><h4>CAPABILITIES</h4><div class="chips"><span class="chip">First-weigh / tare pairing</span><span class="chip">Catch-weight reconciliation</span><span class="chip">Fraud anomaly scores</span><span class="chip">ERP + e-way bill sync</span><span class="chip">Tamper-evident log</span><span class="chip">Multi-bridge federation</span></div></div>
+        <div class="p-block" data-rv><h4>SPECIFICATIONS</h4>
+          <dl class="spec">
+            <div><dt>WEIGH-TO-ERP SYNC</dt><dd>&lt; 2 seconds</dd></div>
+            <div><dt>ANOMALY RECALL</dt><dd>98.7%</dd></div>
+            <div><dt>PAIRING</dt><dd>Gross / tare automatic, cross-bridge</dd></div>
+            <div><dt>AUDIT TRAIL</dt><dd>Tamper-evident, WORM archive</dd></div>
+            <div><dt>FEDERATION</dt><dd>Multi-bridge, multi-site</dd></div>
+            <div><dt>COMPLIANCE</dt><dd>E-invoice · legal metrology aligned</dd></div>
+            <div><dt>HARDWARE</dt><dd>Load cells + 2 cameras + Jetson</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="p-copy">
+      <p class="p-kicker" data-rv><span class="sq"></span>P·03 — WEIGHSYNC · WEIGHBRIDGE AUTOMATION</p>
+      <h3 class="p-title" data-rv>Weight you can defend.</h3>
+      <p class="p-tag" data-rv>Weighbridge automation with a memory — capture, pair, audit and sync, before the truck leaves the platform.</p>
+      <div class="p-block" data-rv><h4>WHAT IT IS</h4><p>WeighSync captures weight and pairs it to the right vehicle and transaction — gross and tare matched automatically across visits and bridges. An anomaly score flags short-loads, reused tares and double weighments at the platform, and a tamper-evident trail pushes everything to ERP in under two seconds. Arm the fraud test above and watch a bad tare get caught red-handed.</p></div>
+      <div class="p-block" data-rv><h4>HOW IT WORKS <span class="sync">— STEPS TRACK THE LIVE SIM</span></h4>
+        <ol class="p-steps">
+          <li><b>01</b><span>Load-cell capture and vehicle re-ID at the bridge, unattended, day or night.</span></li>
+          <li><b>02</b><span>Gross and tare paired automatically — per vehicle, per bridge, across sites.</span></li>
+          <li><b>03</b><span>Anomaly score flags short-loads, reused tares and fraud patterns at the platform.</span></li>
+          <li><b>04</b><span>Tamper-evident audit trail synced to SAP / Oracle and e-invoice before release.</span></li>
+        </ol>
+      </div>
+      <div class="p-stats" data-rv>
+        <div class="pstat"><b data-count="2" data-suffix="s">0</b><span>WEIGHMENT-TO-ERP SYNC</span></div>
+        <div class="pstat"><b data-count="98.7" data-dec="1" data-suffix="%">0</b><span>ANOMALY RECALL</span></div>
+        <div class="pstat"><b data-count="100" data-suffix="%">0</b><span>DIGITAL AUDIT TRAIL</span></div>
+      </div>
+      <div class="p-block" data-rv>
+        <blockquote class="pq">“Month-end used to take nine days of reconciliation. It's an afternoon now.”<cite>HEAD OF LOGISTICS · STEEL MILL · ODISHA</cite></blockquote>
+      </div>
+      <div class="p-cta" data-rv>
+        <button class="btn btn-solid" data-demo="weighsync">Book a WeighSync demo <i data-lucide="arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SYMPTOM ROUTER ============ -->
+<section class="sec alt" id="symptoms">
+  <div class="container">
+    <div class="sec-head" data-rv>
+      <p class="sec-label"><span class="sq"></span>05 — WHERE TO START</p>
+      <h2 class="sec-title">Start where it <em>hurts.</em></h2>
+      <p class="sec-sub">You don't have to buy the suite. Find the sentence your site says out loud, and click it.</p>
+    </div>
+    <div class="sym" data-rv>
+      <button class="sym-row" data-goto="gate-iq"><span class="sym-q">“Trucks stack up onto the highway at shift change.”</span><span class="sym-p">GATE IQ</span><i data-lucide="arrow-right"></i></button>
+      <button class="sym-row" data-goto="yard-mind"><span class="sym-q">“Nobody can find trailer T-231 without three phone calls.”</span><span class="sym-p">YARD MIND</span><i data-lucide="arrow-right"></i></button>
+      <button class="sym-row" data-goto="weighsync"><span class="sym-q">“Bridge weights and invoice weights never agree.”</span><span class="sym-p">WEIGHSYNC</span><i data-lucide="arrow-right"></i></button>
+      <button class="sym-row" data-goto="gate-iq"><span class="sym-q">“The morning register reaches ERP by lunch, full of typos.”</span><span class="sym-p">GATE IQ</span><i data-lucide="arrow-right"></i></button>
+      <button class="sym-row" data-goto="yard-mind"><span class="sym-q">“The 6 a.m. yard sweep takes two people ninety minutes.”</span><span class="sym-p">YARD MIND</span><i data-lucide="arrow-right"></i></button>
+      <button class="sym-row" data-goto="weighsync"><span class="sym-q">“Tare weights get reused for months. Nobody can prove it.”</span><span class="sym-p">WEIGHSYNC</span><i data-lucide="arrow-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTEGRATIONS ============ -->
+<section class="sec" id="integrations">
+  <div class="container">
+    <div class="sec-head" data-rv>
+      <p class="sec-label"><span class="sq"></span>06 — INTEGRATIONS</p>
+      <h2 class="sec-title">Plays well with your <em>reality.</em></h2>
+      <p class="sec-sub">API-first, connector-rich, hardware-agnostic. If it exists on your site, we probably already talk to it — and if not, three weeks is typical.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-cat" data-rv><h3>ERP &amp; FINANCE</h3><div class="chips"><span class="chip">SAP S/4HANA</span><span class="chip">SAP ECC</span><span class="chip">Oracle EBS</span><span class="chip">MS Dynamics 365</span><span class="chip">NetSuite</span><span class="chip">Tally</span><span class="chip">Custom REST</span></div></div>
+      <div class="int-cat" data-rv><h3>DOCUMENTS &amp; GOVERNMENT</h3><div class="chips"><span class="chip">e-way bill (IN)</span><span class="chip">e-invoice (IN)</span><span class="chip">FASTag</span><span class="chip">Port community systems</span><span class="chip">Customs manifests</span></div></div>
+      <div class="int-cat" data-rv><h3>CAMERAS &amp; SENSORS</h3><div class="chips"><span class="chip">Hikvision</span><span class="chip">Axis</span><span class="chip">Bosch</span><span class="chip">UFHD ANPR</span><span class="chip">Inductive loops</span><span class="chip">UHF RFID</span><span class="chip">Precision load cells</span></div></div>
+      <div class="int-cat" data-rv><h3>EDGE &amp; COMMS</h3><div class="chips"><span class="chip">NVIDIA Jetson Orin</span><span class="chip">TensorRT</span><span class="chip">MQTT</span><span class="chip">gRPC</span><span class="chip">LTE / 5G failover</span><span class="chip">Store-and-forward</span></div></div>
+    </div>
+    <div class="stack-note" style="margin-top:40px" data-rv><b>PRINCIPLE</b> — WE INTEGRATE INTO YOUR STACK. WE DON'T ASK YOU TO ADOPT OURS.</div>
+  </div>
+</section>
+
+<!-- ============ ROLLOUT ============ -->
+<section class="sec alt" id="rollout">
+  <div class="container">
+    <div class="sec-head" data-rv>
+      <p class="sec-label"><span class="sq"></span>07 — ROLLOUT</p>
+      <h2 class="sec-title">Six weeks to a <em>thinking</em> site.</h2>
+    </div>
+    <div class="proc">
+      <span class="proc-line" id="rollLine"></span>
+      <div data-rv><span class="proc-i">WEEK 01</span><h4>Survey</h4><p>Instrument plan on your existing poles, barriers and bridges.</p></div>
+      <div data-rv><span class="proc-i">WEEK 02</span><h4>Gate live</h4><p>First lane in shadow mode — decisions logged, nothing fires.</p></div>
+      <div data-rv><span class="proc-i">WEEK 03</span><h4>Calibrate</h4><p>Night passes, thresholds and escalation rules, set with your team.</p></div>
+      <div data-rv><span class="proc-i">WEEK 04</span><h4>Yard live</h4><p>Cameras up, map live, the 6 a.m. sweep retires.</p></div>
+      <div data-rv><span class="proc-i">WEEK 06</span><h4>Bridge + ERP</h4><p>WeighSync federated, ERP cut-over, sign-off.</p></div>
+    </div>
+    <div class="stack-note" style="margin-top:44px" data-rv><b>SHADOW MODE FIRST</b> — EVERY INSTRUMENT LOGS DECISIONS FOR A FULL WEEK BEFORE IT'S ALLOWED TO ACT. YOUR OPS TEAM SIGNS OFF THE THRESHOLDS, NOT US.</div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq">
+  <div class="container">
+    <div class="sec-head" data-rv>
+      <p class="sec-label"><span class="sq"></span>08 — QUESTIONS WE GET</p>
+      <h2 class="sec-title">Asked, <em>answered.</em></h2>
+    </div>
+    <div class="acc-list" data-rv>
+      <div class="acc"><button class="acc-head" aria-expanded="false"><span class="acc-idx">Q·1</span><span class="acc-title">Do we have to replace our cameras?</span><span class="acc-x"><i data-lucide="plus"></i></span></button>
+        <div class="acc-body"><div class="acc-body-in"><p>Almost never. Yard and bridge cameras we re-use whenever poles and angles allow. Each Gate IQ lane needs one dedicated ANPR camera — that's the only hardware we insist on. Everything else rides on the edge box.</p></div></div></div>
+      <div class="acc"><button class="acc-head" aria-expanded="false"><span class="acc-idx">Q·2</span><span class="acc-title">What happens when the internet drops?</span><span class="acc-x"><i data-lucide="plus"></i></span></button>
+        <div class="acc-body"><div class="acc-body-in"><p>Nothing changes at the gate. Decisions run on the Jetson on-site; events queue locally and sync when the link returns. We've run sites for eleven days offline without losing a single record.</p></div></div></div>
+      <div class="acc"><button class="acc-head" aria-expanded="false"><span class="acc-idx">Q·3</span><span class="acc-title">What if the model isn't sure?</span><span class="acc-x"><i data-lucide="plus"></i></span></button>
+        <div class="acc-body"><div class="acc-body-in"><p>It says so, loudly. Confidence below threshold escalates to a human desk with the photo and the reason attached. We'd rather be visibly cautious than quietly wrong — it's written into the product, not the pitch.</p></div></div></div>
+      <div class="acc"><button class="acc-head" aria-expanded="false"><span class="acc-idx">Q·4</span><span class="acc-title">Will it talk to our ERP?</span><span class="acc-x"><i data-lucide="plus"></i></span></button>
+        <div class="acc-body"><div class="acc-body-in"><p>API-first, and the connector list above is what we've already shipped. If yours isn't on it, a custom connector typically takes three weeks — we've done it eleven times.</p></div></div></div>
+      <div class="acc"><button class="acc-head" aria-expanded="false"><span class="acc-idx">Q·5</span><span class="acc-title">Can we start with just one product?</span><span class="acc-x"><i data-lucide="plus"></i></span></button>
+        <div class="acc-body"><div class="acc-body-in"><p>That's the intended path. Each instrument runs alone; the shared edge core means the next one lights up in days, not months. Most sites start with Gate IQ and grow from the gate inwards.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA — live demo only ============ -->
+<section class="cta-band">
+  <div class="container" data-rv>
+    <h2 class="cta-title">Forty minutes. Your site. <em>Zero slideware.</em></h2>
+    <p>A live walkthrough on your own data — pick one instrument or take the suite. An engineer runs it, not a sales deck.</p>
+    <button class="btn btn-solid" data-demo="suite">Book a live demo <i data-lucide="arrow-right"></i></button>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER — with site pages ============ -->
+<footer class="footer">
+  <div class="container"><div class="f-word" aria-hidden="true">VYANTRA</div></div>
+  <div class="container f-grid">
+    <div>
+      <a class="f-brand brand" href="#top">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M4 6 L16 28 L28 6" stroke="#EDE7DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 6 L16 18 L22 6" stroke="#E3A24A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="6" r="2.5" fill="#E3A24A"/>
+        </svg>
+        <span class="brand-txt">VYANTRA<em>AI LABS</em></span>
+      </a>
+      <p>Applied AI for logistics infrastructure. Gates, yards and weighbridges that see, decide and sync.</p>
+    </div>
+    <div>
+      <p class="f-h">PAGES</p>
+      <a class="f-link" href="#/">Home</a>
+      <a class="f-link" href="index.html">About us</a>
+      <a class="f-link cur" href="#top">Products</a>
+      <a class="f-link" href="career.html">Careers</a>
+      <a class="f-link" href="contact.html">Contact us</a>
+    </div>
+    <div>
+      <p class="f-h">PRODUCTS</p>
+      <a class="f-link" href="#gate-iq">Gate IQ</a>
+      <a class="f-link" href="#yard-mind">Yard Mind</a>
+      <a class="f-link" href="#weighsync">WeighSync</a>
+    </div>
+    <div>
+      <p class="f-h">CONTACT</p>
+      <p class="f-c"><a href="mailto:hello@vyantra.ai">hello@vyantra.ai</a></p>
+      <p class="f-c"><a href="tel:+912047112200">+91 20 4711 2200</a></p>
+      <p class="f-c">5th Floor, Amar Business Zone,<br>Baner Road, Pune 411 045, India</p>
+    </div>
+  </div>
+  <div class="container f-bottom">
+    <span>© 2025 VYANTRA AI LABS PVT. LTD.</span>
+    <span>MEASURED IN PUNE</span>
+    <button id="toTop">BACK TO TOP <i data-lucide="arrow-up"></i></button>
+  </div>
+</footer>
+
+<!-- ============ DEMO MODAL ============ -->
+<div class="modal" id="demoModal" aria-hidden="true">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="dmTitle">
+    <button class="modal-x" data-close aria-label="Close"><i data-lucide="x"></i></button>
+    <p class="sec-label"><span class="sq"></span>LIVE DEMO</p>
+    <h3 id="dmTitle">Book a walkthrough</h3>
+    <form id="demoForm" novalidate>
+      <div class="field"><label class="f-label" for="dmName">FULL NAME *</label><input class="f-in" id="dmName" type="text" autocomplete="name"><span class="f-err"></span></div>
+      <div class="field"><label class="f-label" for="dmEmail">WORK EMAIL *</label><input class="f-in" id="dmEmail" type="email" autocomplete="email"><span class="f-err"></span></div>
+      <div class="field"><label class="f-label" for="dmProduct">PRODUCT</label>
+        <div class="f-sel">
+          <select class="f-in" id="dmProduct">
+            <option value="suite">Full suite walkthrough</option>
+            <option value="gateiq">Gate IQ</option>
+            <option value="yardmind">Yard Mind</option>
+            <option value="weighsync">WeighSync</option>
+          </select>
+          <i data-lucide="chevron-down"></i>
+        </div>
+        <span class="f-err"></span>
+      </div>
+      <div class="field"><label class="f-label" for="dmNote">ONE LINE ON YOUR SITE</label><textarea class="f-in" id="dmNote" rows="3" placeholder="Vehicles per day, gates, what hurts most…"></textarea><span class="f-err"></span></div>
+      <button class="btn btn-solid" id="dmSubmit" type="submit">Request demo <i data-lucide="send"></i></button>
+    </form>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+/* =================== helpers =================== */
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const ss=(a,b,x)=>{const t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t)};
+const eo=t=>1-Math.pow(1-t,3), ei=t=>t*t*t;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const AMBER='#E3A24A', ERR='#E2604F';
+const A=a=>`rgba(227,162,74,${a})`, B=a=>`rgba(237,231,218,${a})`, R=a=>`rgba(226,96,79,${a})`;
+function line(c,x1,y1,x2,y2){c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function rr(c,x,y,w,h,r){r=Math.min(r,w/2,h/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+function txt(c,s,x,y,size,col,align='left',wgt=500){c.font=`${wgt} ${size}px "JetBrains Mono",monospace`;c.fillStyle=col;c.textAlign=align;c.fillText(s,x,y);}
+function bracket(c,x,y,l,sx,sy){c.beginPath();c.moveTo(x+sx*l,y);c.lineTo(x,y);c.lineTo(x,y+sy*l);c.stroke();}
+function fmtIn(v){return Math.round(v).toLocaleString('en-IN')}
+const TILE=(()=>{const t=document.createElement('canvas');t.width=t.height=24;const c=t.getContext('2d');c.fillStyle='rgba(237,231,218,.06)';c.beginPath();c.arc(12,12,1.2,0,6.29);c.fill();return t})();
+function fillPat(c,w,h,off,pat){c.save();c.translate(-(off%24),-((off*.6)%24));c.fillStyle=pat;c.fillRect(0,0,w+24,h+24);c.restore();}
+const roCache={};
+function setRo(id,s){if(roCache[id]===s)return;roCache[id]=s;const el=document.getElementById(id);if(el)el.textContent=s;}
+
+/* =================== toasts =================== */
+function toast(msg,type='ok'){
+  const t=document.createElement('div');t.className='toast';
+  t.innerHTML=`<i data-lucide="${type==='ok'?'check':'shield-alert'}"></i><span>${msg}</span>`;
+  $('#toasts').appendChild(t);lucide.createIcons();
+  gsap.fromTo(t,{x:70,opacity:0},{x:0,opacity:1,duration:.5,ease:'power3.out'});
+  setTimeout(()=>gsap.to(t,{x:70,opacity:0,duration:.4,onComplete:()=>t.remove()}),4200);
+}
+
+/* =================== central animation loop =================== */
+const animators=[];
+function registerAnimator(a){a.visible=false;animators.push(a);
+  if(a.el)new IntersectionObserver(es=>{a.visible=es[0].isIntersecting},{rootMargin:'80px'}).observe(a.el);}
+let _lt=performance.now();
+(function raf(now){
+  const dt=Math.min(.05,(now-_lt)/1000);_lt=now;const t=now/1000;
+  for(const a of animators){if(a.visible&&a.tick)a.tick(t,dt);}
+  requestAnimationFrame(raf);
+})(performance.now());
+
+/* =================== canvas scene factory =================== */
+function makeScene(id,draw){
+  const cv=document.getElementById(id);if(!cv)return {t:0,progress:0};
+  const ctx=cv.getContext('2d');let w=0,h=0;
+  function resize(){const r=cv.getBoundingClientRect();if(r.width<2||r.height<2)return;
+    w=r.width;h=r.height;const dpr=Math.min(devicePixelRatio,2);
+    cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
+  resize();new ResizeObserver(resize).observe(cv);
+  const pat=ctx.createPattern(TILE,'repeat');
+  const st={progress:0,t:0};
+  registerAnimator({el:cv,tick:(t,dt)=>{if(w<10)return;st.t=t;ctx.clearRect(0,0,w,h);draw(ctx,w,h,st,dt,pat);}});
+  return st;
+}
+
+/* =================== mover (waypoint + pause) =================== */
+function makeMover(fr,sp){
+  const segs=[];let t=0;
+  for(let i=0;i<fr.length-1;i++){
+    const p=fr[i],q=fr[i+1];
+    if(p[2]){segs.push({ax:p[0],ay:p[1],bx:p[0],by:p[1],t0:t,t1:t+p[2]});t+=p[2];}
+    const d=Math.hypot(q[0]-p[0],q[1]-p[1]);
+    segs.push({ax:p[0],ay:p[1],bx:q[0],by:q[1],t0:t,t1:t+d/sp});t+=d/sp;
+  }
+  const last=fr[fr.length-1];
+  if(last[2]){segs.push({ax:last[0],ay:last[1],bx:last[0],by:last[1],t0:t,t1:t+last[2]});t+=last[2];}
+  return {dur:t,frames:fr,_dx:.001,_dy:.001,
+    at(time){const tc=((time%this.dur)+this.dur)%this.dur;let s=segs[segs.length-1];
+      for(const g of segs){if(tc>=g.t0&&tc<g.t1){s=g;break}}
+      const dx=s.bx-s.ax,dy=s.by-s.ay;
+      if(dx||dy){this._dx=dx;this._dy=dy;}
+      const k=(s.t1-s.t0)>0?(tc-s.t0)/(s.t1-s.t0):0;
+      return {x:lerp(s.ax,s.bx,k),y:lerp(s.ay,s.by,k),dx:this._dx,dy:this._dy};}};
+}
+
+/* ============================================================
+   HERO · 3D SITE BLUEPRINT (Three.js) — falls back to 2D
+   ============================================================ */
+function initPlan3D(){
+  const holder=$('#hero-plan');if(!holder)return;
+  if(!window.THREE){initPlan2D();return;}
+  let renderer;
+  try{
+    renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'low-power'});
+  }catch(e){initPlan2D();return;}
+  renderer.setClearColor(0x000000,0);
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const el=renderer.domElement;
+  el.style.touchAction='pan-y';
+  el.style.cursor='grab';
+  holder.appendChild(el);
+
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.Fog(0x0C110F,15,34);
+  const cam=new THREE.PerspectiveCamera(34,1,.1,80);
+  const root=new THREE.Group();scene.add(root);
+
+  /* lights */
+  scene.add(new THREE.AmbientLight(0x8f9a8d,.55));
+  const sun=new THREE.DirectionalLight(0xF0B968,.7);sun.position.set(6,10,4);scene.add(sun);
+  const coreLight=new THREE.PointLight(0xE3A24A,.9,8);coreLight.position.set(3.2,1.4,-3.6);scene.add(coreLight);
+
+  /* materials */
+  const mGround=new THREE.MeshBasicMaterial({color:0x0A0E0C});
+  const mSlot=new THREE.MeshLambertMaterial({color:0x18201b});
+  const mTrailer=new THREE.MeshLambertMaterial({color:0x262e28});
+  const mBuilding=new THREE.MeshLambertMaterial({color:0x161d19});
+  const mRoad=new THREE.MeshBasicMaterial({color:0x111713});
+  const mPost=new THREE.MeshLambertMaterial({color:0x2c352e});
+  const mBoneLit=new THREE.MeshLambertMaterial({color:0x9aa398});
+  const mAmberLit=new THREE.MeshLambertMaterial({color:0xE3A24A,emissive:0x6b4313});
+  const mAmber=new THREE.MeshBasicMaterial({color:0xE3A24A});
+
+  /* ground + grid */
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(18,18),mGround);
+  ground.rotation.x=-Math.PI/2;root.add(ground);
+  const grid=new THREE.GridHelper(18,36,0x1e2620,0x161c18);
+  grid.position.y=.002;
+  grid.material.transparent=true;grid.material.opacity=.5;
+  root.add(grid);
+
+  /* fence — posts (instanced) + rails with a gate gap on the +Z side */
+  const F=5,step=1.25;
+  const postPts=[];
+  for(let x=-F;x<=F;x+=step){postPts.push([x,-F]);if(Math.abs(x)>.85)postPts.push([x,F]);}
+  for(let z=-F+step;z<F;z+=step){postPts.push([-F,z]);postPts.push([F,z]);}
+  const posts=new THREE.InstancedMesh(new THREE.BoxGeometry(.06,.5,.06),mPost,postPts.length);
+  const dummy=new THREE.Object3D();
+  postPts.forEach((p,i)=>{dummy.position.set(p[0],.25,p[1]);dummy.updateMatrix();posts.setMatrixAt(i,dummy.matrix);});
+  root.add(posts);
+  const railPts=[];
+  [[-F,-F,F,-F],[-F,-F,-F,F],[F,-F,F,F]].forEach(([x1,z1,x2,z2])=>{
+    [.22,.44].forEach(y=>railPts.push(x1,y,z1,x2,y,z2));});
+  [.22,.44].forEach(y=>{
+    railPts.push(-F,y,F,-.85,y,F);
+    railPts.push(.85,y,F,F,y,F);});
+  const railGeo=new THREE.BufferGeometry();
+  railGeo.setAttribute('position',new THREE.Float32BufferAttribute(railPts,3));
+  root.add(new THREE.LineSegments(railGeo,new THREE.LineBasicMaterial({color:0x39423b,transparent:true,opacity:.7})));
+
+  /* roads */
+  const road=(w,d,x,z)=>{
+    const r=new THREE.Mesh(new THREE.PlaneGeometry(w,d),mRoad);
+    r.rotation.x=-Math.PI/2;r.position.set(x,.01,z);root.add(r);};
+  road(1.5,6.4,0,2.2);          /* main lane: gate → junction */
+  road(6.4,1.3,-2.6,.2);        /* left lane: junction → yard */
+  road(4.4,1.3,2.7,1.6);        /* right lane: junction → bridge */
+  const mDash=new THREE.MeshBasicMaterial({color:0xEDE7DA,transparent:true,opacity:.18});
+  const dash=(x,z,rot)=>{
+    const d=new THREE.Mesh(new THREE.BoxGeometry(.42,.006,.07),mDash);
+    d.position.set(x,.02,z);d.rotation.y=rot;root.add(d);};
+  for(let z=0;z<5.2;z+=.8)dash(0,z,0);
+  for(let x=-5;x<.4;x+=.8)dash(x,.2,Math.PI/2);
+  for(let x=1;x<4.6;x+=.8)dash(x,1.6,Math.PI/2);
+
+  /* yard — 8×3 slots, some with trailers */
+  for(let r=0;r<3;r++)for(let ci=0;ci<8;ci++){
+    const x=-4.6+ci*.52,z=-1.6-r*1.2;
+    const base=new THREE.Mesh(new THREE.BoxGeometry(.46,.07,1.05),mSlot);
+    base.position.set(x,.035,z);root.add(base);
+    if((r*3+ci*5)%7<4){
+      const tr=new THREE.Mesh(new THREE.BoxGeometry(.4,.44,.95),mTrailer);
+      tr.position.set(x,.3,z);root.add(tr);
+    }
+  }
+
+  /* edge core building + beacon */
+  const bldg=new THREE.Mesh(new THREE.BoxGeometry(2,.9,1.4),mBuilding);
+  bldg.position.set(3.2,.45,-3.6);root.add(bldg);
+  root.add(new THREE.LineSegments(new THREE.EdgesGeometry(bldg.geometry),
+    new THREE.LineBasicMaterial({color:0x39423b})).translateX(3.2).translateY(.45).translateZ(-3.6));
+  const beacon=new THREE.Mesh(new THREE.SphereGeometry(.09,12,10),mAmber);
+  beacon.position.set(3.2,1.05,-3.6);root.add(beacon);
+
+  /* weighbridge platform + studs */
+  const bridge=new THREE.Mesh(new THREE.BoxGeometry(2.2,.12,1.15),mSlot);
+  bridge.position.set(3.5,.06,1.6);root.add(bridge);
+  root.add(new THREE.LineSegments(new THREE.EdgesGeometry(bridge.geometry),
+    new THREE.LineBasicMaterial({color:0x39423b})).translateX(3.5).translateY(.06).translateZ(1.6));
+  [[-.95,-.45],[.95,-.45],[-.95,.45],[.95,.45]].forEach(([dx,dz])=>{
+    const st=new THREE.Mesh(new THREE.BoxGeometry(.09,.08,.09),mAmber);
+    st.position.set(3.5+dx,.16,1.6+dz);root.add(st);});
+
+  /* gate posts + striped barrier arms (pivot groups) */
+  const mkGatePost=x=>{
+    const p=new THREE.Mesh(new THREE.BoxGeometry(.14,.85,.14),mBoneLit);
+    p.position.set(x,.42,F);root.add(p);
+    const cap=new THREE.Mesh(new THREE.BoxGeometry(.18,.06,.18),mAmber);
+    cap.position.set(x,.88,F);root.add(cap);};
+  mkGatePost(-.78);mkGatePost(.78);
+  const mkArm=(px,dir)=>{
+    const g=new THREE.Group();g.position.set(px,.72,F);
+    for(let i=0;i<3;i++){
+      const seg=new THREE.Mesh(new THREE.BoxGeometry(.3,.05,.05),i%2?mAmberLit:mBoneLit);
+      seg.position.x=dir*(.1+.15+i*.3);
+      g.add(seg);
+    }
+    root.add(g);return g;};
+  const armL=mkArm(-.78,1),armR=mkArm(.78,-1);
+
+  /* camera poles + dashed data links to the core */
+  const camPoles=[[1.35,4.35],[-4.6,-.6],[2.5,2.7]];
+  const links=[],packets=[];
+  camPoles.forEach(([px,pz])=>{
+    const pole=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,1.1,6),mPost);
+    pole.position.set(px,.55,pz);root.add(pole);
+    const head=new THREE.Mesh(new THREE.BoxGeometry(.16,.1,.12),mBoneLit);
+    head.position.set(px,1.12,pz);root.add(head);
+    const lens=new THREE.Mesh(new THREE.BoxGeometry(.04,.05,.05),mAmber);
+    lens.position.set(px,1.12,pz-.08);root.add(lens);
+    const curve=new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(px,1.12,pz),
+      new THREE.Vector3((px+3.2)/2,2.1,(pz-3.6)/2),
+      new THREE.Vector3(3.2,1.05,-3.6));
+    const lg=new THREE.BufferGeometry().setFromPoints(curve.getPoints(50));
+    const ln=new THREE.Line(lg,new THREE.LineDashedMaterial({color:0xE3A24A,dashSize:.16,gapSize:.13,transparent:true,opacity:.45}));
+    ln.computeLineDistances();root.add(ln);
+    links.push(curve);
+    for(let k=0;k<2;k++){
+      const pk=new THREE.Mesh(new THREE.SphereGeometry(.055,8,6),mAmber);
+      root.add(pk);
+      packets.push({curve,ph:k*.5,mesh:pk});
+    }
+  });
+
+  /* vehicles — cab + ribbed trailer, amber, beacons */
+  function mkVehicle(){
+    const g=new THREE.Group();
+    const trailer=new THREE.Mesh(new THREE.BoxGeometry(.5,.42,1.3),mTrailer);
+    trailer.position.set(0,.34,-.25);g.add(trailer);
+    for(let i=1;i<4;i++){
+      const rib=new THREE.Mesh(new THREE.BoxGeometry(.52,.42,.02),mPost);
+      rib.position.set(0,.34,-.25-1.3*i/4+.65);g.add(rib);
+    }
+    const cab=new THREE.Mesh(new THREE.BoxGeometry(.48,.34,.55),mAmberLit);
+    cab.position.set(0,.27,.55);g.add(cab);
+    const win=new THREE.Mesh(new THREE.BoxGeometry(.4,.14,.02),mPost);
+    win.position.set(0,.32,.84);g.add(win);
+    const plate=new THREE.Mesh(new THREE.BoxGeometry(.02,.09,.16),mAmber);
+    plate.position.set(.26,.18,.83);g.add(plate);
+    const bcn=new THREE.Mesh(new THREE.SphereGeometry(.05,8,6),mAmber);
+    bcn.position.set(0,.5,.55);g.add(bcn);
+    g.userData.bcn=bcn;
+    [[-.27,-.55],[.27,-.55],[-.27,.05],[.27,.05],[-.27,.6],[.27,.6]].forEach(([wx,wz])=>{
+      const wh=new THREE.Mesh(new THREE.BoxGeometry(.09,.2,.2),mPost);
+      wh.position.set(wx,.1,wz);g.add(wh);});
+    root.add(g);return g;
+  }
+  const veh1=mkVehicle(),veh2=mkVehicle();
+
+  /* READ bracket + sprite label */
+  const bracket3=new THREE.LineSegments(
+    new THREE.EdgesGeometry(new THREE.BoxGeometry(1.05,1.0,2.15)),
+    new THREE.LineBasicMaterial({color:0xE3A24A,transparent:true,opacity:.95}));
+  bracket3.visible=false;root.add(bracket3);
+
+  /* queued trucks outside the gate */
+  [-.3,.3].forEach((qx,i)=>{
+    const q=new THREE.Mesh(new THREE.BoxGeometry(.45,.4,1.2),mPost);
+    q.position.set(qx,.2,6.3);root.add(q);
+    const qp=new THREE.Mesh(new THREE.BoxGeometry(.02,.07,.12),mAmber);
+    qp.position.set(qx+(i?-.24:.24),.16,6.92);root.add(qp);
+  });
+
+  /* text labels as sprites (added after fonts load) */
+  let labelsAdded=false;
+  function addLabels(){
+    if(labelsAdded)return;labelsAdded=true;
+    const mk=(text,x,y,z,color)=>{
+      const cv=document.createElement('canvas');
+      let c2=cv.getContext('2d');
+      c2.font='500 34px "JetBrains Mono",monospace';
+      const w=Math.ceil(c2.measureText(text).width)+56;
+      cv.width=w;cv.height=64;
+      c2=cv.getContext('2d');
+      c2.font='500 34px "JetBrains Mono",monospace';
+      c2.fillStyle=color;c2.textAlign='center';c2.textBaseline='middle';
+      c2.fillText(text,w/2,34);
+      const tex=new THREE.CanvasTexture(cv);
+      tex.minFilter=THREE.LinearFilter;
+      const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthWrite:false}));
+      sp.scale.set(.42*w/64,.42,1);
+      sp.position.set(x,y,z);
+      root.add(sp);return sp;};
+    mk('YARD — 24 SLOTS',-2.8,1.35,-2.8,'rgba(237,231,218,.75)');
+    mk('EDGE CORE · ADMIN',3.2,1.9,-3.6,'rgba(227,162,74,.95)');
+    mk('WB-02',3.5,1.3,1.6,'rgba(237,231,218,.75)');
+    mk('GATE A',0,1.55,5,'rgba(237,231,218,.75)');
+    readSpr=mk('READ',0,0,0,'rgba(227,162,74,1)');
+    readSpr.scale.set(.3*64/64*2.4,.3,1);  /* smaller */
+    readSpr.visible=false;
+    dirty=true;
+  }
+  let readSpr=null;
+  document.fonts.ready.then(addLabels);
+
+  /* routes */
+  const P1=makeMover([[-.35,5.9,1.5],[-.35,.2],[-3,.2],[-3,-1.5,3.5],[-3,.2],[-.35,.2],[-.35,5.9]],.8);
+  const P2=makeMover([[.35,5.9,1.2],[.35,1.6],[3.5,1.6,3],[.35,1.6],[.35,5.9]],.8);
+  let mt=6,openK=0,mxp=0,myp=0,drag=false,lx=0,vy=0,dirty=true;
+
+  /* interaction */
+  el.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;vy=0;el.style.cursor='grabbing';});
+  window.addEventListener('pointermove',e=>{
+    mxp=e.clientX/innerWidth-.5;myp=e.clientY/innerHeight-.5;
+    if(drag){const d=(e.clientX-lx)*.006;root.rotation.y+=d;vy=d;lx=e.clientX;dirty=true;}
+  });
+  window.addEventListener('pointerup',()=>{drag=false;el.style.cursor='grab';});
+
+  /* camera */
+  let D=14;
+  function resize(){
+    const r=holder.getBoundingClientRect();if(r.width<2||r.height<2)return;
+    renderer.setSize(r.width,r.height,false);
+    cam.aspect=r.width/r.height;
+    D=cam.aspect>=1?14:17;
+    cam.updateProjectionMatrix();
+    dirty=true;
+  }
+  resize();new ResizeObserver(resize).observe(holder);
+
+  const wrapAng=(a)=>{while(a>Math.PI)a-=2*Math.PI;while(a<-Math.PI)a+=2*Math.PI;return a;};
+  function placeVeh(v,p){
+    v.position.set(p.x,0,p.y);
+    v.rotation.y=Math.atan2(p.dx,p.dy);
+  }
+  const zoneOf=p=>{
+    if(Math.abs(p.x)<.8&&p.z>3.4)return 'GATE A — ANPR READ · ADMIT · 3.1 S';
+    if(p.x>2.4&&p.z>.9&&p.z<2.4)return 'WB-02 — ON BRIDGE · CAPTURING';
+    if(p.x<-1&&p.z>-4.6&&p.z<.9)return 'YARD — SLOT DOCKED · DWELL RUNNING';
+    return null;};
+
+  if(RM){
+    /* static render — still orbitable by drag */
+    placeVeh(veh1,P1.at(1.2));placeVeh(veh2,P2.at(9.5));
+    cam.position.set(D*.72,D*.58,D*.72);cam.lookAt(0,.3,0);
+    registerAnimator({el:holder,tick:()=>{
+      if(!dirty)return;dirty=false;
+      cam.position.set(D*.72,D*.58,D*.72);cam.lookAt(0,.3,0);
+      renderer.render(scene,cam);
+    }});
+    return;
+  }
+
+  registerAnimator({el:holder,tick:(t,dt)=>{
+    if(document.hidden)return;
+    mt+=dt;
+    /* vehicles */
+    const p1=P1.at(mt),p2=P2.at(mt+9.4);
+    placeVeh(veh1,p1);placeVeh(veh2,p2);
+    /* smooth headings */
+    [veh1,veh2].forEach((v,i)=>{
+      const p=i?p2:p1;
+      const tgt=Math.atan2(p.dx,p.dy);
+      v.rotation.y+=wrapAng(tgt-v.rotation.y)*Math.min(1,dt*6);
+    });
+    /* beacon blink */
+    const bl=Math.sin(t*6)>0;
+    veh1.userData.bcn.visible=bl;veh2.userData.bcn.visible=!bl;
+    /* barrier arms */
+    let want=0;
+    [p1,p2].forEach(p=>{if(Math.abs(p.x)<.8&&p.z>3.4&&p.z<6.6)want=1;});
+    openK+=(want-openK)*Math.min(1,dt*2.4);
+    armL.rotation.z=openK*1.15;
+    armR.rotation.z=-openK*1.15;
+    /* core pulse */
+    beacon.scale.setScalar(1+.3*Math.sin(t*3));
+    coreLight.intensity=.7+.3*Math.sin(t*3);
+    /* data packets */
+    packets.forEach(pk=>{
+      const tt=(t*.16+pk.ph)%1;
+      pk.mesh.position.copy(pk.curve.getPoint(tt));
+    });
+    /* READ bracket at the gate */
+    let readV=null;
+    [[veh1,p1],[veh2,p2]].forEach(([v,p])=>{
+      if(!readV&&Math.abs(p.x)<.7&&p.z>4.1&&p.z<5.5)readV=v;});
+    bracket3.visible=!!readV;
+    if(readSpr)readSpr.visible=!!readV;
+    if(readV){
+      bracket3.position.copy(readV.position);bracket3.position.y=.5;
+      if(readSpr)readSpr.position.set(readV.position.x,1.45,readV.position.z);
+    }
+    /* idle orbit + inertia */
+    if(!drag){root.rotation.y+=dt*.05+vy;vy*=.94;}
+    /* camera parallax */
+    cam.position.set(D*.72+mxp*1.5,D*.58-myp*1.1,D*.72);
+    cam.lookAt(0,.3,0);
+    renderer.render(scene,cam);
+    /* readout */
+    setRo('ro-plan',zoneOf(p1)||zoneOf(p2)||'GATE A · YARD · WB-02 — ALL INSTRUMENTS LIVE');
+  }});
+}
+
+/* ---------- 2D fallback (if WebGL / THREE unavailable) ---------- */
+function initPlan2D(){
+  const holder=$('#hero-plan');if(!holder)return;
+  const cv=document.createElement('canvas');holder.appendChild(cv);
+  const c=cv.getContext('2d');
+  const pat=c.createPattern(TILE,'repeat');
+  let w=0,h=0,mxp=0,myp=0,tx=0,ty=0;
+  function resize(){const r=holder.getBoundingClientRect();if(r.width<2||r.height<2)return;
+    w=r.width;h=r.height;const dpr=Math.min(devicePixelRatio,2);
+    cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);
+    cv.style.width='100%';cv.style.height='100%';c.setTransform(dpr,0,0,dpr,0,0);}
+  resize();new ResizeObserver(resize).observe(holder);
+  window.addEventListener('mousemove',e=>{mxp=e.clientX/innerWidth-.5;myp=e.clientY/innerHeight-.5;});
+  const L1=[[.5,.99],[.5,.47],[.24,.47],[.24,.40,3],[.24,.47],[.24,.755],[.5,.755],[.5,.99]];
+  const L2=[[.5,.99],[.5,.47],[.88,.47],[.88,.63,2.6],[.88,.755],[.5,.755],[.5,.99]];
+  const M1=makeMover(L1,.15),M2=makeMover(L2,.15);
+  const PAT=[[1,1,0,1,0,0,1,0],[0,0,1,1,0,1,0,1],[1,0,0,1,1,0,0,0]];
+  let mt=6,gateA=0;
+  const DEF='GATE A · YARD · WB-02 — ALL INSTRUMENTS LIVE';
+  registerAnimator({el:holder,tick:(t,dt)=>{
+    if(w<10)return;
+    mt+=dt;tx+=(mxp*10-tx)*.05;ty+=(myp*8-ty)*.05;
+    c.clearRect(0,0,w,h);
+    fillPat(c,w,h,t*6,pat);
+    const ps=Math.min(w*.94,h*.97);
+    const ox=w/2-ps/2+tx,oy=h/2-ps/2+ty;
+    const X=x=>ox+x*ps,Y=y=>oy+y*ps;
+    c.strokeStyle=B(.3);c.lineWidth=1;
+    bracket(c,12,12,10,1,1);bracket(c,w-12,12,10,-1,1);
+    bracket(c,12,h-12,10,1,-1);bracket(c,w-12,h-12,10,-1,-1);
+    const road=(x1,y1,x2,y2)=>{
+      c.lineWidth=ps*.03;c.strokeStyle=B(.05);line(c,X(x1),Y(y1),X(x2),Y(y2));
+      c.lineWidth=1;c.strokeStyle=B(.13);c.setLineDash([6,8]);line(c,X(x1),Y(y1),X(x2),Y(y2));c.setLineDash([]);};
+    road(.5,.455,.5,1);road(.15,.47,.89,.47);road(.24,.47,.24,.77);road(.88,.47,.88,.77);road(.24,.755,.88,.755);
+    c.strokeStyle=B(.22);c.lineWidth=1;c.beginPath();
+    c.moveTo(X(.56),Y(.79));c.lineTo(X(.92),Y(.79));c.quadraticCurveTo(X(.95),Y(.79),X(.95),Y(.76));
+    c.lineTo(X(.95),Y(.09));c.quadraticCurveTo(X(.95),Y(.06),X(.92),Y(.06));
+    c.lineTo(X(.08),Y(.06));c.quadraticCurveTo(X(.05),Y(.06),X(.05),Y(.09));
+    c.lineTo(X(.05),Y(.76));c.quadraticCurveTo(X(.05),Y(.79),X(.08),Y(.79));
+    c.lineTo(X(.44),Y(.79));c.stroke();
+    for(let r=0;r<3;r++)for(let ci=0;ci<8;ci++){
+      const sx=.10+ci*.036,sy=.12+r*.12;
+      c.strokeStyle=B(.16);c.lineWidth=1;rr(c,X(sx),Y(sy),.03*ps,.07*ps,2);c.stroke();
+      if(PAT[r][ci]){c.strokeStyle=B(.32);rr(c,X(sx+.004),Y(sy+.008),.022*ps,.054*ps,1);c.stroke();}
+    }
+    if(ps>300)txt(c,'YARD — 24 SLOTS',X(.24),Y(.085),9,B(.35),'center');
+    c.fillStyle='rgba(19,26,22,.6)';c.strokeStyle=B(.3);c.lineWidth=1;
+    rr(c,X(.60),Y(.08),.18*ps,.12*ps,3);c.fill();c.stroke();
+    if(ps>300){txt(c,'EDGE CORE',X(.69),Y(.135),8.5,A(.8),'center');txt(c,'ADMIN',X(.69),Y(.175),7,B(.4),'center');}
+    c.fillStyle=AMBER;c.beginPath();c.arc(X(.635),Y(.11),2.5,0,6.29);c.fill();
+    const pr=(t*.8)%1;c.strokeStyle=A((1-pr)*.5);c.beginPath();c.arc(X(.635),Y(.11),3+pr*8,0,6.29);c.stroke();
+    c.strokeStyle=B(.35);c.lineWidth=1.2;rr(c,X(.835),Y(.585),.09*ps,.08*ps,2);c.stroke();
+    c.fillStyle=AMBER;[[.84,.6],[.92,.6],[.84,.665],[.92,.665]].forEach(p=>c.fillRect(X(p[0])-1.5,Y(p[1])-1.5,3,3));
+    if(ps>300)txt(c,'WB-02',X(.88),Y(.565),8,B(.5),'center');
+    [[.5,.735],[.115,.44],[.86,.545]].forEach(cm=>{
+      const x=X(cm[0]),y=Y(cm[1]);
+      c.fillStyle=A(.8);c.beginPath();c.moveTo(x,y-4);c.lineTo(x-4,y+3);c.lineTo(x+4,y+3);c.closePath();c.fill();
+      c.strokeStyle=A(.22);c.lineWidth=1;c.setLineDash([3,7]);c.lineDashOffset=-((t*16)%20);
+      line(c,x,y,X(.69),Y(.14));c.setLineDash([]);});
+    const posns=[M1.at(mt),M2.at(mt+9.4)];
+    let want=0;
+    posns.forEach(p=>{if(Math.abs(p.x-.5)<.05&&p.y>.7&&p.y<.88)want=1;});
+    gateA+=(want-gateA)*Math.min(1,dt*2.5);
+    const arm=(hx,dir)=>{c.save();c.translate(X(hx),Y(.79));c.rotate(dir*gateA*1.15);
+      const len=.045*ps;
+      for(let i=0;i<3;i++){c.strokeStyle=i%2?AMBER:B(.6);c.lineWidth=2.4;line(c,i*len/3,0,(i+1)*len/3,0);}
+      c.restore();};
+    arm(.437,1);arm(.563,-1);
+    posns.forEach(p=>{
+      const a=1-ss(.88,.99,p.y);if(a<=0)return;
+      c.save();c.translate(X(p.x),Y(p.y));c.rotate(Math.atan2(p.dy,p.dx));
+      const vl=.03*ps,vw=.013*ps;
+      c.fillStyle=AMBER;rr(c,-vl/2,-vw/2,vl,vw,1.5);c.fill();
+      c.strokeStyle=AMBER;c.lineWidth=1.2;line(c,0,0,vl*.75,0);
+      c.restore();
+      if(p.y>.74&&p.y<.84&&Math.abs(p.x-.5)<.05){
+        const bx=X(p.x)-vl*.7,by=Y(p.y)-vw*2.2;
+        c.strokeStyle=A(.85);c.lineWidth=1.4;
+        bracket(c,bx,by,8,1,1);bracket(c,bx+vl*1.4,by,8,-1,1);
+        bracket(c,bx,by+vw*4.4,8,1,-1);bracket(c,bx+vl*1.4,by+vw*4.4,8,-1,-1);
+        if(ps>300)txt(c,'READ',X(p.x),Y(p.y)-vw*3.2,8,AMBER,'center');
+      }
+    });
+    c.fillStyle=B(.3);rr(c,X(.482),Y(.855),.018*ps,.03*ps,1);c.fill();
+    rr(c,X(.518),Y(.875),.018*ps,.03*ps,1);c.fill();
+    if(ps>300)txt(c,'GATE A',X(.5),Y(.825),8,B(.4),'center');
+    const sb=Math.min(70,ps*.14),sy2=h-22;
+    c.strokeStyle=B(.4);c.lineWidth=1;
+    line(c,18,sy2,18+sb,sy2);line(c,18,sy2-4,18,sy2+4);line(c,18+sb,sy2-4,18+sb,sy2+4);
+    txt(c,'0',18,sy2-9,8,B(.4));txt(c,'50 M',18+sb,sy2-9,8,B(.4),'right');
+    let z=null;
+    for(const p of posns){if(Math.abs(p.x-.5)<.09&&p.y>.70&&p.y<.90){z='GATE A — ANPR READ · ADMIT · 3.1 S';break;}}
+    if(!z)for(const p of posns){if(p.x>.80&&p.y>.46&&p.y<.74){z='WB-02 — ON BRIDGE · CAPTURING';break;}}
+    if(!z)for(const p of posns){if(p.x<.30&&p.y>.10&&p.y<.50){z='YARD — SLOT DOCKED · DWELL RUNNING';break;}}
+    setRo('ro-plan',z||DEF);
+  }});
+}
+
+/* =================== GATE IQ scene =================== */
+function sceneGate(){
+  const PLATES=['KA 01 AB 4921','MH 12 KL 8830','TN 09 CQ 1104','GJ 01 RX 0076','AP 28 ZT 4455','DL 2C AX 9017','TS 07 UA 5510','KA 05 MJ 8143'];
+  const CLS=['T3 TRAILER','T2 LCV','T1 TANKER','T2 BOX TRUCK'];
+  const PH=[['APPROACH',2.6],['READ',1.9],['DECIDE',1.1],['RELEASE',2.3],['CLEAR',1.3]];
+  const THR=[.15,.45,.75,1.05,1.35,1.6];
+  let veh=null,ph=0,pt=0,doneT=-9,cyc=Math.floor(Math.random()*40),nightOn=false,nk=0,openA=0,entryT=0,frozen=false;
+  const stepEls=$$('#gate-iq .p-steps li');
+  let lastIdx=-2;
+  function drawTruck(c,nose,y,L,W,t,glow){
+    const cabL=L*.32,trailL=L*.68,rear=nose-L;
+    c.strokeStyle=B(.18);c.lineWidth=1;
+    for(let i=1;i<=3;i++)line(c,rear-8-i*12,y-i*3+6,rear-4-i*12,y-i*3+6);
+    c.strokeStyle=B(.75);c.lineWidth=1.5;
+    rr(c,rear,y-W/2,trailL,W,2);c.stroke();
+    c.fillStyle=B(.03);c.fill();
+    c.strokeStyle=B(.16);c.lineWidth=1;
+    for(let i=1;i<6;i++)line(c,rear+trailL*i/6,y-W/2+2,rear+trailL*i/6,y+W/2-2);
+    c.fillStyle=B(.45);
+    [.18,.5,.82].forEach(f=>{const ax=rear+trailL*f;
+      c.fillRect(ax-4,y-W/2-3,8,4);c.fillRect(ax-4,y+W/2-1,8,4);});
+    c.strokeStyle=B(.85);c.lineWidth=1.5;
+    rr(c,nose-cabL,y-W*.42,cabL,W*.84,4);c.stroke();
+    c.fillStyle=B(.06);c.fill();
+    c.fillStyle=B(.32);c.fillRect(nose-7,y-W*.32,4,W*.64);
+    c.fillStyle=B(.5);c.fillRect(nose-cabL+3,y-W*.42-3,8,4);c.fillRect(nose-cabL+3,y+W*.42-1,8,4);
+    if(Math.sin(t*6)>0){c.fillStyle=AMBER;c.beginPath();c.arc(nose-cabL*.45,y,2.4,0,6.29);c.fill();}
+    c.fillStyle=AMBER;
+    c.fillRect(nose-1,y-4,3,8);
+    c.fillRect(rear-3,y-5,4,10);
+    if(glow>0){c.shadowColor=AMBER;c.shadowBlur=12*glow;
+      c.fillRect(nose-1,y-4,3,8);c.fillRect(rear-3,y-5,4,10);c.shadowBlur=0;}
+  }
+  function spawn(){cyc++;veh={p:PLATES[cyc%PLATES.length],cf:97.2+Math.random()*2.2,cls:CLS[cyc%CLS.length],gp:'GP-'+(8800+cyc%99)};ph=0;pt=0;entryT=0;frozen=false;}
+  const st=makeScene('cv-gate',draw);
+  st.send=()=>{spawn();};
+  st.toggleNight=()=>{nightOn=!nightOn;return nightOn;};
+  function syncSteps(){
+    const map={1:0,2:1,3:2};
+    const idx=veh?(ph in map?map[ph]:-1):-1;
+    if(idx===lastIdx)return;lastIdx=idx;
+    stepEls.forEach((li,i)=>li.classList.toggle('on',i===idx));
+  }
+  function draw(c,w,h,s,dt,pat){
+    nk+=((nightOn?1:0)-nk)*Math.min(1,dt*3.5);
+    if(!veh&&s.t-doneT>1.6)spawn();
+    if(veh){
+      pt+=dt;entryT+=dt;
+      let adv=true;
+      while(adv&&veh&&ph<5){
+        adv=false;
+        if(pt>PH[ph][1]){pt-=PH[ph][1];ph++;adv=true;
+          if(ph===3)frozen=true;
+          if(ph===5){veh=null;doneT=s.t;}}
+      }
+      syncSteps();
+    }else if(lastIdx!==-1){lastIdx=-1;stepEls.forEach(li=>li.classList.remove('on'));}
+    const barTarget=(ph===2||ph===3)?1:0;
+    openA+=(barTarget-openA)*Math.min(1,dt*2.6);
+    const roadH=h*.34,roadY=h*.52,rTop=roadY-roadH/2,rBot=roadY+roadH/2;
+    const stopX=w*.38,gx=w*.52,camX=w*.28;
+    const L=w*.34,Wv=L*.32;
+    let nose=null;
+    if(veh){
+      if(ph===0)nose=lerp(-L*1.4,stopX,eo(clamp(pt/PH[0][1],0,1)));
+      else if(ph===1||ph===2)nose=stopX;
+      else if(ph===3)nose=lerp(stopX,w+L*2.2,ei(clamp(pt/PH[3][1],0,1)));
+    }
+    fillPat(c,w,h,s.progress*50,pat);
+    c.fillStyle=B(.03);c.fillRect(0,rTop,w,roadH);
+    c.strokeStyle=B(.22);c.lineWidth=1;
+    line(c,0,rTop,w,rTop);line(c,0,rBot,w,rBot);
+    c.strokeStyle=B(.12);c.setLineDash([10,12]);
+    line(c,0,roadY,w,roadY);c.setLineDash([]);
+    for(let i=0;i<3;i++){const chx=gx+26+i*16;
+      c.strokeStyle=A(.3);c.lineWidth=1.4;
+      line(c,chx,rTop+8,chx+8,roadY);line(c,chx,rBot-8,chx+8,roadY);}
+    c.strokeStyle=B(.5);c.lineWidth=2;line(c,stopX-6,rTop+3,stopX-6,rBot-3);
+    const onLoop=veh&&ph>=1&&ph<3;
+    if(onLoop){c.strokeStyle=A(.4+.3*Math.sin(s.t*6));c.setLineDash([4,4]);c.lineWidth=1.2;
+      rr(c,stopX-L*1.04,roadY-roadH*.33,L*1.1,roadH*.66,4);c.stroke();c.setLineDash([]);
+      if(w>460)txt(c,'LOOP',stopX-L*.5,roadY+roadH*.29,7.5,A(.8),'center');}
+    c.fillStyle=B(.65);
+    c.fillRect(gx-5,rTop-13,10,10);c.fillRect(gx-5,rBot+3,10,10);
+    c.fillStyle=AMBER;
+    c.fillRect(gx-2,rTop-11,4,6);c.fillRect(gx-2,rBot+5,4,6);
+    const armLen=roadH/2-2;
+    const drawArm=(post,baseAng)=>{
+      const ang=baseAng*(1-openA);
+      const ux=Math.cos(ang),uy=Math.sin(ang);
+      c.lineWidth=4;
+      for(let i=0;i<4;i++){
+        c.strokeStyle=i%2?AMBER:B(.75);
+        line(c,post.x+ux*armLen*i/4,post.y+uy*armLen*i/4,
+             post.x+ux*armLen*(i+1)/4,post.y+uy*armLen*(i+1)/4);}
+    };
+    drawArm({x:gx,y:rTop-7},Math.PI/2);
+    drawArm({x:gx,y:rBot+7},-Math.PI/2);
+    txt(c,'GATE A — LANE 01',gx,rBot+24,8.5,B(.45),'center');
+    if(openA>.6)txt(c,'BARRIER OPEN',gx,rTop-20,8,AMBER,'center');
+    [[camX,rTop-18],[camX,rBot+18]].forEach(([cx2,cy2])=>{
+      c.fillStyle=B(.75);c.fillRect(cx2-5,cy2-4,10,8);
+      c.fillStyle=AMBER;c.fillRect(cx2-1.5,cy2-1.5,3,3);
+      const pulse=ph===1?(.5+.5*Math.sin(s.t*9)):.25;
+      c.fillStyle=A(.05+.06*pulse+.14*nk);
+      c.beginPath();c.moveTo(cx2,cy2);
+      c.lineTo(stopX+12,roadY-roadH*.32);c.lineTo(stopX+12,roadY+roadH*.32);
+      c.closePath();c.fill();
+      if(nk>.5)txt(c,'IR',cx2,cy2+((cy2<rTop)?-8:14),7.5,AMBER,'center');
+    });
+    if(nose!==null&&nose>-L*1.5&&nose<w+L*2.3){
+      const idle=(ph===1||ph===2)?Math.sin(s.t*7)*1.2:0;
+      drawTruck(c,nose,roadY+idle,L,Wv,s.t,nk);
+      if(nk>.05&&ph<3){
+        const g=c.createLinearGradient(nose,0,nose+70,0);
+        g.addColorStop(0,`rgba(240,185,104,${.4*nk})`);g.addColorStop(1,'rgba(240,185,104,0)');
+        c.fillStyle=g;
+        c.beginPath();c.moveTo(nose,roadY-4);c.lineTo(nose+70,roadY-Wv);c.lineTo(nose+70,roadY+Wv);c.closePath();c.fill();
+      }
+      if(ph===1){
+        const rear=nose-L;
+        const a=ss(0,.15,pt)*(1-ss(1.6,1.9,pt));
+        c.globalAlpha=a;
+        const sweep=clamp(pt/1.3,0,1);
+        const sx2=lerp(rear,nose,sweep);
+        c.strokeStyle=AMBER;c.lineWidth=1.6;
+        line(c,sx2,rTop+3,sx2,rBot-3);
+        if(w>460)txt(c,'SCANNING',sx2,rTop-6,7.5,AMBER,'center');
+        c.strokeStyle=A(.85);c.lineWidth=1.5;
+        const bx=rear-10,by1=roadY-Wv/2-10,bx2=nose+10,by2=roadY+Wv/2+10;
+        bracket(c,bx,by1,10,1,1);bracket(c,bx2,by1,10,-1,1);
+        bracket(c,bx,by2,10,1,-1);bracket(c,bx2,by2,10,-1,-1);
+        txt(c,`${veh.p}${pt>.45?' · '+veh.cf.toFixed(1)+'%':''}`,(rear+nose)/2,by1-8,10,AMBER,'center');
+        c.globalAlpha=1;
+      }
+    }
+    if(nk>.01){
+      c.fillStyle=`rgba(3,7,10,${.52*nk})`;c.fillRect(0,0,w,h);
+      if(ph===1&&veh&&pt<1.3&&nose!==null){
+        const rear=nose-L,sx2=lerp(rear,nose,clamp(pt/1.3,0,1));
+        c.strokeStyle=AMBER;c.lineWidth=1.8;c.shadowColor=AMBER;c.shadowBlur=10*nk;
+        line(c,sx2,rTop+3,sx2,rBot-3);c.shadowBlur=0;
+      }
+    }
+    const labels=['APPROACH','READ','DECIDE','RELEASE'];
+    const tx0=16,tw=w-32,segW=tw/4,ty=Math.max(30,h*.06);
+    const cur=veh?Math.min(ph,3):-1;
+    for(let i=0;i<4;i++){
+      const x=tx0+i*segW;
+      const active=i===cur,doneL=i<cur;
+      c.strokeStyle=active?A(.75):B(doneL?.3:.14);c.lineWidth=1;
+      rr(c,x+3,ty-14,segW-8,24,2);c.stroke();
+      txt(c,`0${i+1}`,x+12,ty+2,9,active?AMBER:B(doneL?.5:.28));
+      if(w>430)txt(c,labels[i],x+34,ty+2,8.5,active?AMBER:B(doneL?.5:.28));
+      if(doneL){c.strokeStyle=AMBER;c.lineWidth=1.4;
+        line(c,x+segW-20,ty-2,x+segW-16,ty+2);line(c,x+segW-16,ty+2,x+segW-10,ty-6);}
+      if(active){c.fillStyle=A(.08);rr(c,x+3,ty-14,segW-8,24,2);c.fill();}
+    }
+    const prog=veh?clamp((Math.min(ph,3)+(ph<4?pt/PH[ph][1]:1))/4,0,1):0;
+    c.strokeStyle=B(.12);c.lineWidth=1;line(c,tx0,ty+18,tx0+tw,ty+18);
+    c.strokeStyle=AMBER;c.lineWidth=2;line(c,tx0,ty+18,tx0+tw*prog,ty+18);
+    txt(c,'QUEUE 2 · ETA 40 S',tx0,ty+32,8,B(.4));
+    const shown=veh?(ph>1?6:ph===1?THR.filter(t0=>pt>t0).length:0):0;
+    const compact=w<430;
+    const rows=compact?['PLATE','CONF','GATE PASS']:['PLATE','CLASS','CONF','GATE PASS','E-WAY','PO'];
+    const vals=veh?{ 'PLATE':veh.p,'CLASS':veh.cls,'CONF':veh.cf.toFixed(1)+'%','GATE PASS':veh.gp,'E-WAY':'OK','PO':'MATCH' }:null;
+    const cardW=Math.min(compact?140:196,w*.36),ch=26+rows.length*17+10;
+    const cx0=w-cardW-14,cy0=ty+44;
+    c.fillStyle='rgba(12,17,15,.93)';c.strokeStyle=ph===1?A(.6):A(.3);c.lineWidth=1;
+    rr(c,cx0,cy0,cardW,ch,3);c.fill();c.stroke();
+    txt(c,'ANPR TELEMETRY',cx0+12,cy0+17,8.5,B(.55));
+    c.fillStyle=veh?AMBER:B(.3);c.beginPath();c.arc(cx0+cardW-14,cy0+13,3,0,6.29);c.fill();
+    rows.forEach((lab,i)=>{
+      const y=cy0+34+i*17;
+      const on=i<shown;
+      c.strokeStyle=on?A(.8):B(.2);c.lineWidth=1;rr(c,cx0+12,y-8,9,9,1);c.stroke();
+      if(on){c.fillStyle=AMBER;c.fillRect(cx0+14,y-6,5,5);}
+      txt(c,lab,cx0+28,y,8,on?B(.55):B(.25));
+      txt(c,on&&vals?vals[lab]:'· · ·',cx0+cardW-12,y,8.5,on&&vals?AMBER:B(.2),'right');
+    });
+    if(veh&&ph>=2&&ph<5){
+      const a=ph===2?ss(0,.25,pt):ph===4?1-ss(0,.5,pt):1;
+      c.globalAlpha=a;
+      const dw=190,dx=clamp(stopX-dw*.35,10,w-dw-10),dy=rTop-36;
+      c.fillStyle='rgba(12,17,15,.95)';c.strokeStyle=A(.7);c.lineWidth=1;
+      rr(c,dx,dy,dw,30,2);c.fill();c.stroke();
+      txt(c,'DECISION — ADMIT',dx+11,dy+13,9.5,AMBER);
+      txt(c,`${veh.gp} · E-WAY OK · PO MATCH`,dx+11,dy+25,7.5,B(.5));
+      c.globalAlpha=1;
+    }
+    const sumT=PH[0][1]+PH[1][1]+PH[2][1];
+    const dispT=frozen?3.1:(veh?Math.min(3.1,entryT*3.1/sumT):0);
+    txt(c,`T+${dispT.toFixed(2)}s`,16,h-16,12,AMBER,'left',600);
+    txt(c,'ENTRY CLOCK',88,h-16,8,B(.4));
+    const ev=['VEHICLE INBOUND — LOOP ARMED','ANPR LOCK — PLATE + CLASS','POLICY PASS — ADMIT','BARRIER RELEASED — EXIT LOGGED','LANE CLEAR — NEXT VEHICLE'];
+    txt(c,`» ${veh?ev[ph]:'LANE CLEAR'}`,w/2,h-16,8.5,B(.55),'center');
+    txt(c,nk>.5?'IR · NIGHT — STILL 99%+':'MODE: UNATTENDED',w-16,h-16,9,AMBER,'right');
+    setRo('ro-gate',!veh?'LANE CLEAR — NEXT VEHICLE INBOUND':
+      ph===0?`APPROACH — ${veh.p} INBOUND · LOOP ARMED`:
+      ph===1?`READ — ${veh.p} · ${veh.cls} · CONF ${veh.cf.toFixed(1)}%`:
+      ph===2?`DECIDE — ADMIT · ${veh.gp} · POLICY PASS`:
+      ph===3?'RELEASE — BARRIER OPEN · 3.1s ENTRY COMPLETE':
+      'LANE CLEAR — EXIT LOGGED');
+  }
+  return st;
+}
+
+/* =================== YARD MIND scene =================== */
+function sceneYard(){
+  const M=[makeMover([[.5,.71],[.055,.71],[.055,.385],[.316,.385],[.316,.491,3.5],[.316,.385],[.055,.385],[.055,.71],[.5,.71,2]],.42),
+           makeMover([[.5,.71],[.955,.71],[.955,.385],[.704,.385],[.704,.293,4],[.704,.385],[.955,.385],[.955,.71],[.5,.71,1.2]],.42),
+           makeMover([[.5,.71],[.055,.71],[.055,.10],[.955,.10],[.955,.71],[.5,.71,.6]],.55)];
+  const PAT=[[1,1,0,1,0,0],[0,0,1,1,0,1],[1,0,0,1,1,0],[0,1,0,0,1,1]];
+  const RS=[[0,2],[1,4],[2,1],[3,0],[1,0]];
+  let rushT=-99,rushK=0,mt=Math.random()*20,mouse=null;
+  const st=makeScene('cv-yard',draw);
+  st.rush=()=>{rushT=st.t;};
+  st.slots=[];
+  const cv=document.getElementById('cv-yard');
+  if(cv){
+    cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();
+      mouse={x:e.clientX-r.left,y:e.clientY-r.top};cv.style.cursor=hit()?'pointer':'default';});
+    cv.addEventListener('mouseleave',()=>{mouse=null;});
+  }
+  function hit(){if(!mouse)return null;
+    for(const s of st.slots){if(mouse.x>=s.x&&mouse.x<=s.x+s.w&&mouse.y>=s.y&&mouse.y<=s.y+s.h)return s;}
+    return null;}
+  function drawUnit(c,x,y,sz,ang,t){
+    c.save();c.translate(x,y);c.rotate(ang);
+    c.strokeStyle=B(.55);c.lineWidth=1.2;
+    rr(c,-sz*3.1,-sz*.55,sz*2.3,sz*1.1,1);c.stroke();
+    c.strokeStyle=B(.22);
+    for(let i=1;i<4;i++)line(c,-sz*3.1+sz*2.3*i/4,-sz*.4,-sz*3.1+sz*2.3*i/4,sz*.4);
+    c.strokeStyle=B(.45);line(c,-sz*.85,0,-sz*.5,0);
+    c.fillStyle=AMBER;
+    rr(c,-sz*.55,-sz*.55,sz*1.1,sz*1.1,2);c.fill();
+    c.strokeStyle=AMBER;c.lineWidth=1.4;line(c,0,0,sz*1.15,0);
+    c.fillStyle=B(.4);
+    c.fillRect(-sz*2.8,-sz*.72,sz*.5,sz*.25);c.fillRect(-sz*2.8,sz*.47,sz*.5,sz*.25);
+    c.fillRect(-sz*1.6,-sz*.72,sz*.5,sz*.25);c.fillRect(-sz*1.6,sz*.47,sz*.5,sz*.25);
+    c.restore();
+  }
+  function draw(c,w,h,s,dt,pat){
+    const el=s.t-rushT;
+    const rk=el>0&&el<7?Math.min(1,el/.8):(el>=7&&el<9?Math.max(0,1-(el-7)/1.5):0);
+    rushK+=(rk-rushK)*Math.min(1,dt*4);
+    mt+=dt*(1+rushK*.9);
+    fillPat(c,w,h,s.progress*36,pat);
+    const rows=[.14,.252,.45,.562],rowH=.082,gx=.016,x0=.13,sw=(.76-5*gx)/6;
+    c.strokeStyle=B(.18);c.lineWidth=1;
+    line(c,.06*w,.095*h,.96*w,.095*h);line(c,.06*w,.095*h,.06*w,.745*h);line(c,.96*w,.095*h,.96*w,.745*h);
+    line(c,.06*w,.745*h,.42*w,.745*h);line(c,.58*w,.745*h,.96*w,.745*h);
+    txt(c,'GATE',.5*w,.79*h,9,A(.8),'center');
+    c.strokeStyle=A(.10);c.setLineDash([3,6]);c.lineWidth=1;
+    M.forEach(m=>{c.beginPath();m.frames.forEach((f,i)=>{const x=f[0]*w,y=f[1]*h;i?c.lineTo(x,y):c.moveTo(x,y)});c.stroke();});
+    c.setLineDash([]);
+    const activeRS=RS.filter((_,i)=>el>.5+i*.8&&el<8).length;
+    let occ=0;st.slots=[];
+    for(let r=0;r<4;r++)for(let ci=0;ci<6;ci++){
+      const x=(x0+ci*(sw+gx))*w,y=rows[r]*h,swp=sw*w,rhp=rowH*h;
+      const rIdx=RS.findIndex(q=>q[0]===r&&q[1]===ci);
+      const rushOn=rIdx>-1&&el>.5+rIdx*.8&&el<8;
+      const o=PAT[r][ci]===1||rushOn;
+      st.slots.push({x,y,w:swp,h:rhp,r,ci,occ:o});
+      c.strokeStyle=B(.16);c.lineWidth=1;rr(c,x,y,swp,rhp,2);c.stroke();
+      txt(c,`${'ABCDEF'[ci]}${r+1}`,x+4,y+10,7.5,B(.35));
+      if(o){occ++;
+        c.fillStyle=B(.045);c.fillRect(x+3,y+3,swp-6,rhp-6);
+        c.strokeStyle=B(.45);rr(c,x+4,y+4,swp-8,rhp-8,2);c.stroke();
+        txt(c,`T-${200+r*37+ci*13}`,x+12,y+rhp*.5+3,8,B(.55));
+        const sec=Math.floor((s.t*60+(r*537+ci*97))%3600);
+        txt(c,`${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}`,x+swp-6,y+rhp-6,7.5,A(.75),'right');
+      }
+    }
+    c.fillStyle=A(.055+.02*Math.sin(s.t*2)+.06*rushK);
+    c.fillRect((x0+3*(sw+gx))*w,rows[3]*h,3*(sw+gx)*w+sw*w,rowH*h);
+    txt(c,rushK>.15?'ZONE D — SURGE':'ZONE D — CONGESTION',(x0+3*(sw+gx))*w+6,rows[3]*h-4,7.5,A(.7));
+    M.forEach((m,i)=>{const p=m.at(mt+i*7.3);
+      drawUnit(c,p.x*w,p.y*h,Math.max(6,.016*w),Math.atan2(p.dy,p.dx),s.t);});
+    const hs=hit();
+    if(hs){const bx=clamp(hs.x+14,6,w-164),by=clamp(hs.y-58,6,h-52);
+      c.fillStyle='rgba(10,14,12,.94)';c.strokeStyle=A(.7);c.lineWidth=1;rr(c,bx,by,154,46,3);c.fill();c.stroke();
+      const id=`${'ABCDEF'[hs.ci]}${hs.r+1}`;
+      txt(c,hs.occ?`SLOT ${id} — T-${200+hs.r*37+hs.ci*13}`:`SLOT ${id} — EMPTY`,bx+12,by+17,9,hs.occ?AMBER:B(.6));
+      const sec=Math.floor((s.t*60+(hs.r*537+hs.ci*97))%3600);
+      txt(c,hs.occ?`DWELL ${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')} · NEXT DOCK D3`:'LAST TURN 02:14 AGO',bx+12,by+33,8,B(.5));
+    }
+    txt(c,'YARD MIND — P-1 · LIVE MAP',16,24,10,B(.6));
+    txt(c,rushK>.1?`06:00 SURGE — +${activeRS} SLOTS · SPEED ×1.9`:`UNITS ${occ}/24 · UTIL ${Math.round(occ/24*100)}%`,w-16,24,10,AMBER,'right');
+    const ly=h*.88;
+    c.fillStyle=AMBER;c.fillRect(16,ly-6,7,7);txt(c,'TRACTOR + TRAILER',32,ly,8.5,B(.55));
+    c.strokeStyle=B(.5);rr(c,150,ly-7,12,9,1);c.stroke();txt(c,'DOCKED TRAILER',172,ly,8.5,B(.55));
+    txt(c,'HOVER SLOTS · ETA ±15 MIN',w-16,ly,8.5,A(.6),'right');
+    setRo('ro-yard',rushK>.1?'SURGE SIMULATION — SHIFT CHANGE, THEN RECOVERY':'LIVE MAP — HOVER A SLOT FOR DWELL DETAIL');
+  }
+  return st;
+}
+
+/* =================== WEIGHSYNC scene =================== */
+function sceneWeigh(){
+  const WEI=[{g:24860,t:7240},{g:31210,t:9180},{g:18305,t:6110}];
+  let t0=-1,nc=0,fraud=false;
+  const stepEls=$$('#weighsync .p-steps li');
+  let lastIdx=-2;
+  const st=makeScene('cv-weigh',draw);
+  st.next=()=>{t0=st.t-.02;};
+  st.fraud=()=>{fraud=true;t0=st.t-.02;};
+  function draw(c,w,h,s,dt,pat){
+    if(t0<0)t0=s.t;
+    let lt=s.t-t0;
+    if(lt>10.6){t0=s.t;lt=0;nc++;fraud=false;}
+    const G=fraud?{g:24860,t:1240}:WEI[nc%3];
+    const idx=lt<3.4?-1:lt<5.2?0:lt<6.4?1:lt<6.9?2:3;
+    if(idx!==lastIdx){lastIdx=idx;
+      stepEls.forEach((li,i)=>li.classList.toggle('on',i===idx));}
+    const ground=h*.8;
+    fillPat(c,w,h,s.progress*46,pat);
+    c.strokeStyle=B(.25);c.lineWidth=1;line(c,12,ground,w-12,ground);
+    for(let x=24;x<w-16;x+=44){c.strokeStyle=B(.14);line(c,x,ground,x,ground+4);}
+    const px0=w*.30,pw=w*.36,py=ground-8;
+    const onP=lt>3.2&&lt<6.4,comp=onP?3:0;
+    const ax=px0+pw*.5,srv={x:w*.78,y:h*.30};
+    const P=[[ax,py-10],[ax,h*.24],[srv.x-30,h*.24],[srv.x-4,srv.y+18]];
+    c.strokeStyle=A(.2);c.setLineDash([4,5]);c.lineWidth=1;
+    c.beginPath();P.forEach((p,i)=>{i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1])});c.stroke();c.setLineDash([]);
+    c.fillStyle=B(.05);c.strokeStyle=B(.65);c.lineWidth=1.2;
+    rr(c,px0,py+comp,pw,9,2);c.fill();c.stroke();
+    [.2,.8].forEach(f=>{const lx=px0+pw*f;
+      c.strokeStyle=B(.4);line(c,lx,py+9+comp,lx,ground);
+      const blink=onP&&Math.sin(s.t*12)>0;
+      c.fillStyle=blink?AMBER:B(.3);c.fillRect(lx-3,py+comp+3,6,5);});
+    for(let i=0;i<3;i++){const chx=px0-48+i*15;
+      c.strokeStyle=A(.3+.2*Math.sin(s.t*2-i));c.lineWidth=1.4;
+      line(c,chx,ground-6,chx+7,ground);line(c,chx+7,ground,chx,ground+6);}
+    for(let i=0;i<3;i++){const bx=srv.x,by=srv.y+i*23;
+      c.strokeStyle=B(.5);c.lineWidth=1;rr(c,bx,by,72,14,2);c.stroke();
+      const blink=lt>5.5&&lt<7.6&&!fraud&&Math.sin(s.t*10)>0;
+      c.fillStyle=blink?AMBER:B(.28);c.fillRect(bx+56,by+5,4,4);c.fillRect(bx+64,by+5,4,4);}
+    txt(c,'ERP / SAP',srv.x+36,srv.y+90,8.5,B(.5),'center');
+    const tw=w*.44,th=h*.13,targetX=px0+(pw-tw)/2;
+    const k1=clamp(lt/3,0,1),k2=clamp((lt-6.4)/2.2,0,1);
+    if(lt<8.6){
+      let x0=lerp(-tw-30,targetX,eo(k1));if(lt>6.4)x0=lerp(targetX,w+60,ei(k2));
+      const wob=(lt<3||lt>6.4)?Math.sin(s.t*9)*.8:0;
+      const bY=ground-th+wob+comp;
+      c.strokeStyle=B(.7);c.lineWidth=1.3;
+      rr(c,x0,bY,tw*.66,th,2);c.stroke();
+      c.strokeStyle=B(.18);
+      for(let i=1;i<6;i++)line(c,x0+tw*.66*i/6,bY+2,x0+tw*.66*i/6,bY+th-2);
+      rr(c,x0+tw*.68,bY+th*.25,tw*.32,th*.75,3);c.stroke();
+      c.strokeStyle=B(.3);rr(c,x0+tw*.72,bY+th*.35,tw*.22,th*.32,2);c.stroke();
+      c.fillStyle=AMBER;c.fillRect(x0+tw*.82,bY+th*.78,10,6);
+      if(Math.sin(s.t*6)>0){c.fillStyle=AMBER;c.beginPath();c.arc(x0+tw*.84,bY+th*.2,2.2,0,6.29);c.fill();}
+      const wr=th*.24;
+      [[x0+tw*.14],[x0+tw*.30],[x0+tw*.84]].forEach(([wx])=>{
+        c.strokeStyle=B(.6);c.beginPath();c.arc(wx,ground-wr+comp,wr,0,6.29);c.stroke();
+        c.fillStyle=B(.35);c.beginPath();c.arc(wx,ground-wr+comp,wr*.3,0,6.29);c.fill();});
+    }
+    let v=0,locked=false;
+    if(lt>3.4&&lt<5.2){const p=(lt-3.4)/1.8;v=G.g*(p*p*(3-2*p))+G.g*.05*(1-p)*Math.sin(s.t*24);}
+    else if(lt>=5.2&&lt<6.4){v=G.g;locked=true;}
+    const flag=fraud&&locked;
+    txt(c,`${fmtIn(Math.max(0,v))} KG`,ax,h*.13,19,flag?ERR:B(.8),'center',600);
+    txt(c,`TARE ${fmtIn(G.t)} · NET ${fmtIn(G.g-G.t)}`,ax,h*.185,9,B(.5),'center');
+    if(locked){
+      c.strokeStyle=flag?R(.7):A(.7);c.lineWidth=1;rr(c,ax-38,h*.045,76,20,2);c.stroke();
+      txt(c,flag?'FLAGGED — HOLD':'LOCKED',ax,h*.045+14,9,flag?ERR:AMBER,'center');
+    }
+    const anom=fraud?ss(3.2,4.6,lt)*.87:.12+.015*Math.sin(s.t*1.7);
+    const bad=fraud&&anom>.25;
+    c.strokeStyle=B(.3);rr(c,ax-34,h*.225,68,6,1);c.stroke();
+    c.fillStyle=bad?R(.85):A(.55);c.fillRect(ax-33,h*.226,67*Math.min(1,anom),4);
+    txt(c,bad?'ANOM 0.87 — FRAUD PATTERN':'ANOM 0.12 — OK',ax,h*.26,8,bad?ERR:B(.45),'center');
+    if(bad){c.strokeStyle=R(.4+.3*Math.sin(s.t*8));c.lineWidth=1;
+      bracket(c,ax-40,h*.218,9,1,1);bracket(c,ax+40,h*.218,9,-1,1);}
+    if(!fraud&&lt>5.5&&lt<7){
+      const tot=P.reduce((a,p,i)=>i?a+Math.hypot(p[0]-P[i-1][0],p[1]-P[i-1][1]):0,0);
+      for(let i=0;i<3;i++){
+        const pp=clamp((lt-5.5-i*.14)/1.1,0,1)*tot;let d=0,pt=P[0];
+        for(let j=1;j<P.length;j++){const seg=Math.hypot(P[j][0]-P[j-1][0],P[j][1]-P[j-1][1]);
+          if(d+seg>=pp){const k=(pp-d)/seg;pt=[lerp(P[j-1][0],P[j][0],k),lerp(P[j-1][1],P[j][1],k)];break}d+=seg;}
+        c.fillStyle=AMBER;c.fillRect(pt[0]-3,pt[1]-3,6,6);}
+    }
+    if(lt>6.9&&lt<9.8){
+      const rp=Math.min(1,(lt-6.9)/.6),fade=lt>9.4?1-(lt-9.4)/.4:1;
+      c.globalAlpha=fade;
+      const rx=srv.x-58,ry=srv.y+112,rw2=160,rh2=rp*78;
+      c.fillStyle='#0C110F';c.strokeStyle=flag?R(.5):A(.5);c.lineWidth=1;
+      rr(c,rx,ry,rw2,rh2,2);c.fill();c.stroke();
+      if(rp>.25){txt(c,'WB-02 · TICKET',rx+10,ry+15,8,B(.6));
+        txt(c,`GROSS ${fmtIn(G.g)} KG`,rx+10,ry+29,8,flag?ERR:AMBER);
+        txt(c,`TARE  ${fmtIn(G.t)} KG`,rx+10,ry+41,8,B(.6));
+        txt(c,`NET   ${fmtIn(G.g-G.t)} KG`,rx+10,ry+53,8,B(.6));}
+      if(rp>.85)txt(c,flag?'ANOMALY — SYNC BLOCKED':'SAP — SYNCED',rx+10,ry+68,8,flag?ERR:AMBER);
+      c.globalAlpha=1;
+    }
+    txt(c,'WEIGHSYNC — BRIDGE 02',16,24,10,B(.6));
+    txt(c,'MODE: UNATTENDED',w-16,24,10,AMBER,'right');
+    setRo('ro-weigh',lt<3.2?'APPROACH — VEHICLE ON LANE':
+      lt<5.2?'CAPTURING — LOAD CELL SETTLING':
+      lt<6.4?(flag?'FLAGGED — ANOM 0.87 · VEHICLE HELD':`LOCKED — GROSS ${fmtIn(G.g)} KG`):
+      lt<8.6?(flag?'SYNC BLOCKED — AUDIT QUEUE':'SYNCED TO ERP — TICKET ISSUED · RELEASED'):
+      'AWAITING NEXT VEHICLE');
+  }
+  return st;
+}
+
+/* =================== stack diagram interactions =================== */
+(function(){
+  const svg=$('#stackSvg');if(!svg)return;
+  const CAPS={
+    def:'THREE PRODUCTS, ONE EDGE CORE — EVERY DECISION ON-SITE, UNDER 200 MS. HOVER TO ISOLATE.',
+    core:'THE EDGE CORE — A JETSON AT THE SITE. NO CLOUD ROUND-TRIPS, NO QUEUE WHEN THE LINK DROPS.',
+    gate:'GATE IQ — READS THE VEHICLE, CHECKS THE PAPER, FIRES BARRIER AND ERP IN ONE DECISION.',
+    yard:'YARD MIND — EVERY TRAILER ON A LIVE MAP, SLOTS OPTIMISED AGAINST DOCK APPOINTMENTS.',
+    weigh:'WEIGHSYNC — CAPTURES AND PAIRS WEIGHT, SCORES FRAUD, SYNCES TO ERP IN 2 SECONDS.'};
+  const TARGET={gate:'gate-iq',yard:'yard-mind',weigh:'weighsync'};
+  function setFocus(id){
+    svg.classList.toggle('dim',!!id);
+    $$('.node',svg).forEach(n=>n.classList.toggle('hot',n.dataset.id===id));
+    $$('.flow',svg).forEach(g=>g.classList.toggle('hot',g.dataset.owner===id||(id==='core'&&g.dataset.owner==='in')));
+    $('#stackCap').textContent=CAPS[id]||CAPS.def;
+  }
+  $$('.node',svg).forEach(n=>{
+    if(!n.dataset.id)return;
+    n.addEventListener('mouseenter',()=>setFocus(n.dataset.id));
+    n.addEventListener('mouseleave',()=>setFocus(null));
+    const t=TARGET[n.dataset.id];
+    if(t)n.addEventListener('click',()=>{const el=document.getElementById(t);if(el)el.scrollIntoView({behavior:RM?'auto':'smooth'});});
+  });
+})();
+
+/* =================== scroll fx =================== */
+gsap.registerPlugin(ScrollTrigger);
+initPlan3D();
+const gateSt=sceneGate(),yardSt=sceneYard(),weighSt=sceneWeigh();
+const prodAnims={gate:gateSt,yard:yardSt,weigh:weighSt};
+
+if(!RM){
+  $$('[data-rv]').forEach(el=>{
+    gsap.from(el,{y:34,opacity:0,duration:1,ease:'power3.out',
+      delay:+(el.dataset.rvDelay||0),
+      scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+  });
+  gsap.from('.hero-vis',{opacity:0,duration:1.2,delay:.3,ease:'power2.out'});
+  gsap.to('.hero-copy',{yPercent:-12,opacity:.06,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom 25%',scrub:.5}});
+  gsap.to('.hero-vis',{yPercent:12,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.5}});
+  $$('.p-big').forEach(bg=>{
+    gsap.fromTo(bg,{yPercent:-12},{yPercent:26,ease:'none',
+      scrollTrigger:{trigger:bg.closest('.product'),start:'top bottom',end:'bottom top',scrub:1}});
+  });
+  gsap.to('#rollLine',{scaleX:1,ease:'none',
+    scrollTrigger:{trigger:'#rollout',start:'top 75%',end:'bottom 65%',scrub:1}});
+}
+ $$('[data-count]').forEach(el=>{
+  const end=parseFloat(el.dataset.count);
+  const f=v=>(el.dataset.prefix||'')+(el.dataset.fmt==='in'?fmtIn(v):v.toFixed(+(el.dataset.dec||0)))+(el.dataset.suffix||'');
+  if(RM){el.textContent=f(end);return;}
+  const o={v:0};
+  ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>{
+    gsap.to(o,{v:end,duration:1.7,ease:'power2.out',onUpdate:()=>el.textContent=f(o.v)});}});
+});
+ $$('.product').forEach(sec=>{
+  const an=prodAnims[sec.dataset.anim];
+  if(an)ScrollTrigger.create({trigger:sec,start:'top bottom',end:'bottom top',
+    onUpdate:s=>{an.progress=s.progress;}});
+});
+
+/* =================== sim controls =================== */
+ $('#g-send').addEventListener('click',()=>{gateSt.send();toast('Vehicle dispatched — fresh plate, fresh decision.');});
+ $('#g-night').addEventListener('click',e=>{
+  const on=gateSt.toggleNight();
+  e.currentTarget.classList.toggle('on',on);
+  toast(on?'Night mode — IR on, capture rate holds.':'Day mode restored.');
+});
+ $('#y-rush').addEventListener('click',()=>{yardSt.rush();toast('06:00 rush injected — watch the surge, then the recovery.');});
+ $('#w-next').addEventListener('click',()=>weighSt.next());
+ $('#w-fraud').addEventListener('click',()=>{weighSt.fraud();toast('Fraud pattern armed — a bad tare is coming to bridge 02.','err');});
+
+/* =================== nav =================== */
+window.addEventListener('scroll',()=>{
+  $('#nav').classList.toggle('scrolled',scrollY>36);
+  const d=document.documentElement;
+  $('#navProg').style.transform=`scaleX(${clamp(scrollY/Math.max(1,d.scrollHeight-innerHeight),0,1)})`;
+},{passive:true});
+ $('#toTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:RM?'auto':'smooth'}));
+ $$('[data-goto]').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.goto);
+  if(el)el.scrollIntoView({behavior:RM?'auto':'smooth'});
+}));
+
+/* =================== accordions =================== */
+ $$('.acc-head').forEach(btn=>btn.addEventListener('click',()=>{
+  const open=btn.closest('.acc').classList.toggle('open');
+  btn.setAttribute('aria-expanded',open);
+}));
+
+/* =================== demo modal =================== */
+const modal=$('#demoModal');
+function openDemo(prod){
+  if(prod)$('#dmProduct').value=prod;
+  modal.classList.add('on');document.body.classList.add('lock');
+  gsap.fromTo('.modal-bg',{opacity:0},{opacity:1,duration:.35});
+  gsap.fromTo('.modal-panel',{y:36,opacity:0},{y:0,opacity:1,duration:.5,ease:'power3.out'});
+  setTimeout(()=>$('#dmName').focus(),380);
+}
+function closeModal(){
+  gsap.to('.modal-panel',{y:24,opacity:0,duration:.3,ease:'power2.in'});
+  gsap.to('.modal-bg',{opacity:0,duration:.3,onComplete:()=>{
+    modal.classList.remove('on');document.body.classList.remove('lock');}});
+}
+ $$('[data-demo]').forEach(b=>b.addEventListener('click',()=>openDemo(b.dataset.demo)));
+ $$('[data-close]',modal).forEach(el=>el.addEventListener('click',closeModal));
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('on'))closeModal();});
+
+/* =================== forms =================== */
+const EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function setErr(input,msg){
+  const f=input.closest('.field');f.classList.toggle('err',!!msg);
+  f.querySelector('.f-err').textContent=msg||'';
+}
+ $$('.f-in').forEach(i=>i.addEventListener('input',()=>setErr(i,'')));
+ $('#demoForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=$('#dmName'),em=$('#dmEmail');let ok=true;
+  if(n.value.trim().length<2){setErr(n,'Please tell us your name.');ok=false;}
+  if(!EMAIL.test(em.value.trim())){setErr(em,'That email doesn\u2019t look right.');ok=false;}
+  if(!ok){toast('Please fix the highlighted fields.','err');return;}
+  const btn=$('#dmSubmit'),orig=btn.innerHTML,prod=$('#dmProduct').selectedOptions[0].textContent;
+  btn.disabled=true;btn.textContent='REQUESTING…';
+  setTimeout(()=>{
+    btn.disabled=false;btn.innerHTML=orig;
+    closeModal();e.target.reset();
+    toast(`Demo request received — ${prod}. Timeslots within one business day.`);
+  },1100);
+});
+
+document.fonts.ready.then(()=>ScrollTrigger.refresh());
+lucide.createIcons();
+</script>
+</body>
+</html>

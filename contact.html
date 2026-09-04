@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vyantra AI Labs — Contact us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg0:#0A0E0C; --bg1:#0E1411; --bg2:#131A16; --bg3:#0C110F;
+  --line:rgba(237,231,218,.10); --line2:rgba(237,231,218,.22);
+  --bone:#EDE7DA; --body:#B4BBAE; --faint:#828D82;
+  --amber:#E3A24A; --amber2:#F0B968; --amber-soft:rgba(227,162,74,.12);
+  --err:#E2604F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:dark;scroll-padding-top:96px}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html,body{overflow-x:clip}
+body{background:var(--bg0);color:var(--body);font:400 16px/1.7 "Space Grotesk",sans-serif;-webkit-font-smoothing:antialiased}
+::selection{background:var(--amber);color:#131008}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg0)}
+::-webkit-scrollbar-thumb{background:rgba(237,231,218,.16);border-radius:8px}
+:focus-visible{outline:1.5px solid var(--amber);outline-offset:3px}
+.mono{font-family:"JetBrains Mono",monospace}
+.container{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+.sq{display:inline-block;width:7px;height:7px;background:var(--amber);margin-right:12px;flex:none}
+.skip{position:fixed;left:-999px;top:10px;z-index:500;background:var(--amber);color:#131008;padding:10px 16px;font:600 12px "Space Grotesk"}
+.skip:focus{left:10px}
+.grain{position:fixed;inset:0;z-index:250;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,border .4s}
+.nav.scrolled{background:rgba(10,14,12,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);height:76px;display:flex;align-items:center;gap:34px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-txt{font:600 15px "Space Grotesk";letter-spacing:.15em;color:var(--bone)}
+.brand-txt em{display:block;font:500 8.5px "JetBrains Mono";letter-spacing:.36em;color:var(--amber);font-style:normal;margin-top:3px}
+.nav-crumb{font:500 10px "JetBrains Mono";letter-spacing:.24em;color:var(--faint);margin-top:2px}
+.nav-cta{margin-left:auto;padding:11px 18px;font-size:11px}
+#navProg{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--amber);transform:scaleX(0);transform-origin:left}
+@media(max-width:600px){.nav-crumb{display:none}}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(237,231,218,.28);color:var(--bone);font:500 12px/1 "Space Grotesk";letter-spacing:.16em;text-transform:uppercase;cursor:pointer;background:transparent;transition:.35s cubic-bezier(.22,1,.3,1);text-decoration:none}
+.btn:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
+.btn svg{width:14px;height:14px}
+.btn-solid{background:var(--amber);border-color:var(--amber);color:#131008}
+.btn-solid:hover{background:var(--amber2);color:#131008}
+
+/* ---------- sections ---------- */
+.sec{padding-block:clamp(84px,11vh,150px)}
+.sec.alt{background:var(--bg1);border-block:1px solid var(--line)}
+.sec-head{margin-bottom:clamp(38px,6vh,64px)}
+.sec-label{font:500 11px "JetBrains Mono";letter-spacing:.24em;color:var(--amber);display:flex;align-items:center;margin-bottom:20px}
+.sec-title{font:600 clamp(2rem,4.4vw,3.3rem)/1.12 "Fraunces",serif;color:var(--bone);letter-spacing:-.01em;max-width:18ch}
+.sec-title em{font-style:italic;font-weight:400;color:var(--amber)}
+.sec-sub{margin-top:18px;max-width:640px;font-size:16.5px}
+section[id]{scroll-margin-top:80px}
+
+/* ---------- hero — text left / client map right ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(120px,15vh,170px) 0 clamp(60px,8vh,100px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(40px,5.5vw,84px);align-items:center;width:100%}
+.hero-copy{position:relative;z-index:2}
+.hero-kicker{font:500 11px "JetBrains Mono";letter-spacing:.24em;color:var(--amber);display:flex;align-items:center;margin-bottom:26px}
+.hero-title{font:600 clamp(2.7rem,6vw,4.7rem)/.98 "Fraunces",serif;color:var(--bone);letter-spacing:-.02em;margin-bottom:24px}
+.hero-title em{font-style:italic;font-weight:400;color:var(--amber)}
+.hero-sub{max-width:520px;font-size:16.5px;line-height:1.75}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
+.hero-meta{display:flex;gap:14px 30px;flex-wrap:wrap;margin-top:38px;font:500 10px "JetBrains Mono";letter-spacing:.2em;color:var(--faint)}
+.hero-vis{position:relative}
+#client-map{position:relative;background:var(--bg3)}
+#client-map canvas{display:block;width:100%;height:100%}
+.hero-vis-cap{margin-top:13px;font:500 9.5px "JetBrains Mono";letter-spacing:.16em;color:var(--faint);line-height:1.9}
+@media(max-width:980px){
+  .hero{min-height:0;padding-top:clamp(110px,15vh,150px)}
+  .hero-grid{grid-template-columns:1fr;gap:52px}
+}
+
+/* ---------- instrument panel ---------- */
+.pv{border:1px solid var(--line);background:var(--bg2)}
+.pv-head,.pv-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 16px;font:500 9.5px "JetBrains Mono";letter-spacing:.14em;color:var(--faint)}
+.pv-head{border-bottom:1px solid var(--line)}
+.pv-foot{border-top:1px solid var(--line)}
+.live{display:flex;gap:8px;align-items:center;color:var(--amber)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.2}}
+
+/* ---------- map legend ---------- */
+.map-legend{display:flex;gap:14px 28px;flex-wrap:wrap;margin-top:14px;font:500 9.5px "JetBrains Mono";letter-spacing:.14em;color:var(--faint);align-items:center}
+.map-legend i{display:inline-block;vertical-align:middle;margin-right:8px}
+.lg-dot{width:7px;height:7px;border-radius:50%;background:var(--amber)}
+.lg-ring{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--amber)}
+.lg-line{width:22px;height:0;border-top:1px dashed rgba(227,162,74,.6)}
+
+/* ---------- contact ---------- */
+.c-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(50px,7vw,100px);align-items:start}
+.ci{display:flex;gap:18px;padding:20px 0;border-top:1px solid var(--line);align-items:center}
+.ci-ic{width:44px;height:44px;border:1px solid var(--line);display:grid;place-items:center;color:var(--amber);flex:none}
+.ci-ic svg{width:17px;height:17px}
+.ci b{display:block;font:500 9.5px "JetBrains Mono";letter-spacing:.18em;color:var(--faint);margin-bottom:5px}
+.ci a,.ci span.val{font:500 15px "Space Grotesk";color:var(--bone);text-decoration:none;transition:color .3s}
+.ci a:hover{color:var(--amber)}
+.socials{display:flex;gap:12px;margin-top:28px}
+.socials a{width:42px;height:42px;border:1px solid var(--line);display:grid;place-items:center;color:var(--body);transition:.3s}
+.socials a:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
+.socials svg{width:16px;height:16px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.field{margin-bottom:28px}
+.f-label{display:block;font:500 10px "JetBrains Mono";letter-spacing:.18em;color:var(--body);margin-bottom:10px}
+.f-in{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line2);color:var(--bone);font:400 15.5px "Space Grotesk";padding:10px 2px 13px;transition:border .3s;border-radius:0}
+.f-in:focus{outline:none;border-color:var(--amber)}
+textarea.f-in{resize:vertical;min-height:120px;line-height:1.6}
+select.f-in{appearance:none;cursor:pointer}
+select option{background:var(--bg1);color:var(--bone)}
+.f-sel{position:relative}
+.f-sel svg{position:absolute;right:4px;top:14px;width:15px;height:15px;color:var(--faint);pointer-events:none}
+.field.err .f-in{border-color:var(--err)}
+.f-err{display:block;font:400 10px "JetBrains Mono";color:var(--err);margin-top:7px;min-height:13px}
+.form-note{margin-top:24px;font:400 9.5px "JetBrains Mono";letter-spacing:.14em;color:var(--faint)}
+@media(max-width:880px){.c-grid{grid-template-columns:1fr}.f-row{grid-template-columns:1fr;gap:0}}
+
+/* ---------- footer ---------- */
+.footer{border-top:1px solid var(--line);padding:56px 0 30px;background:var(--bg0)}
+.f-word{font:700 clamp(3.6rem,13.5vw,10.5rem)/.85 "Space Grotesk";letter-spacing:-.02em;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(237,231,218,.13);margin:30px 0 50px;user-select:none;transition:-webkit-text-stroke-color .6s}
+.f-word:hover{-webkit-text-stroke-color:rgba(227,162,74,.4)}
+.f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:44px}
+.f-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.f-grid p{font-size:14px;max-width:36ch}
+.f-h{font:500 10px "JetBrains Mono";letter-spacing:.22em;color:var(--amber);margin-bottom:18px}
+.f-link{display:block;color:var(--body);text-decoration:none;font-size:14px;padding:5px 0;transition:color .3s}
+.f-link:hover{color:var(--amber)}
+.f-link.cur{color:var(--amber)}
+.f-link.cur::before{content:'';display:inline-block;width:6px;height:6px;background:var(--amber);margin-right:10px}
+.f-c{font-size:14px;padding:5px 0;color:var(--body)}
+.f-c a{color:var(--bone);text-decoration:none}
+.f-c a:hover{color:var(--amber)}
+.f-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:52px;padding-top:24px;font:500 9.5px "JetBrains Mono";letter-spacing:.14em;color:var(--faint)}
+@media(max-width:1000px){.f-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.f-grid{grid-template-columns:1fr}}
+
+/* ---------- toasts ---------- */
+.toasts{position:fixed;right:22px;bottom:22px;z-index:400;display:flex;flex-direction:column;gap:10px}
+.toast{display:flex;gap:13px;align-items:center;background:var(--bg1);border:1px solid var(--line);border-left:2px solid var(--amber);padding:15px 19px;font:400 13px "Space Grotesk";color:var(--bone);max-width:340px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.toast svg{width:16px;height:16px;color:var(--amber);flex:none}
+@media(prefers-reduced-motion:reduce){.live-dot{animation:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ NAV — single CTA ============ -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Vyantra AI Labs — contact">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M4 6 L16 28 L28 6" stroke="#EDE7DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 6 L16 18 L22 6" stroke="#E3A24A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="6" r="2.5" fill="#E3A24A"/>
+      </svg>
+      <span class="brand-txt">VYANTRA<em>AI LABS</em></span>
+    </a>
+    <span class="nav-crumb">/ CONTACT</span>
+    <button class="btn btn-solid nav-cta" data-goto="write">Send a message</button>
+  </div>
+  <span id="navProg"></span>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO — TEXT LEFT / CLIENT MAP RIGHT ============ -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+
+    <!-- LEFT · all text content -->
+    <div class="hero-copy">
+      <p class="hero-kicker" data-rv><span class="sq"></span>VYANTRA AI LABS · CONTACT — 2025</p>
+      <h1 class="hero-title" data-rv data-rv-delay=".08">Tell us what needs<br><em>measuring.</em></h1>
+      <p class="hero-sub" data-rv data-rv-delay=".16">Clients in eleven countries, one office in Pune — that's the whole footprint. Demos, deployments, partnerships, or a hard problem you want a second pair of eyes on. One form, fast humans, and a map that shows exactly where our work runs.</p>
+      <div class="hero-cta" data-rv data-rv-delay=".24">
+        <button class="btn btn-solid" data-goto="write">Send a message <i data-lucide="arrow-right"></i></button>
+        <a class="btn" href="#/products">Explore the products</a>
+      </div>
+      <div class="hero-meta">
+        <span>CLIENTS — 11 COUNTRIES</span><span>OFFICE — PUNE, IN</span><span>300+ SITES LIVE</span><span>REPLY &lt; 1 BUSINESS DAY</span>
+      </div>
+    </div>
+
+    <!-- RIGHT · live client map -->
+    <div class="hero-vis">
+      <div class="pv">
+        <div class="pv-head"><span>VYANTRA / CLIENT MAP</span><span class="live"><i class="live-dot"></i>LIVE</span></div>
+        <div id="client-map" aria-label="Live world map — client locations in 11 countries, with the single office in Pune, India marked as headquarters"></div>
+        <div class="pv-foot"><span id="ro-map">—</span><span>11 COUNTRIES · 1 OFFICE</span></div>
+      </div>
+      <div class="map-legend">
+        <span><i class="lg-ring"></i>OFFICE — PUNE, IN</span>
+        <span><i class="lg-dot"></i>CLIENT COUNTRY</span>
+        <span><i class="lg-line"></i>SUPPORTED FROM PUNE</span>
+      </div>
+      <p class="hero-vis-cap">FIG. 00 — LIVE CLIENT MAP · EVERY MARKER IS A COUNTRY WITH VYANTRA CLIENTS · ALL CORRIDORS RUN FROM THE ONE OFFICE IN PUNE. HOVER A MARKER — CLICK FOR DETAIL.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ WRITE TO US ============ -->
+<section class="sec alt" id="write">
+  <div class="container">
+    <div class="sec-head" data-rv>
+      <p class="sec-label"><span class="sq"></span>WRITE TO US</p>
+      <h2 class="sec-title">One form, <em>fast</em> humans.</h2>
+      <p class="sec-sub">It lands in Pune — one inbox, one office, no routing roulette. A human reads it first, and replies within one business day.</p>
+    </div>
+    <div class="c-grid">
+      <div data-rv>
+        <div class="ci"><span class="ci-ic"><i data-lucide="mail"></i></span><div><b>GENERAL</b><a href="mailto:hello@vyantra.ai">hello@vyantra.ai</a></div></div>
+        <div class="ci"><span class="ci-ic"><i data-lucide="headset"></i></span><div><b>SUPPORT</b><a href="mailto:support@vyantra.ai">support@vyantra.ai</a></div></div>
+        <div class="ci"><span class="ci-ic"><i data-lucide="phone"></i></span><div><b>PHONE</b><a href="tel:+912047112200">+91 20 4711 2200</a></div></div>
+        <div class="ci"><span class="ci-ic"><i data-lucide="map-pin"></i></span><div><b>OFFICE</b><span class="val">5th Floor, Amar Business Zone, Baner Road, Pune 411 045, Maharashtra, India</span></div></div>
+        <div class="ci"><span class="ci-ic"><i data-lucide="clock"></i></span><div><b>HOURS</b><span class="val">Mon–Sat · 09:00–19:00 IST</span></div></div>
+        <div class="ci"><span class="ci-ic"><i data-lucide="zap"></i></span><div><b>RESPONSE</b><span class="val">Under one business day — every message</span></div></div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/vyantra-ai-labs" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+          <a href="https://github.com/vyantra-ai-labs" target="_blank" rel="noopener" aria-label="GitHub"><i data-lucide="github"></i></a>
+          <a href="https://x.com/vyantraailabs" target="_blank" rel="noopener" aria-label="X / Twitter"><i data-lucide="twitter"></i></a>
+        </div>
+      </div>
+      <form id="contactForm" novalidate data-rv data-rv-delay=".1">
+        <div class="f-row">
+          <div class="field"><label class="f-label" for="cfName">FULL NAME *</label><input class="f-in" id="cfName" name="name" type="text" autocomplete="name"><span class="f-err"></span></div>
+          <div class="field"><label class="f-label" for="cfEmail">WORK EMAIL *</label><input class="f-in" id="cfEmail" name="email" type="email" autocomplete="email"><span class="f-err"></span></div>
+        </div>
+        <div class="f-row">
+          <div class="field"><label class="f-label" for="cfCompany">COMPANY</label><input class="f-in" id="cfCompany" name="company" type="text" autocomplete="organization"><span class="f-err"></span></div>
+          <div class="field"><label class="f-label" for="cfTopic">TOPIC</label>
+            <div class="f-sel">
+              <select class="f-in" id="cfTopic" name="topic">
+                <option value="general">General enquiry</option>
+                <option value="gateiq">Gate IQ demo</option>
+                <option value="yardmind">Yard Mind demo</option>
+                <option value="weighsync">WeighSync demo</option>
+                <option value="partnership">Partnership</option>
+                <option value="press">Press</option>
+              </select>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <span class="f-err"></span>
+          </div>
+        </div>
+        <div class="field"><label class="f-label" for="cfMsg">MESSAGE *</label><textarea class="f-in" id="cfMsg" name="message" placeholder="What are you trying to measure, move or automate?"></textarea><span class="f-err"></span></div>
+        <button class="btn btn-solid" id="cfSubmit" type="submit">Send message <i data-lucide="send"></i></button>
+        <p class="form-note">WE REPLY WITHIN ONE BUSINESS DAY — NO NEWSLETTERS, EVER.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER — with site pages ============ -->
+<footer class="footer">
+  <!-- <div class="container"><div class="f-word" aria-hidden="true">VYANTRA</div></div> -->
+  <div class="container f-grid">
+    <div>
+      <a class="f-brand brand" href="#top">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M4 6 L16 28 L28 6" stroke="#EDE7DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 6 L16 18 L22 6" stroke="#E3A24A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="6" r="2.5" fill="#E3A24A"/>
+        </svg>
+        <span class="brand-txt">VYANTRA<em>AI LABS</em></span>
+      </a>
+      <p>Applied AI for logistics infrastructure. Built in one office in Pune — running at client sites across eleven countries.</p>
+    </div>
+     <div>
+      <p class="f-h">PAGES</p>
+      <a class="f-link" href="#/">Home</a>
+      <a class="f-link" href="index.html">About us</a>
+      <a class="f-link cur" href="product.html">Products</a>
+      <a class="f-link" href="career.html">Careers</a>
+      <a class="f-link" href="contact.html">Contact us</a>
+    </div>
+    <div>
+      <p class="f-h">PRODUCTS</p>
+      <a class="f-link" href="product.html">Gate IQ</a>
+      <a class="f-link" href="product.html">Yard Mind</a>
+      <a class="f-link" href="product.html">WeighSync</a>
+    </div>
+    <div>
+      <p class="f-h">CONTACT</p>
+      <p class="f-c"><a href="mailto:hello@vyantra.ai">hello@vyantra.ai</a></p>
+      <p class="f-c"><a href="tel:+912047112200">+91 20 4711 2200</a></p>
+      <p class="f-c">5th Floor, Amar Business Zone,<br>Baner Road, Pune 411 045, India</p>
+    </div>
+  </div>
+  <div class="container f-bottom">
+    <span>© 2025 VYANTRA AI LABS PVT. LTD.</span>
+    <span>MEASURED IN PUNE</span>
+    <button id="toTop">BACK TO TOP <i data-lucide="arrow-up"></i></button>
+  </div>
+</footer>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+/* =================== helpers =================== */
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const AMBER='#E3A24A';
+const A=a=>`rgba(227,162,74,${a})`, B=a=>`rgba(237,231,218,${a})`;
+function line(c,x1,y1,x2,y2){c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function rr(c,x,y,w,h,r){r=Math.min(r,w/2,h/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+function txt(c,s,x,y,size,col,align='left',wgt=500){c.font=`${wgt} ${size}px "JetBrains Mono",monospace`;c.fillStyle=col;c.textAlign=align;c.fillText(s,x,y);}
+function bracket(c,x,y,l,sx,sy){c.beginPath();c.moveTo(x+sx*l,y);c.lineTo(x,y);c.lineTo(x,y+sy*l);c.stroke();}
+const TILE=(()=>{const t=document.createElement('canvas');t.width=t.height=24;const c=t.getContext('2d');c.fillStyle='rgba(237,231,218,.06)';c.beginPath();c.arc(12,12,1.2,0,6.29);c.fill();return t})();
+function fillPat(c,w,h,off,pat){c.save();c.translate(-(off%24),-((off*.6)%24));c.fillStyle=pat;c.fillRect(0,0,w+24,h+24);c.restore();}
+const roCache={};
+function setRo(id,s){if(roCache[id]===s)return;roCache[id]=s;const el=document.getElementById(id);if(el)el.textContent=s;}
+
+/* =================== toasts =================== */
+function toast(msg,type='ok'){
+  const t=document.createElement('div');t.className='toast';
+  t.innerHTML=`<i data-lucide="${type==='ok'?'check':'alert-circle'}"></i><span>${msg}</span>`;
+  $('#toasts').appendChild(t);lucide.createIcons();
+  gsap.fromTo(t,{x:70,opacity:0},{x:0,opacity:1,duration:.5,ease:'power3.out'});
+  setTimeout(()=>gsap.to(t,{x:70,opacity:0,duration:.4,onComplete:()=>t.remove()}),4200);
+}
+
+/* =================== central animation loop =================== */
+const animators=[];
+function registerAnimator(a){a.visible=false;animators.push(a);
+  if(a.el)new IntersectionObserver(es=>{a.visible=es[0].isIntersecting},{rootMargin:'80px'}).observe(a.el);}
+let _lt=performance.now();
+(function raf(now){
+  const dt=Math.min(.05,(now-_lt)/1000);_lt=now;const t=now/1000;
+  for(const a of animators){if(a.visible&&a.tick)a.tick(t,dt);}
+  requestAnimationFrame(raf);
+})(performance.now());
+
+/* =================== data — 10 client countries + India (office) = 11 =================== */
+const CLIENTS=[
+  {k:'US',c:'United States',lon:-98,lat:39,sites:'45+',since:2020,vert:'3PL & RAIL CORRIDORS',lab:[10,3]},
+  {k:'CA',c:'Canada',lon:-105,lat:57,sites:'10+',since:2022,vert:'AGRI BULK TERMINALS',lab:[10,2]},
+  {k:'BR',c:'Brazil',lon:-51,lat:-12,sites:'10+',since:2023,vert:'MINERALS EXPORT',lab:[8,11]},
+  {k:'UK',c:'United Kingdom',lon:-1.2,lat:52.9,sites:'25+',since:2021,vert:'CONTAINER PORTS',nolab:true},
+  {k:'NL',c:'Netherlands',lon:5.2,lat:52.8,sites:'20+',since:2022,vert:'GREENHOUSE AGRI',nolab:true},
+  {k:'DE',c:'Germany',lon:11.2,lat:50.2,sites:'30+',since:2021,vert:'AUTOMOTIVE PLANTS',nolab:true},
+  {k:'AE',c:'UAE',lon:55.2,lat:24.3,sites:'18+',since:2020,vert:'FREE-ZONE LOGISTICS',lab:[10,3]},
+  {k:'SG',c:'Singapore',lon:103.8,lat:1.4,sites:'15+',since:2022,vert:'SEMICONDUCTOR FABS',lab:[11,3]},
+  {k:'JP',c:'Japan',lon:138,lat:36,sites:'12+',since:2023,vert:'AUTO COMPONENTS',lab:[10,-4]},
+  {k:'AU',c:'Australia',lon:134,lat:-25,sites:'12+',since:2022,vert:'MINING OPERATIONS',lab:[10,3]},
+];
+const OFFICE={k:'IN',c:'India',city:'PUNE',lon:73.86,lat:18.52,sites:'140+',since:2016,vert:'CEMENT · STEEL · PORTS'};
+const LAND=[
+[[-166,68],[-158,71],[-140,70],[-128,71],[-118,73],[-102,73],[-92,72],[-84,70],[-76,68],[-70,62],[-62,58],[-55,52],[-60,47],[-66,44],[-70,42],[-74,39],[-76,35],[-80,31],[-81,25],[-86,29],[-90,29],[-95,28],[-97,22],[-94,18],[-89,15],[-83,9],[-79,8],[-83,8],[-88,13],[-95,16],[-102,18],[-107,23],[-111,28],[-115,32],[-119,35],[-123,39],[-124,45],[-127,49],[-133,55],[-139,58],[-148,60],[-156,57],[-161,59],[-166,63]],
+[[-52,60],[-43,60],[-30,68],[-22,70],[-25,77],[-33,82],[-46,82],[-56,76],[-58,70]],
+[[-78,7],[-72,11],[-64,10],[-60,8],[-52,5],[-50,0],[-44,-3],[-37,-5],[-35,-8],[-37,-13],[-40,-20],[-46,-24],[-51,-30],[-56,-34],[-62,-39],[-65,-44],[-67,-50],[-71,-54],[-74,-50],[-73,-44],[-72,-37],[-71,-30],[-70,-23],[-70,-18],[-76,-14],[-79,-7],[-81,-3],[-80,1]],
+[[-17,14],[-17,21],[-12,28],[-6,33],[2,36],[10,37],[19,32],[25,32],[31,31],[34,27],[36,20],[38,17],[43,11],[48,11],[51,12],[46,3],[40,-4],[37,-12],[35,-19],[33,-26],[28,-33],[22,-34],[17,-30],[12,-18],[13,-11],[12,-4],[9,1],[5,4],[-1,5],[-6,4],[-11,6],[-15,10]],
+[[-9,37],[-9,42],[-2,43],[-4,48],[-1,49],[3,51],[7,53],[8,57],[6,58],[5,61],[10,64],[16,68],[22,70],[28,71],[34,67],[44,67],[52,68],[60,69],[70,72],[80,73],[92,74],[104,77],[112,76],[120,73],[132,72],[140,72],[150,70],[160,70],[170,67],[178,66],[172,62],[166,60],[162,56],[158,52],[155,50],[150,54],[143,54],[140,48],[136,44],[133,43],[129,35],[126,34],[125,38],[122,40],[120,38],[122,36],[119,34],[121,31],[120,27],[115,22],[110,20],[108,16],[107,10],[105,9],[102,11],[100,13],[99,10],[101,5],[103,1],[100,4],[98,9],[97,15],[94,18],[91,22],[86,20],[83,17],[80,13],[78,8],[76,9],[73,15],[70,20],[68,23],[66,25],[62,25],[57,26],[56,26],[58,23],[59,21],[55,22],[52,17],[48,14],[43,12],[39,16],[37,21],[35,27],[34,29],[34,31],[35,33],[36,36],[30,36],[27,37],[26,39],[23,38],[21,40],[19,42],[13,45],[14,42],[16,40],[18,40],[16,38],[15,39],[12,42],[10,44],[8,44],[4,43],[0,42],[-2,37],[-5,36]],
+[[-5,50],[-3,53],[-4,55],[-3,58],[-1,57],[0,53],[1,51]],
+[[-10,52],[-6,54],[-8,55],[-10,53]],
+[[130,31],[132,33],[135,34],[137,35],[140,36],[141,39],[141,41],[139,40],[136,37],[133,35],[131,34]],
+[[140,42],[143,42],[145,43],[142,45],[140,43]],
+[[12,38],[15,38],[15,40],[12,39]],
+[[80,6],[82,7],[81,9],[80,7]],
+[[95,5],[98,3],[102,-1],[105,-5],[103,-6],[100,-2],[97,2]],
+[[105,-6],[112,-7],[115,-8],[110,-8],[105,-7]],
+[[109,1],[113,4],[117,6],[119,1],[116,-3],[113,-3],[109,-1]],
+[[119,0],[122,1],[121,-4],[119,-2]],
+[[131,-1],[138,-3],[146,-6],[150,-10],[147,-10],[140,-8],[134,-4]],
+[[120,16],[122,14],[121,18]],
+[[122,7],[125,7],[126,9],[122,9]],
+[[44,-16],[47,-15],[50,-16],[49,-22],[47,-25],[45,-25],[44,-20]],
+[[114,-22],[113,-25],[115,-34],[118,-35],[124,-33],[129,-32],[132,-32],[137,-35],[140,-38],[146,-39],[150,-37],[153,-32],[153,-27],[151,-24],[148,-20],[146,-18],[143,-14],[142,-11],[139,-14],[137,-16],[135,-12],[132,-11],[129,-14],[126,-14],[122,-17],[118,-20]],
+[[145,-41],[148,-42],[147,-44],[145,-42]],
+[[173,-35],[176,-38],[178,-38],[174,-41],[172,-40]],
+[[172,-40],[174,-41],[171,-44],[167,-46],[166,-45],[170,-42]],
+];
+
+/* =================== HERO · live client map =================== */
+function initClientMap(){
+  const holder=$('#client-map');if(!holder)return;
+  const cv=document.createElement('canvas');holder.appendChild(cv);
+  const c=cv.getContext('2d');
+  const pat=c.createPattern(TILE,'repeat');
+  let W=0,H=0,mapW=0,mapH=0,ox=0,oy=0,lastH=-1;
+  let dots=[],layer=null,marks=[],officeM=null,pings=[];
+  let reveal=RM?1:0,started=RM,mouse=null,hoverI=-1,lastRo='';
+  const dprF=()=>Math.min(devicePixelRatio,2);
+
+  function build(){
+    if(mapW<10)return;
+    /* land → offscreen → dot sample */
+    const dpr=dprF();
+    const off=document.createElement('canvas');
+    off.width=Math.round(mapW);off.height=Math.round(mapH);
+    const o=off.getContext('2d');o.fillStyle='#fff';o.beginPath();
+    const pj=(lon,lat)=>[(lon+180)/360*mapW,(75-lat)/135*mapH];
+    LAND.forEach(poly=>{poly.forEach((p,i)=>{const[x,y]=pj(p[0],p[1]);i?o.lineTo(x,y):o.moveTo(x,y)});o.closePath();});
+    o.fill();
+    const img=o.getImageData(0,0,off.width,off.height);
+    dots=[];
+    const step=Math.max(4,mapW/95);
+    for(let y=step/2;y<mapH;y+=step)for(let x=step/2;x<mapW;x+=step){
+      const xi=Math.min(off.width-1,x|0),yi=Math.min(off.height-1,y|0);
+      if(img.data[(yi*off.width+xi)*4+3]>120)dots.push({x,y});
+    }
+    layer=document.createElement('canvas');
+    layer.width=Math.round(mapW*dpr);layer.height=Math.round(mapH*dpr);
+    const d=layer.getContext('2d');d.scale(dpr,dpr);
+    dots.forEach(p=>{d.fillStyle='rgba(237,231,218,.32)';d.beginPath();d.arc(p.x,p.y,1.35,0,6.29);d.fill();});
+    /* marker positions */
+    marks=CLIENTS.map(cl=>{const[x,y]=pj(cl.lon,cl.lat);return{...cl,x:ox+x,y:oy+y};});
+    const[px,py]=pj(OFFICE.lon,OFFICE.lat);
+    officeM={...OFFICE,x:ox+px,y:oy+py};
+  }
+  function resize(){
+    const r=holder.getBoundingClientRect();if(r.width<2)return;
+    W=r.width;
+    mapW=Math.max(220,W-28);
+    mapH=mapW*135/360;
+    const newH=Math.round(mapH+118);
+    H=newH;
+    if(Math.abs(newH-lastH)>1){lastH=newH;holder.style.height=newH+'px';}
+    const dpr=dprF();
+    cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    cv.style.width='100%';cv.style.height='100%';
+    c.setTransform(dpr,0,0,dpr,0,0);
+    ox=(W-mapW)/2;oy=48;
+    build();
+  }
+  resize();
+  new ResizeObserver(resize).observe(holder);
+  new IntersectionObserver(es=>{if(es[0].isIntersecting)started=true;},{threshold:.15}).observe(holder);
+
+  const qp=(a,c2,b,t)=>({x:(1-t)*(1-t)*a.x+2*(1-t)*t*c2.x+t*t*b.x,y:(1-t)*(1-t)*a.y+2*(1-t)*t*c2.y+t*t*b.y});
+  const ctrl=(a,b)=>{const dist=Math.hypot(b.x-a.x,b.y-a.y);return{x:(a.x+b.x)/2,y:(a.y+b.y)/2-dist*.22};};
+
+  function hit(mx,my){
+    if(Math.hypot(officeM.x-mx,officeM.y-my)<22)return{office:true,i:-1};
+    for(let i=0;i<marks.length;i++){
+      if(Math.hypot(marks[i].x-mx,marks[i].y-my)<17)return{office:false,i};
+    }
+    return null;
+  }
+  cv.addEventListener('mousemove',e=>{
+    const r=cv.getBoundingClientRect();
+    mouse={x:e.clientX-r.left,y:e.clientY-r.top};
+  });
+  cv.addEventListener('mouseleave',()=>{mouse=null;});
+  cv.addEventListener('click',()=>{
+    if(!mouse||reveal<.6)return;
+    const h=hit(mouse.x,mouse.y);if(!h)return;
+    if(h.office){
+      pings.push({x:officeM.x,y:officeM.y,t:0});
+      toast('Pune — our one and only office. Everyone else is at a client site.');
+    }else{
+      const m=marks[h.i];
+      pings.push({x:m.x,y:m.y,t:0});
+      toast(`${m.c} — ${m.sites} client sites, since ${m.since}.`);
+    }
+  });
+
+  const DEF='PUNE — 1 OFFICE · CLIENTS IN 11 COUNTRIES · 300+ SITES LIVE';
+  registerAnimator({el:holder,tick:(t,dt)=>{
+    if(W<10||!layer)return;
+    if(started&&reveal<1)reveal=Math.min(1,reveal+dt/1.6);
+    c.clearRect(0,0,W,H);
+    fillPat(c,W,H,t*5,pat);
+    /* registration ticks */
+    c.strokeStyle=B(.3);c.lineWidth=1;const tk=10,m=12;
+    bracket(c,m,m,tk,1,1);bracket(c,W-m,m,tk,-1,1);
+    bracket(c,m,H-m,tk,1,-1);bracket(c,W-m,H-m,tk,-1,-1);
+    /* HUD top */
+    txt(c,'CLIENT MAP — 11 COUNTRIES',14,26,9.5,AMBER,'left',600);
+    txt(c,'OFFICE — PUNE · IN',W-14,26,9,B(.5),'right');
+    /* map frame + graticule */
+    c.strokeStyle=B(.18);c.lineWidth=1;
+    line(c,ox,oy,ox+mapW,oy);line(c,ox,oy+mapH,ox+mapW,oy+mapH);
+    line(c,ox,oy,ox,oy+mapH);line(c,ox+mapW,oy,ox+mapW,oy+mapH);
+    for(let lon=-150;lon<=180;lon+=30){
+      const x=ox+(lon+180)/360*mapW;
+      c.strokeStyle=B(.06);line(c,x,oy,x,oy+mapH);
+    }
+    for(let lat=-60;lat<=75;lat+=15){
+      const y=oy+(75-lat)/135*mapH;
+      c.strokeStyle=lat===0?B(.13):B(.06);line(c,ox,y,ox+mapW,y);
+    }
+    /* land dots — sweep-in reveal */
+    if(reveal<1){
+      dots.forEach(p=>{
+        const th=p.x/mapW*.72+(p.y/mapH)*.28;
+        const a=clamp((reveal*1.35-th)*3.2,0,1)*.32;
+        if(a>0){c.fillStyle=`rgba(237,231,218,${a})`;c.beginPath();c.arc(ox+p.x,oy+p.y,1.35,0,6.29);c.fill();}
+      });
+    }else c.drawImage(layer,ox,oy,mapW,mapH);
+    /* corridors from Pune */
+    const arcP=clamp((reveal-.5)/.5,0,1);
+    marks.forEach((mk,i)=>{
+      const ct=ctrl(officeM,mk);
+      const pts=[];const n=Math.max(2,Math.floor(37*arcP));
+      for(let k=0;k<=n;k++)pts.push(qp(officeM,ct,mk,k/37));
+      c.strokeStyle=A(.22);c.lineWidth=1;c.beginPath();
+      pts.forEach((p,k)=>{k?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y)});
+      c.stroke();
+      /* traveling packets */
+      if(arcP>=1&&!RM){
+        for(let k=0;k<2;k++){
+          const tt=(t*.11+i*.073+k*.5)%1;
+          const p=qp(officeM,ct,mk,tt);
+          c.fillStyle=A(k?.4:.9);
+          c.beginPath();c.arc(p.x,p.y,k?2:2.6,0,6.29);c.fill();
+        }
+      }
+    });
+    /* client markers */
+    marks.forEach((mk,i)=>{
+      const pop=RM?1:clamp((reveal-.65-i*.03)*5,0,1);
+      if(pop<=0)return;
+      const hot=hoverI===i;
+      if(!RM){
+        const pr=(t*.5+i*.093)%1;
+        c.strokeStyle=A((1-pr)*.45*pop);c.lineWidth=1;
+        c.beginPath();c.arc(mk.x,mk.y,4+pr*11,0,6.29);c.stroke();
+      }
+      c.fillStyle=B(.6);c.beginPath();c.arc(mk.x,mk.y,hot?3.4:2.6,0,6.29);c.fill();
+      c.fillStyle=AMBER;c.beginPath();c.arc(mk.x,mk.y,hot?2.4:1.8,0,6.29);c.fill();
+    });
+    /* persistent country labels (skip the tight EU cluster) */
+    if(mapW>360){
+      marks.forEach(mk=>{if(mk.nolab)return;
+        txt(c,mk.k,mk.x+mk.lab[0],mk.y+mk.lab[1],8.5,B(.6));});
+      txt(c,'UK·NL·DE',ox+(5.2+180)/360*mapW,oy+(75-56.4)/135*mapH,8,B(.6),'center');
+    }
+    /* the one office — Pune */
+    const opop=RM?1:clamp((reveal-.55)*5,0,1);
+    if(opop>0){
+      const hot=hoverI===-2;
+      c.fillStyle=AMBER;c.beginPath();c.arc(officeM.x,officeM.y,4.4*opop,0,6.29);c.fill();
+      c.strokeStyle=AMBER;c.lineWidth=1.2;
+      c.beginPath();c.arc(officeM.x,officeM.y,9*opop,0,6.29);c.stroke();
+      /* crosshair ticks */
+      c.strokeStyle=A(.8);c.lineWidth=1;
+      [[0,-1],[0,1],[-1,0],[1,0]].forEach(([sx,sy])=>{
+        line(c,officeM.x+sx*11,officeM.y+sy*11,officeM.x+sx*16,officeM.y+sy*16);});
+      if(!RM){
+        const pr=(t*.6)%1;
+        c.strokeStyle=A((1-pr)*.5);c.lineWidth=1;
+        c.beginPath();c.arc(officeM.x,officeM.y,9+pr*14,0,6.29);c.stroke();
+      }
+      if(mapW>300)txt(c,'PUNE — OFFICE',officeM.x+12,officeM.y+13,8.5,hot?AMBER:A(.9));
+      else txt(c,'PUNE',officeM.x+11,officeM.y-8,8,AMBER);
+    }
+    /* pings */
+    pings=pings.filter(p=>p.t<1);
+    pings.forEach(p=>{p.t+=dt/1.1;
+      c.strokeStyle=A((1-p.t)*.8);c.lineWidth=1.4;
+      c.beginPath();c.arc(p.x,p.y,p.t*40,0,6.29);c.stroke();
+      c.strokeStyle=A((1-p.t)*.4);
+      c.beginPath();c.arc(p.x,p.y,p.t*24,0,6.29);c.stroke();});
+    /* hover state + tooltip */
+    hoverI=-1;
+    let hov=null;
+    if(mouse&&reveal>.6){
+      const h=hit(mouse.x,mouse.y);
+      if(h){hov=h;hoverI=h.office?-2:h.i;}
+    }
+    cv.style.cursor=hov?'pointer':'default';
+    if(hov){
+      const m=hov.office?officeM:marks[hov.i];
+      const l1=hov.office?`INDIA — ${officeM.sites} CLIENT SITES`:`${m.c.toUpperCase()} — ${m.sites} CLIENT SITES`;
+      const l2=hov.office?'PUNE — THE ONLY OFFICE · EST. 2016':`SINCE ${m.since} · ${m.vert}`;
+      c.font='500 9.5px "JetBrains Mono"';
+      const bw=Math.max(c.measureText(l1).width,c.measureText(l2).width)+24;
+      let bx=clamp(m.x-bw/2,6,W-bw-6),by=m.y-58;if(by<8)by=m.y+16;
+      c.fillStyle='rgba(10,14,12,.92)';c.strokeStyle=A(.7);c.lineWidth=1;
+      rr(c,bx,by,bw,44,3);c.fill();c.stroke();
+      txt(c,l1,bx+12,by+17,9.5,AMBER);
+      txt(c,l2,bx+12,by+33,8.5,B(.55));
+    }
+    /* bottom strip */
+    const by2=oy+mapH+34;
+    txt(c,'300+ SITES LIVE',14,by2,9,AMBER,'left',600);
+    txt(c,'CORRIDORS — SUPPORTED FROM PUNE',W-14,by2,8.5,B(.45),'right');
+    if(W>470)txt(c,'HOVER A MARKER · CLICK FOR DETAIL',W/2,by2,8,B(.3),'center');
+    /* readout */
+    const ro=hov?
+      (hov.office?'PUNE — THE ONLY OFFICE · ALL CORRIDORS ORIGIN HERE':
+        `${m1(marks[hov.i]).c.toUpperCase()} — ${marks[hov.i].sites} SITES · SINCE ${marks[hov.i].since}`):
+      DEF;
+    if(ro!==lastRo){lastRo=ro;setRo('ro-map',ro);}
+  }});
+  function m1(x){return x}
+}
+
+/* =================== scroll fx =================== */
+gsap.registerPlugin(ScrollTrigger);
+initClientMap();
+if(!RM){
+  $$('[data-rv]').forEach(el=>{
+    gsap.from(el,{y:34,opacity:0,duration:1,ease:'power3.out',
+      delay:+(el.dataset.rvDelay||0),
+      scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+  });
+  gsap.from('.hero-vis',{opacity:0,duration:1.2,delay:.3,ease:'power2.out'});
+  gsap.to('.hero-copy',{yPercent:-12,opacity:.06,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom 25%',scrub:.5}});
+  gsap.to('.hero-vis',{yPercent:10,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.5}});
+}
+
+/* =================== nav / goto =================== */
+window.addEventListener('scroll',()=>{
+  $('#nav').classList.toggle('scrolled',scrollY>36);
+  const d=document.documentElement;
+  $('#navProg').style.transform=`scaleX(${clamp(scrollY/Math.max(1,d.scrollHeight-innerHeight),0,1)})`;
+},{passive:true});
+ $('#toTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:RM?'auto':'smooth'}));
+ $$('[data-goto]').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.goto);
+  if(el)el.scrollIntoView({behavior:RM?'auto':'smooth'});
+}));
+
+/* =================== contact form =================== */
+const EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function setErr(input,msg){
+  const f=input.closest('.field');f.classList.toggle('err',!!msg);
+  f.querySelector('.f-err').textContent=msg||'';
+}
+ $$('.f-in').forEach(i=>i.addEventListener('input',()=>setErr(i,'')));
+ $('#contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=$('#cfName'),em=$('#cfEmail'),m=$('#cfMsg');let ok=true;
+  if(n.value.trim().length<2){setErr(n,'Please tell us your name.');ok=false;}
+  if(!EMAIL.test(em.value.trim())){setErr(em,'That email doesn\u2019t look right.');ok=false;}
+  if(m.value.trim().length<10){setErr(m,'Give us at least a sentence to work with.');ok=false;}
+  if(!ok){toast('Please fix the highlighted fields.','err');return;}
+  const btn=$('#cfSubmit'),orig=btn.innerHTML;
+  btn.disabled=true;btn.textContent='SENDING…';
+  setTimeout(()=>{
+    btn.disabled=false;btn.innerHTML=orig;
+    toast(`Message sent — straight to the Pune desk. We\u2019ll reply to ${em.value.trim()} within one business day.`);
+    e.target.reset();
+  },1100);
+});
+
+document.fonts.ready.then(()=>ScrollTrigger.refresh());
+lucide.createIcons();
+</script>
+</body>
+</html>
