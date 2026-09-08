@@ -9,32 +9,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg0:#0A0E0C; --bg1:#0E1411; --bg2:#131A16; --bg3:#0C110F;
-  --line:rgba(237,231,218,.10); --line2:rgba(237,231,218,.22);
-  --bone:#EDE7DA; --body:#B4BBAE; --faint:#828D82;
-  --amber:#E3A24A; --amber2:#F0B968; --amber-soft:rgba(227,162,74,.12);
-  --err:#E2604F;
+  --bg0:#F5F2EA;            /* paper */
+  --bg1:#EDE9DD;            /* alt band */
+  --bg2:#FCFAF4;            /* raised panel */
+  --bg3:#E8E3D6;            /* inset well */
+  --line:rgba(31,38,33,.12);
+  --line2:rgba(31,38,33,.26);
+  --bone:#1F2621;            /* heading ink */
+  --body:#4E5751;            /* paragraph ink */
+  --faint:#7C8478;
+  --amber:#BC7A16;           /* deep amber — reads on paper */
+  --amber2:#D8963A;
+  --amber-soft:rgba(188,122,22,.10);
+  --err:#C2452D;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{color-scheme:dark;scroll-padding-top:96px}
+html{color-scheme:light;scroll-padding-top:96px}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 html,body{overflow-x:clip}
 body{background:var(--bg0);color:var(--body);font:400 16px/1.7 "Space Grotesk",sans-serif;-webkit-font-smoothing:antialiased}
-::selection{background:var(--amber);color:#131008}
+::selection{background:var(--amber);color:#FCFAF4}
 ::-webkit-scrollbar{width:10px}
 ::-webkit-scrollbar-track{background:var(--bg0)}
-::-webkit-scrollbar-thumb{background:rgba(237,231,218,.16);border-radius:8px}
+::-webkit-scrollbar-thumb{background:rgba(31,38,33,.22);border-radius:8px}
 :focus-visible{outline:1.5px solid var(--amber);outline-offset:3px}
 .mono{font-family:"JetBrains Mono",monospace}
 .container{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
 .sq{display:inline-block;width:7px;height:7px;background:var(--amber);margin-right:12px;flex:none}
-.skip{position:fixed;left:-999px;top:10px;z-index:500;background:var(--amber);color:#131008;padding:10px 16px;font:600 12px "Space Grotesk"}
+.skip{position:fixed;left:-999px;top:10px;z-index:500;background:var(--amber);color:#FCFAF4;padding:10px 16px;font:600 12px "Space Grotesk"}
 .skip:focus{left:10px}
-.grain{position:fixed;inset:0;z-index:250;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.grain{position:fixed;inset:0;z-index:250;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'%3E%3C/svg%3E")}
 
 /* ---------- nav ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,border .4s}
-.nav.scrolled{background:rgba(10,14,12,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav.scrolled{background:rgba(245,242,234,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-in{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);height:76px;display:flex;align-items:center;gap:34px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand-txt{font:600 15px "Space Grotesk";letter-spacing:.15em;color:var(--bone)}
@@ -45,11 +53,11 @@ body{background:var(--bg0);color:var(--body);font:400 16px/1.7 "Space Grotesk",s
 @media(max-width:600px){.nav-crumb{display:none}}
 
 /* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(237,231,218,.28);color:var(--bone);font:500 12px/1 "Space Grotesk";letter-spacing:.16em;text-transform:uppercase;cursor:pointer;background:transparent;transition:.35s cubic-bezier(.22,1,.3,1);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(31,38,33,.35);color:var(--bone);font:500 12px/1 "Space Grotesk";letter-spacing:.16em;text-transform:uppercase;cursor:pointer;background:transparent;transition:.35s cubic-bezier(.22,1,.3,1);text-decoration:none}
 .btn:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
 .btn svg{width:14px;height:14px}
-.btn-solid{background:var(--amber);border-color:var(--amber);color:#131008}
-.btn-solid:hover{background:var(--amber2);color:#131008}
+.btn-solid{background:var(--amber);border-color:var(--amber);color:#FCFAF4}
+.btn-solid:hover{background:var(--amber2);border-color:var(--amber2);color:#FCFAF4}
 
 /* ---------- sections ---------- */
 .sec{padding-block:clamp(84px,11vh,150px)}
@@ -61,27 +69,26 @@ body{background:var(--bg0);color:var(--body);font:400 16px/1.7 "Space Grotesk",s
 .sec-sub{margin-top:18px;max-width:640px;font-size:16.5px}
 section[id]{scroll-margin-top:80px}
 
-/* ---------- hero — text left / client map right ---------- */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(120px,15vh,170px) 0 clamp(60px,8vh,100px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(40px,5.5vw,84px);align-items:center;width:100%}
+/* ---------- hero — text on top, client map full-width below ---------- */
+.hero{position:relative;display:flex;align-items:center;overflow:hidden;padding:clamp(120px,15vh,170px) 0 clamp(60px,8vh,100px)}
+.hero-grid{display:flex;flex-direction:column;gap:clamp(48px,7vh,84px);width:100%}
 .hero-copy{position:relative;z-index:2}
 .hero-kicker{font:500 11px "JetBrains Mono";letter-spacing:.24em;color:var(--amber);display:flex;align-items:center;margin-bottom:26px}
 .hero-title{font:600 clamp(2.7rem,6vw,4.7rem)/.98 "Fraunces",serif;color:var(--bone);letter-spacing:-.02em;margin-bottom:24px}
 .hero-title em{font-style:italic;font-weight:400;color:var(--amber)}
-.hero-sub{max-width:520px;font-size:16.5px;line-height:1.75}
+.hero-sub{max-width:900px;font-size:16.5px;line-height:1.75}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
 .hero-meta{display:flex;gap:14px 30px;flex-wrap:wrap;margin-top:38px;font:500 10px "JetBrains Mono";letter-spacing:.2em;color:var(--faint)}
-.hero-vis{position:relative}
+.hero-vis{position:relative;width:100%}
 #client-map{position:relative;background:var(--bg3)}
 #client-map canvas{display:block;width:100%;height:100%}
-.hero-vis-cap{margin-top:13px;font:500 9.5px "JetBrains Mono";letter-spacing:.16em;color:var(--faint);line-height:1.9}
+.hero-vis-cap{margin-top:13px;font:500 9.5px "JetBrains Mono";letter-spacing:.16em;color:var(--faint);line-height:1.9;max-width:760px}
 @media(max-width:980px){
-  .hero{min-height:0;padding-top:clamp(110px,15vh,150px)}
-  .hero-grid{grid-template-columns:1fr;gap:52px}
+  .hero{padding-top:clamp(110px,15vh,150px)}
 }
 
 /* ---------- instrument panel ---------- */
-.pv{border:1px solid var(--line);background:var(--bg2)}
+.pv{border:1px solid var(--line2);background:var(--bg2)}
 .pv-head,.pv-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 16px;font:500 9.5px "JetBrains Mono";letter-spacing:.14em;color:var(--faint)}
 .pv-head{border-bottom:1px solid var(--line)}
 .pv-foot{border-top:1px solid var(--line)}
@@ -94,18 +101,18 @@ section[id]{scroll-margin-top:80px}
 .map-legend i{display:inline-block;vertical-align:middle;margin-right:8px}
 .lg-dot{width:7px;height:7px;border-radius:50%;background:var(--amber)}
 .lg-ring{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--amber)}
-.lg-line{width:22px;height:0;border-top:1px dashed rgba(227,162,74,.6)}
+.lg-line{width:22px;height:0;border-top:1px dashed rgba(188,122,22,.55)}
 
 /* ---------- contact ---------- */
 .c-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(50px,7vw,100px);align-items:start}
 .ci{display:flex;gap:18px;padding:20px 0;border-top:1px solid var(--line);align-items:center}
-.ci-ic{width:44px;height:44px;border:1px solid var(--line);display:grid;place-items:center;color:var(--amber);flex:none}
+.ci-ic{width:44px;height:44px;border:1px solid var(--line2);display:grid;place-items:center;color:var(--amber);flex:none;background:var(--bg2)}
 .ci-ic svg{width:17px;height:17px}
 .ci b{display:block;font:500 9.5px "JetBrains Mono";letter-spacing:.18em;color:var(--faint);margin-bottom:5px}
 .ci a,.ci span.val{font:500 15px "Space Grotesk";color:var(--bone);text-decoration:none;transition:color .3s}
 .ci a:hover{color:var(--amber)}
 .socials{display:flex;gap:12px;margin-top:28px}
-.socials a{width:42px;height:42px;border:1px solid var(--line);display:grid;place-items:center;color:var(--body);transition:.3s}
+.socials a{width:42px;height:42px;border:1px solid var(--line2);background:var(--bg2);display:grid;place-items:center;color:var(--body);transition:.3s}
 .socials a:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
 .socials svg{width:16px;height:16px}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:30px}
@@ -125,8 +132,8 @@ select option{background:var(--bg1);color:var(--bone)}
 
 /* ---------- footer ---------- */
 .footer{border-top:1px solid var(--line);padding:56px 0 30px;background:var(--bg0)}
-.f-word{font:700 clamp(3.6rem,13.5vw,10.5rem)/.85 "Space Grotesk";letter-spacing:-.02em;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(237,231,218,.13);margin:30px 0 50px;user-select:none;transition:-webkit-text-stroke-color .6s}
-.f-word:hover{-webkit-text-stroke-color:rgba(227,162,74,.4)}
+.f-word{font:700 clamp(3.6rem,13.5vw,10.5rem)/.85 "Space Grotesk";letter-spacing:-.02em;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(31,38,33,.18);margin:30px 0 50px;user-select:none;transition:-webkit-text-stroke-color .6s}
+.f-word:hover{-webkit-text-stroke-color:rgba(188,122,22,.5)}
 .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:44px}
 .f-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
 .f-grid p{font-size:14px;max-width:36ch}
@@ -144,7 +151,7 @@ select option{background:var(--bg1);color:var(--bone)}
 
 /* ---------- toasts ---------- */
 .toasts{position:fixed;right:22px;bottom:22px;z-index:400;display:flex;flex-direction:column;gap:10px}
-.toast{display:flex;gap:13px;align-items:center;background:var(--bg1);border:1px solid var(--line);border-left:2px solid var(--amber);padding:15px 19px;font:400 13px "Space Grotesk";color:var(--bone);max-width:340px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.toast{display:flex;gap:13px;align-items:center;background:var(--bg2);border:1px solid var(--line2);border-left:2px solid var(--amber);padding:15px 19px;font:400 13px "Space Grotesk";color:var(--bone);max-width:340px;box-shadow:0 14px 40px rgba(31,38,33,.18)}
 .toast svg{width:16px;height:16px;color:var(--amber);flex:none}
 @media(prefers-reduced-motion:reduce){.live-dot{animation:none}}
 </style>
@@ -158,9 +165,9 @@ select option{background:var(--bg1);color:var(--bone)}
   <div class="nav-in">
     <a class="brand" href="#top" aria-label="vyntra AI Labs — contact">
       <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="M4 6 L16 28 L28 6" stroke="#EDE7DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M10 6 L16 18 L22 6" stroke="#E3A24A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="16" cy="6" r="2.5" fill="#E3A24A"/>
+        <path d="M4 6 L16 28 L28 6" stroke="#1F2621" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 6 L16 18 L22 6" stroke="#C08217" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="6" r="2.5" fill="#C08217"/>
       </svg>
       <span class="brand-txt">vyntra<em>AI LABS</em></span>
     </a>
@@ -172,25 +179,25 @@ select option{background:var(--bg1);color:var(--bone)}
 
 <main id="main">
 
-<!-- ============ HERO — TEXT LEFT / CLIENT MAP RIGHT ============ -->
+<!-- ============ HERO — TEXT ON TOP / CLIENT MAP FULL-WIDTH BELOW ============ -->
 <section class="hero" id="top">
   <div class="container hero-grid">
 
-    <!-- LEFT · all text content -->
+    <!-- TOP · all text content -->
     <div class="hero-copy">
       <p class="hero-kicker" data-rv><span class="sq"></span>vyntra AI LABS · CONTACT — 2025</p>
       <h1 class="hero-title" data-rv data-rv-delay=".08">Tell us what needs<br><em>measuring.</em></h1>
       <p class="hero-sub" data-rv data-rv-delay=".16">Clients in eleven countries, one office in Pune — that's the whole footprint. Demos, deployments, partnerships, or a hard problem you want a second pair of eyes on. One form, fast humans, and a map that shows exactly where our work runs.</p>
       <div class="hero-cta" data-rv data-rv-delay=".24">
         <button class="btn btn-solid" data-goto="write">Send a message <i data-lucide="arrow-right"></i></button>
-        <a class="btn" href="#/products">Explore the products</a>
+        <a class="btn" href="product.html">Explore the products</a>
       </div>
       <div class="hero-meta">
         <span>CLIENTS — 11 COUNTRIES</span><span>OFFICE — PUNE, IN</span><span>300+ SITES LIVE</span><span>REPLY &lt; 1 BUSINESS DAY</span>
       </div>
     </div>
 
-    <!-- RIGHT · live client map -->
+    <!-- BELOW · live client map, full width -->
     <div class="hero-vis">
       <div class="pv">
         <div class="pv-head"><span>vyntra / CLIENT MAP</span><span class="live"><i class="live-dot"></i>LIVE</span></div>
@@ -202,7 +209,7 @@ select option{background:var(--bg1);color:var(--bone)}
         <span><i class="lg-dot"></i>CLIENT COUNTRY</span>
         <span><i class="lg-line"></i>SUPPORTED FROM PUNE</span>
       </div>
-      <p class="hero-vis-cap">FIG. 00 — LIVE CLIENT MAP · EVERY MARKER IS A COUNTRY WITH vyntra CLIENTS · ALL CORRIDORS RUN FROM THE ONE OFFICE IN PUNE. HOVER A MARKER — CLICK FOR DETAIL.</p>
+      <p class="hero-vis-cap">FIG. 00 — LIVE CLIENT MAP · EVERY MARKER IS A COUNTRY WITH VYNTRA CLIENTS · ALL CORRIDORS RUN FROM THE ONE OFFICE IN PUNE. HOVER A MARKER — CLICK FOR DETAIL.</p>
     </div>
 
   </div>
@@ -218,10 +225,10 @@ select option{background:var(--bg1);color:var(--bone)}
     </div>
     <div class="c-grid">
       <div data-rv>
-        <div class="ci"><span class="ci-ic"><i data-lucide="mail"></i></span><div><b>GENERAL</b><a href="mailto:hello@vyntra.ai">hello@vyntra.ai</a></div></div>
-        <div class="ci"><span class="ci-ic"><i data-lucide="headset"></i></span><div><b>SUPPORT</b><a href="mailto:support@vyntra.ai">support@vyntra.ai</a></div></div>
-        <div class="ci"><span class="ci-ic"><i data-lucide="phone"></i></span><div><b>PHONE</b><a href="tel:+912047112200">+91 20 4711 2200</a></div></div>
-        <div class="ci"><span class="ci-ic"><i data-lucide="map-pin"></i></span><div><b>OFFICE</b><span class="val">5th Floor, Amar Business Zone, Baner Road, Pune 411 045, Maharashtra, India</span></div></div>
+        <div class="ci"><span class="ci-ic"><i data-lucide="mail"></i></span><div><b>GENERAL</b><a href="mailto:info@vyntraailabs.ai">info@vyntraailabs.ai</a></div></div>
+        <div class="ci"><span class="ci-ic"><i data-lucide="user-cog"></i></span><div><b>CEO — SHIVRAJ</b><a href="mailto:shivraj@vyntraailabs.ai">shivraj@vyntraailabs.ai</a></div></div>
+        <div class="ci"><span class="ci-ic"><i data-lucide="phone"></i></span><div><b>PHONE</b><a href="tel:+912047312885">+91 20 4731 2885</a></div></div>
+        <div class="ci"><span class="ci-ic"><i data-lucide="map-pin"></i></span><div><b>OFFICE</b><span class="val">Xion Mall, Office 321, Near Taj Vivanta Hotel, Phase 1, Hinjewadi, Pune 411 057, Maharashtra, India</span></div></div>
         <div class="ci"><span class="ci-ic"><i data-lucide="clock"></i></span><div><b>HOURS</b><span class="val">Mon–Sat · 09:00–19:00 IST</span></div></div>
         <div class="ci"><span class="ci-ic"><i data-lucide="zap"></i></span><div><b>RESPONSE</b><span class="val">Under one business day — every message</span></div></div>
         <div class="socials">
@@ -269,21 +276,21 @@ select option{background:var(--bg1);color:var(--bone)}
     <div>
       <a class="f-brand brand" href="#top">
         <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <path d="M4 6 L16 28 L28 6" stroke="#EDE7DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M10 6 L16 18 L22 6" stroke="#E3A24A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="16" cy="6" r="2.5" fill="#E3A24A"/>
+          <path d="M4 6 L16 28 L28 6" stroke="#1F2621" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 6 L16 18 L22 6" stroke="#C08217" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="6" r="2.5" fill="#C08217"/>
         </svg>
         <span class="brand-txt">vyntra<em>AI LABS</em></span>
       </a>
       <p>Applied AI for logistics infrastructure. Built in one office in Pune — running at client sites across eleven countries.</p>
     </div>
-     <div>
+    <div>
       <p class="f-h">PAGES</p>
-      <a class="f-link" href="#/">Home</a>
-      <a class="f-link" href="index.html">About us</a>
-      <a class="f-link cur" href="product.html">Products</a>
+      <a class="f-link" href="Home.html">Home</a>
+      <a class="f-link" href="Home.html#about">About us</a>
+      <a class="f-link" href="product.html">Products</a>
       <a class="f-link" href="career.html">Careers</a>
-      <a class="f-link" href="contact.html">Contact us</a>
+      <a class="f-link cur" href="#top">Contact us</a>
     </div>
     <div>
       <p class="f-h">PRODUCTS</p>
@@ -293,13 +300,15 @@ select option{background:var(--bg1);color:var(--bone)}
     </div>
     <div>
       <p class="f-h">CONTACT</p>
-      <p class="f-c"><a href="mailto:hello@vyntra.ai">info@vyntraailabs.ai shivraj@vyntraailabs.ai hr@vyntraailabs.ai</a></p>
-      <p class="f-c"><a href="tel:+91 2047312885">+91 2047312885  |  +91 2047312885  |  +91 2047312885</a></p>
-      <p class="f-c">Xion mall, office 321 Near Taj Vivanta hotel, Phase 1, Hinjewadi, Pune, Maharashtra, India - 411057</p>
+      <p class="f-c"><a href="mailto:info@vyntraailabs.ai">info@vyntraailabs.ai</a></p>
+      <p class="f-c"><a href="mailto:shivraj@vyntraailabs.ai">shivraj@vyntraailabs.ai</a></p>
+      <p class="f-c"><a href="mailto:hr@vyntraailabs.ai">hr@vyntraailabs.ai</a></p>
+      <p class="f-c"><a href="tel:+912047312885">+91 20 4731 2885</a></p>
+      <p class="f-c">Xion Mall, Office 321, Near Taj Vivanta Hotel,<br>Phase 1, Hinjewadi, Pune 411 057, India</p>
     </div>
   </div>
   <div class="container f-bottom">
-    <span>© 2025 vyntra AI LABS PVT. LTD.</span>
+    <span>© 2025 VYNTRA AI LABS PVT. LTD.</span>
     <span>MEASURED IN PUNE</span>
     <button id="toTop">BACK TO TOP <i data-lucide="arrow-up"></i></button>
   </div>
@@ -316,13 +325,13 @@ const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelecto
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const lerp=(a,b,t)=>a+(b-a)*t;
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const AMBER='#E3A24A';
-const A=a=>`rgba(227,162,74,${a})`, B=a=>`rgba(237,231,218,${a})`;
+const AMBER='#C08217';
+const A=a=>`rgba(192,130,23,${a})`, B=a=>`rgba(31,38,33,${a})`;
 function line(c,x1,y1,x2,y2){c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
 function rr(c,x,y,w,h,r){r=Math.min(r,w/2,h/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
 function txt(c,s,x,y,size,col,align='left',wgt=500){c.font=`${wgt} ${size}px "JetBrains Mono",monospace`;c.fillStyle=col;c.textAlign=align;c.fillText(s,x,y);}
 function bracket(c,x,y,l,sx,sy){c.beginPath();c.moveTo(x+sx*l,y);c.lineTo(x,y);c.lineTo(x,y+sy*l);c.stroke();}
-const TILE=(()=>{const t=document.createElement('canvas');t.width=t.height=24;const c=t.getContext('2d');c.fillStyle='rgba(237,231,218,.06)';c.beginPath();c.arc(12,12,1.2,0,6.29);c.fill();return t})();
+const TILE=(()=>{const t=document.createElement('canvas');t.width=t.height=24;const c=t.getContext('2d');c.fillStyle='rgba(31,38,33,.05)';c.beginPath();c.arc(12,12,1.2,0,6.29);c.fill();return t})();
 function fillPat(c,w,h,off,pat){c.save();c.translate(-(off%24),-((off*.6)%24));c.fillStyle=pat;c.fillRect(0,0,w+24,h+24);c.restore();}
 const roCache={};
 function setRo(id,s){if(roCache[id]===s)return;roCache[id]=s;const el=document.getElementById(id);if(el)el.textContent=s;}
@@ -418,7 +427,7 @@ function initClientMap(){
     layer=document.createElement('canvas');
     layer.width=Math.round(mapW*dpr);layer.height=Math.round(mapH*dpr);
     const d=layer.getContext('2d');d.scale(dpr,dpr);
-    dots.forEach(p=>{d.fillStyle='rgba(237,231,218,.32)';d.beginPath();d.arc(p.x,p.y,1.35,0,6.29);d.fill();});
+    dots.forEach(p=>{d.fillStyle='rgba(31,38,33,.32)';d.beginPath();d.arc(p.x,p.y,1.35,0,6.29);d.fill();});
     /* marker positions */
     marks=CLIENTS.map(cl=>{const[x,y]=pj(cl.lon,cl.lat);return{...cl,x:ox+x,y:oy+y};});
     const[px,py]=pj(OFFICE.lon,OFFICE.lat);
@@ -478,14 +487,14 @@ function initClientMap(){
     c.clearRect(0,0,W,H);
     fillPat(c,W,H,t*5,pat);
     /* registration ticks */
-    c.strokeStyle=B(.3);c.lineWidth=1;const tk=10,m=12;
+    c.strokeStyle=B(.35);c.lineWidth=1;const tk=10,m=12;
     bracket(c,m,m,tk,1,1);bracket(c,W-m,m,tk,-1,1);
     bracket(c,m,H-m,tk,1,-1);bracket(c,W-m,H-m,tk,-1,-1);
     /* HUD top */
     txt(c,'CLIENT MAP — 11 COUNTRIES',14,26,9.5,AMBER,'left',600);
-    txt(c,'OFFICE — PUNE · IN',W-14,26,9,B(.5),'right');
+    txt(c,'OFFICE — PUNE · IN',W-14,26,9,B(.55),'right');
     /* map frame + graticule */
-    c.strokeStyle=B(.18);c.lineWidth=1;
+    c.strokeStyle=B(.22);c.lineWidth=1;
     line(c,ox,oy,ox+mapW,oy);line(c,ox,oy+mapH,ox+mapW,oy+mapH);
     line(c,ox,oy,ox,oy+mapH);line(c,ox+mapW,oy,ox+mapW,oy+mapH);
     for(let lon=-150;lon<=180;lon+=30){
@@ -494,14 +503,14 @@ function initClientMap(){
     }
     for(let lat=-60;lat<=75;lat+=15){
       const y=oy+(75-lat)/135*mapH;
-      c.strokeStyle=lat===0?B(.13):B(.06);line(c,ox,y,ox+mapW,y);
+      c.strokeStyle=lat===0?B(.14):B(.06);line(c,ox,y,ox+mapW,y);
     }
     /* land dots — sweep-in reveal */
     if(reveal<1){
       dots.forEach(p=>{
         const th=p.x/mapW*.72+(p.y/mapH)*.28;
         const a=clamp((reveal*1.35-th)*3.2,0,1)*.32;
-        if(a>0){c.fillStyle=`rgba(237,231,218,${a})`;c.beginPath();c.arc(ox+p.x,oy+p.y,1.35,0,6.29);c.fill();}
+        if(a>0){c.fillStyle=`rgba(31,38,33,${a})`;c.beginPath();c.arc(ox+p.x,oy+p.y,1.35,0,6.29);c.fill();}
       });
     }else c.drawImage(layer,ox,oy,mapW,mapH);
     /* corridors from Pune */
@@ -510,7 +519,7 @@ function initClientMap(){
       const ct=ctrl(officeM,mk);
       const pts=[];const n=Math.max(2,Math.floor(37*arcP));
       for(let k=0;k<=n;k++)pts.push(qp(officeM,ct,mk,k/37));
-      c.strokeStyle=A(.22);c.lineWidth=1;c.beginPath();
+      c.strokeStyle=A(.28);c.lineWidth=1;c.beginPath();
       pts.forEach((p,k)=>{k?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y)});
       c.stroke();
       /* traveling packets */
@@ -518,7 +527,7 @@ function initClientMap(){
         for(let k=0;k<2;k++){
           const tt=(t*.11+i*.073+k*.5)%1;
           const p=qp(officeM,ct,mk,tt);
-          c.fillStyle=A(k?.4:.9);
+          c.fillStyle=A(k?.45:.95);
           c.beginPath();c.arc(p.x,p.y,k?2:2.6,0,6.29);c.fill();
         }
       }
@@ -530,17 +539,17 @@ function initClientMap(){
       const hot=hoverI===i;
       if(!RM){
         const pr=(t*.5+i*.093)%1;
-        c.strokeStyle=A((1-pr)*.45*pop);c.lineWidth=1;
+        c.strokeStyle=A((1-pr)*.5*pop);c.lineWidth=1;
         c.beginPath();c.arc(mk.x,mk.y,4+pr*11,0,6.29);c.stroke();
       }
-      c.fillStyle=B(.6);c.beginPath();c.arc(mk.x,mk.y,hot?3.4:2.6,0,6.29);c.fill();
+      c.fillStyle=B(.55);c.beginPath();c.arc(mk.x,mk.y,hot?3.4:2.6,0,6.29);c.fill();
       c.fillStyle=AMBER;c.beginPath();c.arc(mk.x,mk.y,hot?2.4:1.8,0,6.29);c.fill();
     });
     /* persistent country labels (skip the tight EU cluster) */
     if(mapW>360){
       marks.forEach(mk=>{if(mk.nolab)return;
-        txt(c,mk.k,mk.x+mk.lab[0],mk.y+mk.lab[1],8.5,B(.6));});
-      txt(c,'UK·NL·DE',ox+(5.2+180)/360*mapW,oy+(75-56.4)/135*mapH,8,B(.6),'center');
+        txt(c,mk.k,mk.x+mk.lab[0],mk.y+mk.lab[1],8.5,B(.55));});
+      txt(c,'UK·NL·DE',ox+(5.2+180)/360*mapW,oy+(75-56.4)/135*mapH,8,B(.55),'center');
     }
     /* the one office — Pune */
     const opop=RM?1:clamp((reveal-.55)*5,0,1);
@@ -555,16 +564,16 @@ function initClientMap(){
         line(c,officeM.x+sx*11,officeM.y+sy*11,officeM.x+sx*16,officeM.y+sy*16);});
       if(!RM){
         const pr=(t*.6)%1;
-        c.strokeStyle=A((1-pr)*.5);c.lineWidth=1;
+        c.strokeStyle=A((1-pr)*.55);c.lineWidth=1;
         c.beginPath();c.arc(officeM.x,officeM.y,9+pr*14,0,6.29);c.stroke();
       }
-      if(mapW>300)txt(c,'PUNE — OFFICE',officeM.x+12,officeM.y+13,8.5,hot?AMBER:A(.9));
+      if(mapW>300)txt(c,'PUNE — OFFICE',officeM.x+12,officeM.y+13,8.5,AMBER);
       else txt(c,'PUNE',officeM.x+11,officeM.y-8,8,AMBER);
     }
     /* pings */
     pings=pings.filter(p=>p.t<1);
     pings.forEach(p=>{p.t+=dt/1.1;
-      c.strokeStyle=A((1-p.t)*.8);c.lineWidth=1.4;
+      c.strokeStyle=A((1-p.t)*.85);c.lineWidth=1.4;
       c.beginPath();c.arc(p.x,p.y,p.t*40,0,6.29);c.stroke();
       c.strokeStyle=A((1-p.t)*.4);
       c.beginPath();c.arc(p.x,p.y,p.t*24,0,6.29);c.stroke();});
@@ -583,16 +592,16 @@ function initClientMap(){
       c.font='500 9.5px "JetBrains Mono"';
       const bw=Math.max(c.measureText(l1).width,c.measureText(l2).width)+24;
       let bx=clamp(m.x-bw/2,6,W-bw-6),by=m.y-58;if(by<8)by=m.y+16;
-      c.fillStyle='rgba(10,14,12,.92)';c.strokeStyle=A(.7);c.lineWidth=1;
+      c.fillStyle='rgba(252,250,244,.96)';c.strokeStyle=A(.7);c.lineWidth=1;
       rr(c,bx,by,bw,44,3);c.fill();c.stroke();
       txt(c,l1,bx+12,by+17,9.5,AMBER);
-      txt(c,l2,bx+12,by+33,8.5,B(.55));
+      txt(c,l2,bx+12,by+33,8.5,B(.6));
     }
     /* bottom strip */
     const by2=oy+mapH+34;
     txt(c,'300+ SITES LIVE',14,by2,9,AMBER,'left',600);
-    txt(c,'CORRIDORS — SUPPORTED FROM PUNE',W-14,by2,8.5,B(.45),'right');
-    if(W>470)txt(c,'HOVER A MARKER · CLICK FOR DETAIL',W/2,by2,8,B(.3),'center');
+    txt(c,'CORRIDORS — SUPPORTED FROM PUNE',W-14,by2,8.5,B(.5),'right');
+    if(W>470)txt(c,'HOVER A MARKER · CLICK FOR DETAIL',W/2,by2,8,B(.35),'center');
     /* readout */
     const ro=hov?
       (hov.office?'PUNE — THE ONLY OFFICE · ALL CORRIDORS ORIGIN HERE':
@@ -613,10 +622,6 @@ if(!RM){
       scrollTrigger:{trigger:el,start:'top 90%',once:true}});
   });
   gsap.from('.hero-vis',{opacity:0,duration:1.2,delay:.3,ease:'power2.out'});
-  gsap.to('.hero-copy',{yPercent:-12,opacity:.06,ease:'none',
-    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom 25%',scrub:.5}});
-  gsap.to('.hero-vis',{yPercent:10,ease:'none',
-    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.5}});
 }
 
 /* =================== nav / goto =================== */
