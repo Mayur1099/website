@@ -14,7 +14,7 @@
   --bg0:#F5F2EB; --bg1:#EFEBE1; --bg2:#FBFAF6; --bg3:#E9E4D8;
   --line:rgba(26,23,19,.12); --line2:rgba(26,23,19,.26);
   --bone:#1A1712; --body:#57524A; --faint:#8B857A;
-  --amber:#B27516; --amber2:#C98A2E; --amber-soft:rgba(178,117,22,.10);
+  --amber:#d14017d5; --amber2:#e47011; --amber-soft:rgba(178,117,22,.10);
   --btn-border:rgba(26,23,19,.30); --solid-ink:#171208;
   --nav-bg:rgba(245,242,235,.9);
   --hero-bg:#D8D1BF; --vign:rgba(212,205,190,.55);
@@ -32,9 +32,9 @@ html[data-theme="dark"]{
   --bg0:#0A0E0C; --bg1:#0E1411; --bg2:#131A16; --bg3:#0C110F;
   --line:rgba(237,231,218,.10); --line2:rgba(237,231,218,.22);
   --bone:#EDE7DA; --body:#B4BBAE; --faint:#828D82;
-  --amber:#E3A24A; --amber2:#F0B968; --amber-soft:rgba(227,162,74,.12);
+  --amber:#e85b34d5; --amber2:#f09168; --amber-soft:rgba(227,162,74,.12);
   --btn-border:rgba(237,231,218,.28); --solid-ink:#131008;
-  --nav-bg:rgba(10,14,12,.86);
+  --nav-bg:rgba(25, 30, 27, 0.86);
   --hero-bg:#06090B; --vign:rgba(6,9,8,.55);
   --scrimL:rgba(10,14,12,.94); --scrimLm:rgba(10,14,12,.6);
   --scrimR:rgba(10,14,12,.12); --scrimRe:rgba(10,14,12,.4);
@@ -329,12 +329,46 @@ html[data-theme="dark"] .trow:hover img{filter:grayscale(0) brightness(.95)}
 <header class="nav" id="nav">
   <div class="nav-in">
     <a class="brand" href="#top" aria-label="vyntra AI Labs — home">
-      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path class="lk-outer" d="M4 6 L16 28 L28 6" stroke="#EDE7DA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path class="lk-amber" d="M10 6 L16 18 L22 6" stroke="#E3A24A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle class="lk-dot" cx="16" cy="6" r="2.5" fill="#E3A24A"/>
-      </svg>
-      <span class="brand-txt">vyntra<em>AI LABS</em></span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" width="100%" height="100%" class="w-80 h-22"><defs><style>
+            .title {
+              font-family: 'Montserrat', 'Spartan', 'Segoe UI', Helvetica, sans-serif;
+              font-size: 48px;
+              font-weight: 600;
+              fill: #B8380D;
+              letter-spacing: 0.05em;
+            }
+            .subtitle {
+              font-family: 'Montserrat', 'Spartan', 'Segoe UI', Helvetica, sans-serif;
+              font-size: 20px;
+              font-weight: 500;
+              fill: #C33C15;
+              letter-spacing: 0.28em;
+            }
+            .tagline {
+              font-family: 'Montserrat', 'Segoe UI', Helvetica, sans-serif;
+              font-size: 20px;
+              font-weight: 500;
+              fill: #1A2040;
+            }
+          </style><linearGradient id="lineFade" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#FFAD91" stop-opacity="1"></stop>
+            <stop offset="85%" stop-color="#FFAD91" stop-opacity="1"></stop>
+            <stop offset="100%" stop-color="#FFAD91" stop-opacity="0"></stop>
+          </linearGradient></defs><g stroke-linecap="round" fill="none" transform="translate(145, 160)">
+            <path d="M -108 0 A 108 108 0 0 1 108 0" stroke="#FFCBB9" stroke-width="2.5"></path>
+            <path d="M -90 0 A 90 90 0 0 1 90 0" stroke="#FFCBB9" stroke-width="2.5"></path>
+            <path d="M -70 0 A 70 70 0 0 1 70 0" stroke="#FF855C" stroke-width="4"></path>
+            <path d="M -50 0 A 50 50 0 0 1 50 0" stroke="#FF410D" stroke-width="6"></path>
+            <path d="M -33 0 A 33 33 0 0 1 33 0" stroke="#FF410D" stroke-width="7.5"></path>
+            <line x1="0" y1="0" x2="0" y2="-120" stroke="#FF410D" stroke-width="8"></line>
+            <line x1="-27" y1="0" x2="27" y2="0" stroke="#B8380D" stroke-width="6"></line>
+            <circle cx="0" cy="-120" r="10" fill="#FF410D" stroke="none"></circle></g>
+            <text x="275" y="112" class="title">VYNTRA</text>
+            <text x="325" y="160" class="subtitle">AI LABS</text>
+            <line x1="295" y1="130" x2="490" y2="130" stroke="#B8380D" stroke-width="2.5" stroke-linecap="round"></line>
+            <text x="290" y="200" class="tagline" text-anchor="middle">Artificial intelligence, deployed in real world</text>
+        </svg>
+      <!-- <span class="brand-txt">vyntra<em>AI LABS</em></span> -->
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#top" class="act">Home</a>
